@@ -15,4 +15,58 @@ Public Module 御魂拓展
         End If
         Return "未知"
     End Function
+
+    <Extension>
+    Public Function 创建御魂整理(御魂数据 As IReadOnlyList(Of 御魂)) As 御魂整理状态
+        Return New 御魂整理状态(御魂数据)
+    End Function
+
+    <Extension>
+    Public Function 属性分类(副属性 As 御魂副属性) As 御魂副属性类型
+        Select Case 副属性.种类
+            Case "AttackRate"
+                Return 御魂副属性类型.攻击加成
+            Case "DefenseRate"
+                Return 御魂副属性类型.防御加成
+            Case "HpRate"
+                Return 御魂副属性类型.生命加成
+            Case "EffectHitRate"
+                Return 御魂副属性类型.效果命中
+            Case "EffectResistRate"
+                Return 御魂副属性类型.效果抵抗
+            Case "CritRate"
+                Return 御魂副属性类型.暴击
+            Case "CritPower"
+                Return 御魂副属性类型.暴击伤害
+            Case "Speed"
+                Return 御魂副属性类型.速度
+            Case "Attack"
+                Return 御魂副属性类型.攻击
+            Case "Defense"
+                Return 御魂副属性类型.防御
+            Case "Hp"
+                Return 御魂副属性类型.生命
+        End Select
+        Throw New ArgumentException
+    End Function
+
+    <Extension>
+    Public Function 属性分类(副属性 As 御魂主属性) As 御魂主属性类型
+        Select Case 副属性.种类
+            Case "AttackRate"
+                Return 御魂主属性类型.攻击加成
+            Case "DefenseRate"
+                Return 御魂主属性类型.防御加成
+            Case "HpRate"
+                Return 御魂主属性类型.生命加成
+            Case "EffectHitRate"
+                Return 御魂主属性类型.效果命中
+            Case "EffectResistRate"
+                Return 御魂主属性类型.效果抵抗
+            Case "CritRate"
+                Return 御魂主属性类型.暴击
+        End Select
+        Throw New ArgumentException
+    End Function
+
 End Module

@@ -9,7 +9,7 @@
     <JsonProperty("version")>
     Public Property 版本 As String
 
-    Public Shared Function 加载(文件 As String) As 痒痒熊快照
+    Public Shared Function 加载Json文件(文件 As String) As 痒痒熊快照
         Return JsonConvert.DeserializeObject(Of 痒痒熊快照)(IO.File.ReadAllText(文件))
     End Function
 End Class
