@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "痒痒熊数据模型", "痒痒熊数据模型\痒痒熊数据模型.vbproj", "{FE0D5D8C-07EC-4983-888F-08E7C3EDCA80}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LinqTo痒痒熊", "LinqTo痒痒熊\LinqTo痒痒熊.vbproj", "{EEBC6B26-36AB-4A46-AEB4-744D8EAFD39C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE0D5D8C-07EC-4983-888F-08E7C3EDCA80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0D5D8C-07EC-4983-888F-08E7C3EDCA80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0D5D8C-07EC-4983-888F-08E7C3EDCA80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0D5D8C-07EC-4983-888F-08E7C3EDCA80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEBC6B26-36AB-4A46-AEB4-744D8EAFD39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEBC6B26-36AB-4A46-AEB4-744D8EAFD39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEBC6B26-36AB-4A46-AEB4-744D8EAFD39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEBC6B26-36AB-4A46-AEB4-744D8EAFD39C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDA8255D-770A-4AA0-B31A-77888412B9C9}
+	EndGlobalSection
+EndGlobal
