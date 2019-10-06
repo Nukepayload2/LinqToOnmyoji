@@ -12,27 +12,27 @@
     ''' <summary>
     ''' 御魂种类选中的御魂
     ''' </summary>
-    Public ReadOnly Property 种类 As New HashSet(Of 御魂种类)
+    Public ReadOnly Property 种类 As New 多重值过滤器(Of 御魂种类)
     ''' <summary>
     ''' 1 到 6 号位
     ''' </summary>
-    Public ReadOnly Property 位置 As New HashSet(Of Integer)
+    Public ReadOnly Property 位置 As New 多重值过滤器(Of Integer)
     ''' <summary>
     ''' 1 到 6 星
     ''' </summary>
-    Public ReadOnly Property 星级 As New HashSet(Of Integer)
+    Public ReadOnly Property 星级 As New 多重值过滤器(Of Integer)
     ''' <summary>
     ''' 主属性选中的
     ''' </summary>
-    Public ReadOnly Property 主属性 As New HashSet(Of 御魂主属性类型)
+    Public ReadOnly Property 主属性 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
     ''' 副属性画圈的
     ''' </summary>
-    Public ReadOnly Property 副属性有 As New HashSet(Of 御魂副属性类型)
+    Public ReadOnly Property 副属性有 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
     ''' 副属性打叉的
     ''' </summary>
-    Public ReadOnly Property 副属性没有 As New HashSet(Of 御魂副属性类型)
+    Public ReadOnly Property 副属性没有 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
     ''' 副属性几条的过滤表达式。预设的条件在 <see cref="副属性条数条件"/> 定义。
     ''' </summary>

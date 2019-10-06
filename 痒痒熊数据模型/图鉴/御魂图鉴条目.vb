@@ -7,7 +7,7 @@
     End Sub
 
     Public Property Id As Integer
-    Public Property 属性 As (String, Double)
+    Public Property 属性 As (类型 As String, 数值 As Double)
     Public Property 效果 As String
     Public Property 是首领御魂 As Boolean
 End Class

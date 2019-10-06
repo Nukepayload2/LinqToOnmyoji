@@ -1,4 +1,6 @@
-﻿Public Enum 御魂副属性类型
+﻿Imports System.ComponentModel
+
+Public Enum 御魂属性类型
     ''' <summary>
     ''' AttackRate
     ''' </summary>
@@ -43,4 +45,18 @@
     ''' Hp
     ''' </summary>
     生命
+
+    ' 常见的拼错应该允许通过编译，但是在发布版本应该更正。
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    <Obsolete("改用 效果抵抗")>
+    抵抗 = 效果抵抗
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    <Obsolete("改用 效果命中")>
+    命中 = 效果命中
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    <Obsolete("改用 效果命中")>
+    效命 = 效果命中
+    <EditorBrowsable(EditorBrowsableState.Never)>
+    <Obsolete("改用 暴击伤害")>
+    暴伤 = 暴击伤害
 End Enum
