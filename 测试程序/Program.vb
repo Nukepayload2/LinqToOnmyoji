@@ -3,6 +3,8 @@
 Module Program
     Sub Main()
         Dim 快照 = 痒痒熊快照.加载Json文件("测试数据.json")
+        Console.WriteLine(快照.数据.御魂.Count)
+
         Dim 五星御魂 =
             From s In 快照.数据.御魂 Where s.星级 = 5 AndAlso s.已弃置 = False
         Console.WriteLine($"整理前五星御魂数量: {五星御魂.Count}")
