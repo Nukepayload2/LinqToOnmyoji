@@ -26,11 +26,11 @@
     ''' </summary>
     Public ReadOnly Property 主属性 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
-    ''' 副属性画圈的
+    ''' 副属性画圈的。这些属性必须都具备。
     ''' </summary>
     Public ReadOnly Property 副属性有 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
-    ''' 副属性打叉的
+    ''' 副属性打叉的。这些属性一个都不能具备。
     ''' </summary>
     Public ReadOnly Property 副属性没有 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
@@ -53,10 +53,12 @@
             全选 = From s In 全选 Where 主属性.Contains(s.主属性.属性分类)
         End If
         If 副属性有.Any Then
+            ' 副属性带圈的意思是这些属性都要具备
             全选 = From s In 全选
                  Where 副属性有.All(Function(副属性) Aggregate prop In s.副属性 Where prop.属性分类 = 副属性 Into Any)
         End If
         If 副属性没有.Any Then
+            ' 副属性带叉的意思是这些属性都不能具备
             全选 = From s In 全选
                  Where Not s.副属性.Any(Function(副属性) 副属性没有.Contains(副属性.属性分类))
         End If

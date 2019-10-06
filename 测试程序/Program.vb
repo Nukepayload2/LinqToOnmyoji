@@ -3,32 +3,30 @@
 Module Program
     Sub Main()
         Dim 快照 = 痒痒熊快照.加载Json文件("测试数据.json")
-        每种御魂的数量（快照）
-        Dim 六星御魂 =
-            From s In 快照.数据.御魂 Where s.星级 = 6 AndAlso s.已弃置 = False
-        Console.WriteLine($"整理前六星御魂数量: {六星御魂.Count}")
-        七老爷三周年庆御魂整理方案(快照)
-        Console.WriteLine($"整理后六星御魂数量: {六星御魂.Count}")
+        Dim 五星御魂 =
+            From s In 快照.数据.御魂 Where s.星级 = 5 AndAlso s.已弃置 = False
+        Console.WriteLine($"整理前五星御魂数量: {五星御魂.Count}")
+        清理五星御魂(快照)
+        Console.WriteLine($"整理后五星御魂数量: {五星御魂.Count}")
     End Sub
 
-    Private Property Dbg快照 As 痒痒熊快照
-
-    Private ReadOnly Property Dbg六星御魂 As Integer
-        Get
-            If Dbg快照 Is Nothing Then
-                Return 0
-            End If
-            Return Aggregate s In Dbg快照.数据.御魂
-                   Where s.星级 = 6 AndAlso s.已弃置 = False
-                   Into Count
-        End Get
-    End Property
+    Private Sub 清理五星御魂(快照 As 痒痒熊快照)
+        With 快照.数据.御魂.创建御魂整理
+            .星级.选择(5)
+            .副属性条数 = 副属性条数条件.两条
+            .全选.弃置
+            .副属性条数 = 副属性条数条件.不限
+            .副属性没有.选择(御魂属性类型.暴击伤害)
+            .全选.弃置
+            .副属性没有.改为(御魂属性类型.暴击)
+            .全选.弃置
+        End With
+    End Sub
 
     ''' <summary>
     ''' 七老爷三周年庆版本的清理方案 <see cref="https://www.bilibili.com/read/cv3643919/"/>
     ''' </summary>
     Private Sub 七老爷三周年庆御魂整理方案(快照 As 痒痒熊快照)
-        Dbg快照 = 快照
         With 快照.数据.御魂.创建御魂整理
             ' 第一步：选中所有两条腿六星，全扔了。
             .星级.选择(6)
