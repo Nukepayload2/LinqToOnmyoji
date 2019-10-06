@@ -3,6 +3,7 @@
 Module Program
     Sub Main()
         Dim 快照 = 痒痒熊快照.加载Json文件("测试数据.json")
+        每种御魂的数量（快照）
         Dim 六星御魂 =
             From s In 快照.数据.御魂 Where s.星级 = 6 AndAlso s.已弃置 = False
         Console.WriteLine($"整理前六星御魂数量: {六星御魂.Count}")
@@ -288,7 +289,7 @@ Module Program
                    Group By 御魂.名称 Into Group
                    Select 名称, Group.Count Into ToArray
 
-        Console.WriteLine("eqId.Len=" & eqId.Length)
+        Console.WriteLine("总共的御魂种类：" & eqId.Length)
         For Each eq In eqId
             Console.WriteLine(eq)
         Next
