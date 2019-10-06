@@ -10,10 +10,24 @@ Module Program
         Console.WriteLine($"整理后六星御魂数量: {六星御魂.Count}")
     End Sub
 
+    Private Property Dbg快照 As 痒痒熊快照
+
+    Private ReadOnly Property Dbg六星御魂 As Integer
+        Get
+            If Dbg快照 Is Nothing Then
+                Return 0
+            End If
+            Return Aggregate s In Dbg快照.数据.御魂
+                   Where s.星级 = 6 AndAlso s.已弃置 = False
+                   Into Count
+        End Get
+    End Property
+
     ''' <summary>
     ''' 七老爷三周年庆版本的清理方案 <see cref="https://www.bilibili.com/read/cv3643919/"/>
     ''' </summary>
     Private Sub 七老爷三周年庆御魂整理方案(快照 As 痒痒熊快照)
+        Dbg快照 = 快照
         With 快照.数据.御魂.创建御魂整理
             ' 第一步：选中所有两条腿六星，全扔了。
             .星级.选择(6)

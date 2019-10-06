@@ -54,7 +54,7 @@
         End If
         If 副属性有.Any Then
             全选 = From s In 全选
-                 Where s.副属性.All(Function(副属性) 副属性有.Contains(副属性.属性分类))
+                 Where 副属性有.All(Function(副属性) Aggregate prop In s.副属性 Where prop.属性分类 = 副属性 Into Any)
         End If
         If 副属性没有.Any Then
             全选 = From s In 全选
