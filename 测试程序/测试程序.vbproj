@@ -7,12 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\数据\测试数据.json" Link="测试数据.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\实用工具\实用工具.vbproj" />
     <ProjectReference Include="..\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
   </ItemGroup>
 
