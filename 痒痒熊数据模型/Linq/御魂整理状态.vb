@@ -6,7 +6,7 @@
     End Sub
 
     ''' <summary>
-    ''' 是否切换到了弃置御魂视图使用筛选器
+    ''' 代表是否切换到已弃置御魂的画面。默认情况下在待整理御魂的画面。
     ''' </summary>
     Public Property 在弃置御魂中查找 As Boolean
     ''' <summary>
@@ -22,7 +22,7 @@
     ''' </summary>
     Public ReadOnly Property 星级 As New 多重值过滤器(Of Integer)
     ''' <summary>
-    ''' 主属性选中的
+    ''' 主属性选中的。需要具备其中一种。
     ''' </summary>
     Public ReadOnly Property 主属性 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
@@ -34,7 +34,7 @@
     ''' </summary>
     Public ReadOnly Property 副属性没有 As New 多重值过滤器(Of 御魂属性类型)
     ''' <summary>
-    ''' 副属性几条的过滤表达式。预设的条件在 <see cref="副属性条数条件"/> 定义。
+    ''' 副属性几条的过滤表达式。预设的条件在 <see cref="Onmyoji.副属性条数"/> 定义。
     ''' </summary>
     Public Property 副属性条数 As Func(Of Integer, Boolean)
 
@@ -44,7 +44,7 @@
             全选 = From s In 全选 Where 种类.Contains(s.种类)
         End If
         If 位置.Any Then
-            全选 = From s In 全选 Where 位置.Contains(s.位置 + 1)
+            全选 = From s In 全选 Where 位置.Contains(s.位置从0开始 + 1)
         End If
         If 星级.Any Then
             全选 = From s In 全选 Where 星级.Contains(s.星级)

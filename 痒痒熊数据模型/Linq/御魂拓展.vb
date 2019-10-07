@@ -72,4 +72,9 @@ Public Module 御魂拓展
             s.已弃置 = False
         Next
     End Sub
+
+    <Extension>
+    Public Function 位置从1开始(御魂 As 御魂) As Integer
+        Return 御魂.位置从0开始 + 1
+    End Function
 End Module

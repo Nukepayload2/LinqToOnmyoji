@@ -1,0 +1,170 @@
+﻿@page "/"
+
+@using System.IO;
+@using Nukepayload2.Linq.Onmyoji;
+@using Nukepayload2.Linq.Onmyoji.Utilities;
+
+@inject IFileReaderService fileReaderService;
+<h1>试用七老爷三周年庆御魂整理方案</h1>
+
+<p>用痒痒熊截取快照，然后拖放到下面的框里面。</p>
+
+<style>
+    .@dropTargetClass {
+        display:block;
+        padding: 20px;
+        margin-bottom: 10px;
+        border: 1px dashed black;
+        border-radius: 5px;
+    }
+    .@dropTargetDragClass {
+        border-color: orangered;
+        font-weight: bold;
+    }
+</style>
+
+<div class="@DropClass"
+     @ref=dropTargetElement
+     @ondrop=OnDrop
+     @ondragenter=OnDragEnter
+     @ondragleave=OnDragLeave>
+    请将痒痒熊快照 json 文件拖放到这里
+    @foreach (var fileInfo in FileList)
+    {
+        <br />@fileInfo.Name
+    }
+</div>
+
+<p>
+    <button @onclick="ReadFile" class="btn btn-primary">读取</button>
+    <button @onclick="ClearFile" class="btn btn-primary">清空</button>
+</p>
+<p>
+    <progress value=@progress />
+</p>
+<textarea style="max-width: 100%;" cols="50" rows="15">@Output</textarea>
+
+<p>
+    B站、GitHub、百度贴吧、微博：Nukepayload2。阴阳师：依偎相守#2723416
+</p>
+
+@code {
+    ElementReference dropTargetElement;
+    IFileReaderRef dropReference;
+    bool Additive { get; set; }
+    object progress = 0;
+
+    const string dropTargetDragClass = "droptarget-drag";
+    const string dropTargetClass = "droptarget";
+
+    private List<string> _dropClasses = new List<string>() { dropTargetClass };
+
+    string DropClass => string.Join(" ", _dropClasses);
+    string Output { get; set; }
+    List<IFileInfo> FileList { get; } = new List<IFileInfo>();
+
+    protected override async Task OnAfterRenderAsync(bool isFirstRender)
+    {
+        if (isFirstRender)
+        {
+            dropReference = fileReaderService.CreateReference(dropTargetElement);
+            await dropReference.RegisterDropEventsAsync();
+        }
+    }
+
+    public async Task OnAdditiveChange(ChangeEventArgs e)
+    {
+        Additive = (bool)e.Value;
+        await dropReference.UnregisterDropEventsAsync();
+        await dropReference.RegisterDropEventsAsync(Additive);
+    }
+
+    public async Task ClearFile()
+    {
+        await dropReference.ClearValue();
+        await this.RefreshFileList();
+    }
+
+    public void OnDragEnter(EventArgs e)
+    {
+        _dropClasses.Add(dropTargetDragClass);
+    }
+
+    public void OnDragLeave(EventArgs e)
+    {
+        _dropClasses.Remove(dropTargetDragClass);
+    }
+
+    public async Task OnDrop(EventArgs e)
+    {
+        Output += @"请点击""读取""按钮";
+        _dropClasses.Remove(dropTargetDragClass);
+        this.StateHasChanged();
+        await this.RefreshFileList();
+    }
+
+    private async Task RefreshFileList()
+    {
+        this.FileList.Clear();
+        foreach (var file in await dropReference.EnumerateFilesAsync())
+        {
+            var fileInfo = await file.ReadFileInfoAsync();
+            this.FileList.Add(fileInfo);
+        }
+        this.StateHasChanged();
+    }
+
+    public async Task ReadFile()
+    {
+        Output = string.Empty;
+        this.StateHasChanged();
+        var nl = Environment.NewLine;
+        foreach (var file in await dropReference.EnumerateFilesAsync())
+        {
+            var fileInfo = await file.ReadFileInfoAsync();
+            if (fileInfo.Type != "application/json")
+            {
+                Output += $"出现错误: 需要 Json 文件{nl}";
+                return;
+            }
+            Output += $"文件名: {fileInfo.Name}{nl}";
+            Output += $"大小: {fileInfo.Size}{nl}";
+            Output += $"类型: {fileInfo.Type}{nl}";
+            Output += $"修改日期: {fileInfo.LastModifiedDate?.ToString() ?? "(N/A)"}{nl}";
+            Output += $"正在加载文件...{nl}";
+            progress = null;
+            this.StateHasChanged();
+
+            using (var fs = await file.OpenReadAsync())
+            {
+                try
+                {
+                    var buf = new byte[fs.Length];
+                    await fs.ReadAsync(buf, 0, buf.Length);
+                    var mem = new MemoryStream(buf);
+                    Output += $"文件已加载，开始解析痒痒熊快照文件。请不要关闭浏览器...{nl}";
+                    this.StateHasChanged();
+                    var snap = await 痒痒熊快照.异步加载Json文件流(mem);
+                    Output += $"已解析痒痒熊快照文件，正在整理御魂。这不会花费太长时间。{nl}";
+                    this.StateHasChanged();
+                    int 六星御魂()
+                    {
+                        return snap.数据.御魂.Where(s => s.星级 == 6 && !s.已弃置).Count();
+                    }
+                    Output += $"整理前六星御魂: {六星御魂()} 个{nl}";
+                    this.StateHasChanged();
+                    await Task.Run(() => 御魂整理方案.七老爷三周年庆御魂整理方案(snap));
+                    Output += $"整理后六星御魂: {六星御魂()} 个{nl}";
+                }
+                catch (Exception ex)
+                {
+                    Output += $"出现错误{nl}";
+                    Output += ex.ToString();
+                }
+                progress = 0;
+            }
+            this.StateHasChanged();
+        }
+
+    }
+}

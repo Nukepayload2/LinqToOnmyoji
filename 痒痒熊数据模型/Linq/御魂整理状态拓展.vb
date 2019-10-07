@@ -22,7 +22,7 @@ Public Module 御魂整理状态拓展
             .主属性.Clear()
             .位置.Clear()
             .副属性有.Clear()
-            .副属性条数 = 副属性条数条件.不限
+            .副属性条数 = 副属性条数.不限
             .副属性没有.Clear()
             If 重置整理视图 Then .在弃置御魂中查找 = False
             .星级.Clear()

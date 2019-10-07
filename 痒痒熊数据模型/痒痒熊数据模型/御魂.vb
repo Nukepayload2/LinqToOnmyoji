@@ -28,7 +28,7 @@
     ''' 0 到 5。代表 1 到 6 号位。
     ''' </summary>
     <JsonProperty("pos")>
-    Public Property 位置 As Integer
+    Public Property 位置从0开始 As Integer
 
     ''' <summary>
     ''' 1 到 6。代表 1 到 6 星。
