@@ -26,29 +26,29 @@ Public Module 御魂拓展
         Return 属性分类(副属性.种类)
     End Function
 
-    Private Function 属性分类(种类 As String) As 御魂属性类型
+    Friend Function 属性分类(种类 As String) As 御魂属性类型
         Select Case 种类
-            Case "AttackRate"
+            Case 御魂属性类型英文名.攻击加成
                 Return 御魂属性类型.攻击加成
-            Case "DefenseRate"
+            Case 御魂属性类型英文名.防御加成
                 Return 御魂属性类型.防御加成
-            Case "HpRate"
+            Case 御魂属性类型英文名.生命加成
                 Return 御魂属性类型.生命加成
-            Case "EffectHitRate"
+            Case 御魂属性类型英文名.效果命中
                 Return 御魂属性类型.效果命中
-            Case "EffectResistRate"
+            Case 御魂属性类型英文名.效果抵抗
                 Return 御魂属性类型.效果抵抗
-            Case "CritRate"
+            Case 御魂属性类型英文名.暴击
                 Return 御魂属性类型.暴击
-            Case "CritPower"
+            Case 御魂属性类型英文名.暴击伤害
                 Return 御魂属性类型.暴击伤害
-            Case "Speed"
+            Case 御魂属性类型英文名.速度
                 Return 御魂属性类型.速度
-            Case "Attack"
+            Case 御魂属性类型英文名.攻击
                 Return 御魂属性类型.攻击
-            Case "Defense"
+            Case 御魂属性类型英文名.防御
                 Return 御魂属性类型.防御
-            Case "Hp"
+            Case 御魂属性类型英文名.生命
                 Return 御魂属性类型.生命
         End Select
         Throw New ArgumentException

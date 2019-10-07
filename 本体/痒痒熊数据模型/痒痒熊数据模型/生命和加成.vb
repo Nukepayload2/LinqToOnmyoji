@@ -1,4 +1,4 @@
-﻿Public Class 攻击
+﻿Public Class 生命和加成
 
     <JsonProperty("add_rate")>
     Public Property 加成百分比 As Double

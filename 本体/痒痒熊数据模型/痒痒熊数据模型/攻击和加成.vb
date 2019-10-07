@@ -1,4 +1,4 @@
-﻿Public Class 暴击伤害
+﻿Public Class 攻击和加成
 
     <JsonProperty("add_rate")>
     Public Property 加成百分比 As Double

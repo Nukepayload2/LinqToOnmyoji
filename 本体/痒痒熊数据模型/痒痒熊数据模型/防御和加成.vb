@@ -1,4 +1,4 @@
-﻿Public Class 速度
+﻿Public Class 防御和加成
 
     <JsonProperty("add_rate")>
     Public Property 加成百分比 As Double
