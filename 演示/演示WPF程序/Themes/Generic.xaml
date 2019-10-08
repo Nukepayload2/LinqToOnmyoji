@@ -1,0 +1,65 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:演示WPF程序">
+
+    <Style TargetType="{x:Type local:ToggleSwitch}">
+        <Setter Property="Background" Value="#0078d7"/>
+        <Setter Property="BorderBrush" Value="#272727"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="Padding" Value="0,4"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ToggleSwitch}">
+                    <Grid x:Name="LayoutRoot" Background="#01000000">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ContentPresenter Margin="{TemplateBinding Padding }" VerticalAlignment="Center"  Content="{TemplateBinding Content  }"/>
+                        <Grid x:Name="SwitchPart" Grid.Row="1" HorizontalAlignment="Left" Margin="0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="44"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="bd" CornerRadius="10" Background="White"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="20">
+                            </Border>
+                            <Ellipse Margin="5,1" x:Name="rcThumb" Fill="{TemplateBinding BorderBrush}" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Center" ></Ellipse>
+                            <TextBlock Grid.Column="1" Margin="12,0" FontSize="15" x:Name="tblOnOff" Text="Off"/>
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="tblOnOff" Property="Text" Value="On"/>
+                            <Setter TargetName="rcThumb" Property="HorizontalAlignment" Value="Right" />
+                            <Setter TargetName="rcThumb" Property="Fill" Value="White" />
+                            <Setter TargetName="bd" Property="Background" Value="{Binding Path=Background,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"/>
+                            <Setter TargetName="bd" Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="bd" Property="Background" Value="#4ca0e3"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="SwitchPart" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

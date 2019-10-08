@@ -1,0 +1,44 @@
+﻿<ext:BorderlessWindow x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:演示WPF程序" AllowsTransparency="True" WindowStyle="None"
+        MinWidth="250" MinHeight="250"
+        xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
+        mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/Nukepayload2.UI.Win32;component/Themes/Generic.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TitleBar">
+            <Rectangle x:Name="TitleBarDragElement" Fill="#01FFFFFF"/>
+            <TextBlock Margin="8" IsHitTestVisible="False">试用七老爷的三周年版本御魂清理</TextBlock>
+            <Button x:Name="BtnAbout" HorizontalAlignment="Right" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
+            <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
+        </Grid>
+        <Border x:Name="ClientArea" Grid.Row="1" TextElement.FontSize="14" Padding="4">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border Margin="4" x:Name="BdrFileDrop" Height="80" Background="LightGray" AllowDrop="True">
+                    <TextBlock Text="请将痒痒熊快照产生的 Json 文件拖进来" 
+                               VerticalAlignment="Center" IsHitTestVisible="False"
+                               HorizontalAlignment="Center"/>
+                </Border>
+                <TextBox Margin="4" x:Name="TxtOut" IsReadOnly="True" Grid.Row="1"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ext:BorderlessWindow>
