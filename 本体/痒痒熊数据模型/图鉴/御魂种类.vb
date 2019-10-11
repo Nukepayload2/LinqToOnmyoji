@@ -1,6 +1,4 @@
-﻿Imports System.ComponentModel
-
-Public Enum 御魂种类
+﻿Public Enum 御魂种类
     雪幽魂 = 300002
     地藏像 = 300003
     蝠翼 = 300004
@@ -44,42 +42,34 @@ Public Enum 御魂种类
     青女房 = 300075
     涂佛 = 300076
     鬼灵歌伎 = 300077
+End Enum
 
-    ' 常见的拼错应该允许通过编译，但是在发布版本应该更正。
-    <EditorBrowsable(EditorBrowsableState.Never)>
+''' <summary>
+''' 御魂种类的常见简称或者拼错形式
+''' </summary>
+Public Enum 御魂种类别名
     <Obsolete("改用 地藏像")>
-    地藏 = 地藏像
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    地藏 = 御魂种类.地藏像
     <Obsolete("改用 蝠翼")>
-    蝙翼 = 蝠翼
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    蝙翼 = 御魂种类.蝠翼
     <Obsolete("改用 涅槃之火")>
-    涅槃 = 涅槃之火
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    涅槃 = 御魂种类.涅槃之火
     <Obsolete("改用 魍魉之匣")>
-    魍魉 = 魍魉之匣
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    魍魉 = 御魂种类.魍魉之匣
     <Obsolete("改用 招财猫")>
-    招财 = 招财猫
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    招财 = 御魂种类.招财猫
     <Obsolete("改用 日女巳时")>
-    日女 = 日女巳时
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    日女 = 御魂种类.日女巳时
     <Obsolete("改用 鬼灵歌伎")>
-    鬼灵歌姬 = 鬼灵歌伎
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    鬼灵歌姬 = 御魂种类.鬼灵歌伎
     <Obsolete("改用 鬼灵歌伎")>
-    歌姬 = 鬼灵歌伎
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    歌姬 = 御魂种类.鬼灵歌伎
     <Obsolete("改用 鬼灵歌伎")>
-    歌伎 = 鬼灵歌伎
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    歌伎 = 御魂种类.鬼灵歌伎
     <Obsolete("改用 薙魂")>
-    稚魂 = 薙魂
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    稚魂 = 御魂种类.薙魂
     <Obsolete("改用 薙魂")>
-    雉魂 = 薙魂
-    <EditorBrowsable(EditorBrowsableState.Never)>
+    雉魂 = 御魂种类.薙魂
     <Obsolete("改用 三味")>
-    三昧 = 三味
+    三昧 = 御魂种类.三味
 End Enum
