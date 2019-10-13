@@ -4,6 +4,15 @@
     <RootNamespace>Nukepayload2.Linq.Onmyoji</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Nukepayload2.Linq.Onmyoji</AssemblyName>
+    <Version>1.0.0-preview1</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Nukepayload2/LinqToOnmyoji</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <RepositoryUrl>https://github.com/Nukepayload2/LinqToOnmyoji.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>netease onmyoji linq 阴阳师 御魂</PackageTags>
+    <PackageReleaseNotes>初始提交</PackageReleaseNotes>
+    <Description>提供一组 .NET Standard 2.0 的 API，使用语言集成查询分析痒痒熊导出器导出的数据。</Description>
   </PropertyGroup>
 
   <ItemGroup>
