@@ -58,7 +58,7 @@ B站 解说七老爷", vbInformation, "关于")
             TxtOut.AppendText("操作成功完成。")
         Catch ex As Exception
             TxtOut.AppendText($"错误信息: {ex}")
-            MsgBox($"出现错误 {ex.Message}, 请检查拖放的文件。如果问题持续存在，请联系作者。", vbExclamation, "错误")
+            MsgBox($"出现错误, 请检查拖放的文件。如果问题持续存在，请联系作者。", vbExclamation, "错误")
         Finally
             BdrFileDrop.IsEnabled = True
         End Try
@@ -66,5 +66,9 @@ B站 解说七老爷", vbInformation, "关于")
 
     Private Sub BdrFileDrop_DragEnter(sender As Object, e As DragEventArgs) Handles BdrFileDrop.DragEnter
         e.Effects = DragDropEffects.Link
+    End Sub
+
+    Private Sub BtnViewSource_Click(sender As Object, e As RoutedEventArgs) Handles BtnViewSource.Click
+        Process.Start("explorer.exe", "https://github.com/Nukepayload2/LinqToOnmyoji")
     End Sub
 End Class

@@ -23,7 +23,10 @@
         <Grid x:Name="TitleBar">
             <Rectangle x:Name="TitleBarDragElement" Fill="#01FFFFFF"/>
             <TextBlock Margin="8" IsHitTestVisible="False">试用七老爷的三周年版本御魂清理</TextBlock>
-            <Button x:Name="BtnAbout" HorizontalAlignment="Right" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnViewSource" Background="#3F7F007F" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
+                <Button x:Name="BtnAbout" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
+            </StackPanel>
             <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
         </Grid>
         <Border x:Name="ClientArea" Grid.Row="1" TextElement.FontSize="14" Padding="4">

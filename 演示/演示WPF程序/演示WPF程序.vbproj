@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFrameworks>netcoreapp3.0;net461</TargetFrameworks>
     <RootNamespace>演示WPF程序</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
@@ -25,6 +25,12 @@
     <PackageReference Include="Nukepayload2.UI.WPFBorderlessWindow" Version="1.2.1" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+    <Reference Include="PresentationFramework.Aero2">
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\..\本体\实用工具\实用工具.vbproj" />
     <ProjectReference Include="..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
