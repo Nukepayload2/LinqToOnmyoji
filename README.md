@@ -91,13 +91,21 @@ Console.WriteLine($"整理后五星御魂数量: {五星御魂.Count}")
 ## 示例程序
 位于 "演示" 文件夹内，顺序无任何意义。
 
-|名称|可运行的平台|使用的技术|描述|
-|-|-|-|-|
-|测试控制台程序|Windows, Linux, Mac|VB|使用七老爷的三周年版本御魂整理方案清理御魂，统计清理前后六星御魂数量|
-|测试网站 [访问](http://nukepayload2.gitee.io/linqtoonmyojidemosite)|Web|C#, Blazor|使用七老爷的三周年版本御魂整理方案清理御魂，统计清理前后六星御魂数量|
-|演示WPF程序 [下载页面](https://gitee.com/nukepayload2/LinqToOnmyojiDemoSite/releases)|Windows|VB, WPF|使用七老爷的三周年版本御魂整理方案清理御魂，统计清理前后六星御魂数量|
+### 试用七老爷御魂清理的预览程序
+使用七老爷的三周年版本御魂整理方案清理御魂，统计清理前后六星御魂数量
+
+TODO: 插入预览图片
+
+|名称|可运行的平台|使用的技术|
+|-|-|-|
+|测试控制台程序|Windows, Linux, Mac|VB|
+|测试网站 [访问](http://nukepayload2.gitee.io/linqtoonmyojidemosite)|Web|C#, Blazor|
+|演示WPF程序 [下载](https://gitee.com/nukepayload2/LinqToOnmyojiDemoSite/releases)|Windows|VB, WPF|
 
 注: Windows 是指 Windows 10, Windows 8.1, Windows 7 sp1 或者它们对应的 Windows Server 系统。
+
+### 关于示例程序的反馈追踪
+- [试用七老爷御魂清理的预览程序的 nga 帖子](https://bbs.nga.cn/read.php?tid=18868381&_ff=538)
 
 ## 另请参阅
 - [痒痒熊导出器 (fluxxu 制作)](https://bbs.nga.cn/read.php?tid=16557282)
