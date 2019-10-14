@@ -4,17 +4,17 @@
     <RootNamespace>Nukepayload2.Linq.Onmyoji</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Nukepayload2.Linq.Onmyoji</AssemblyName>
-    <Version>1.0.0-preview2</Version>
+    <Version>1.0.0-preview3</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Nukepayload2/LinqToOnmyoji</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/Nukepayload2/LinqToOnmyoji.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>netease onmyoji linq 阴阳师 御魂</PackageTags>
-    <PackageReleaseNotes>修复了弃置带锁御魂的问题</PackageReleaseNotes>
+    <PackageReleaseNotes>修复了御魂图鉴 API 按类型查找失败的问题</PackageReleaseNotes>
     <Description>提供一组 .NET Standard 2.0 的 API，使用语言集成查询分析痒痒熊导出器导出的数据。</Description>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
