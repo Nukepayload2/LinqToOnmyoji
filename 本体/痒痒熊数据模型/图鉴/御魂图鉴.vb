@@ -50,7 +50,7 @@
         Return s_data(类型)
     End Function
 
-    Public Shared Iterator Function 按套装属性查找(属性类型 As String) As IEnumerable(Of 御魂图鉴条目)
+    Public Shared Iterator Function 按套装属性英文名查找(属性类型 As String) As IEnumerable(Of 御魂图鉴条目)
         For Each v In s_data.Values
             If v.属性.类型 = 属性类型 Then
                 Yield v
@@ -58,12 +58,12 @@
         Next
     End Function
 
-    Public Shared Function 查找种类(属性类型 As String) As 御魂种类()
-        Return Aggregate s In 按套装属性查找(属性类型) Select CType(s.Id, 御魂种类) Into ToArray
+    Public Shared Function 按英文名查找种类(属性类型 As String) As 御魂种类()
+        Return Aggregate s In 按套装属性英文名查找(属性类型) Select CType(s.Id, 御魂种类) Into ToArray
     End Function
 
     Public Shared Function 查找种类(属性类型 As 御魂属性类型) As 御魂种类()
-        Return Aggregate s In 按套装属性查找(属性类型) Select CType(s.Id, 御魂种类) Into ToArray
+        Return 按英文名查找种类(属性类型.英文名)
     End Function
 
     Public Shared Function 收录了此类型的御魂(类型 As 御魂种类) As Boolean

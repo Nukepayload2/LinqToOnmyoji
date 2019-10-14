@@ -35,11 +35,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Margin="4" x:Name="BdrFileDrop" Height="80" Background="LightGray" AllowDrop="True">
-                    <TextBlock Text="请将痒痒熊快照产生的 Json 文件拖进来" 
-                               VerticalAlignment="Center" IsHitTestVisible="False"
+                <Button Margin="4" x:Name="BtnFileDrop" Height="80" Background="LightGray" AllowDrop="True">
+                    <TextBlock Text="请将痒痒熊快照产生的 Json 文件拖进来或者点击选取文件" 
+                               VerticalAlignment="Center" IsHitTestVisible="False" TextWrapping="Wrap"
                                HorizontalAlignment="Center"/>
-                </Border>
+                </Button>
                 <TextBox Margin="4" x:Name="TxtOut" IsReadOnly="True" Grid.Row="1"/>
             </Grid>
         </Border>

@@ -19,7 +19,7 @@ Public Class 御魂整理测试
         End With
 
         Assert.IsFalse(Aggregate s In 御魂
-                       Where s.星级 = 5 AndAlso s.已弃置 = False
+                       Where s.星级 = 5 AndAlso s.已弃置 = False AndAlso Not s.已锁定
                        Into Any)
     End Sub
 
@@ -50,12 +50,28 @@ Public Class 御魂整理测试
                              (s.位置从1开始 = 2 OrElse
                               s.位置从1开始 = 4 OrElse
                               s.位置从1开始 = 6) AndAlso
-                             s.已弃置 = False
+                             s.已弃置 = False AndAlso Not s.已锁定
                        Into Any)
     End Sub
 
     <TestMethod>
     Sub 测试主属性()
+        Dim 御魂 = _快照.数据.御魂
+        With 御魂.创建御魂整理
+            .主属性.选择(御魂属性类型.防御, 御魂属性类型.防御加成)
+            .全选.弃置(弃置带锁的御魂:=True)
+        End With
+
+        Assert.IsFalse(Aggregate s In 御魂
+                       Let 分类 = s.主属性.属性分类
+                       Where (分类 = 御魂属性类型.防御加成 OrElse
+                              分类 = 御魂属性类型.防御) AndAlso
+                             s.已弃置 = False
+                       Into Any)
+    End Sub
+
+    <TestMethod>
+    Sub 测试主属性带锁()
         Dim 御魂 = _快照.数据.御魂
         With 御魂.创建御魂整理
             .主属性.选择(御魂属性类型.防御, 御魂属性类型.防御加成)
@@ -66,7 +82,7 @@ Public Class 御魂整理测试
                        Let 分类 = s.主属性.属性分类
                        Where (分类 = 御魂属性类型.防御加成 OrElse
                               分类 = 御魂属性类型.防御) AndAlso
-                             s.已弃置 = False
+                             s.已弃置 = False AndAlso Not s.已锁定
                        Into Any)
     End Sub
 
@@ -82,7 +98,7 @@ Public Class 御魂整理测试
                        Let 分类 = (From attr In s.副属性 Select attr.属性分类)
                        Where 分类.Contains(御魂属性类型.防御加成) AndAlso
                              分类.Contains(御魂属性类型.防御) AndAlso
-                             s.已弃置 = False
+                             s.已弃置 = False AndAlso Not s.已锁定
                        Into Any)
     End Sub
 
