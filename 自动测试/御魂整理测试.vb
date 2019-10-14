@@ -11,6 +11,32 @@ Public Class 御魂整理测试
     End Sub
 
     <TestMethod>
+    Sub 测试过滤防御加成类型()
+        Dim 御魂 = _快照.数据.御魂
+        With 御魂.创建御魂整理
+            .种类.选择(御魂图鉴.查找种类(御魂属性类型.防御加成))
+            .星级.选择(5)
+            .全选.弃置
+        End With
+
+        Assert.IsFalse(
+            Aggregate s In 御魂
+            Where s.星级 = 5 AndAlso s.已弃置 = False AndAlso
+                Not s.已锁定 AndAlso {
+                御魂种类.雪幽魂, 御魂种类.招财猫, 御魂种类.反枕,
+                御魂种类.日女巳时, 御魂种类.木魅, 御魂种类.珍珠, 御魂种类.魅妖
+                }.Contains(s.种类)
+            Into Any)
+        Assert.IsTrue(
+            Aggregate s In 御魂
+            Where s.星级 = 5 AndAlso s.已弃置 = False AndAlso
+                Not s.已锁定 AndAlso {
+                    御魂种类.破势, 御魂种类.针女, 御魂种类.网切, 御魂种类.三味
+                }.Contains(s.种类)
+            Into Any)
+    End Sub
+
+    <TestMethod>
     Sub 测试过滤星级()
         Dim 御魂 = _快照.数据.御魂
         With 御魂.创建御魂整理
