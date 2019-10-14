@@ -60,8 +60,9 @@ Public Module 御魂拓展
     End Function
 
     <Extension>
-    Public Sub 弃置(御魂 As IEnumerable(Of 御魂))
+    Public Sub 弃置(御魂 As IEnumerable(Of 御魂), Optional 弃置带锁的御魂 As Boolean = False)
         For Each s In 御魂
+            If Not 弃置带锁的御魂 AndAlso s.已锁定 Then Continue For
             s.已弃置 = True
         Next
     End Sub
