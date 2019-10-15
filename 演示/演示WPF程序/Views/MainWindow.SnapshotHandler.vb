@@ -29,6 +29,7 @@ Partial Class MainWindow
             End If
             If MsgBox("是否保存弃置的御魂到 csv 文件中？可以稍后使用 Excel 等工具查看 csv 文件。",
                       vbQuestion Or vbYesNo, "保存报告") = vbYes Then
+                _saveDlg.FileName = IO.Path.GetFileNameWithoutExtension(输入文件) & ".csv"
                 Await 保存数据Async(整理前未弃置御魂, 六星御魂)
             End If
             TxtOut.AppendText("操作成功完成。")
