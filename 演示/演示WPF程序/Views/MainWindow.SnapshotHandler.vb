@@ -19,10 +19,14 @@ Partial Class MainWindow
 
             TxtOut.Text = String.Empty
             Dim 整理前未弃置御魂 = 六星御魂.ToDictionary(Function(s) s.Id, Function(s) s)
-            TxtOut.AppendText($"整理前六星御魂数量: {六星御魂.Count}" & vbCrLf)
+            Dim 整理前数量 = 六星御魂.Count
+            TxtOut.AppendText($"整理前六星御魂数量: {整理前数量}" & vbCrLf)
             Await Task.Run(Sub() 御魂整理方案.七老爷三周年庆御魂整理方案(快照))
-            TxtOut.AppendText($"整理后六星御魂数量: {六星御魂.Count}" & vbCrLf)
-
+            Dim 整理后数量 = 六星御魂.Count
+            TxtOut.AppendText($"整理后六星御魂数量: {整理后数量}" & vbCrLf)
+            If 整理后数量 > 整理前数量 Then
+                TxtOut.AppendText($"可能整理前弃置了胚子？" & vbCrLf)
+            End If
             If MsgBox("是否保存弃置的御魂到 csv 文件中？可以稍后使用 Excel 等工具查看 csv 文件。",
                       vbQuestion Or vbYesNo, "保存报告") = vbYes Then
                 Await 保存数据Async(整理前未弃置御魂, 六星御魂)
@@ -46,8 +50,13 @@ Partial Class MainWindow
             整理前未弃置御魂.Remove(s.Id)
         Next
 
+        Dim 待导出御魂 = 整理前未弃置御魂.Values
+        Await 保存数据Async(待导出御魂)
+    End Function
+
+    Private Async Function 保存数据Async(待导出御魂 As IEnumerable(Of 御魂)) As Task
         Dim 存储数据 =
-            From s In 整理前未弃置御魂.Values
+            From s In 待导出御魂
             Let 副属性1 = s.副属性.取元素没有就返回空(0)?.属性分类.ToString,
                 副属性2 = s.副属性.取元素没有就返回空(1)?.属性分类.ToString,
                 副属性3 = s.副属性.取元素没有就返回空(2)?.属性分类.ToString,
@@ -78,5 +87,4 @@ Partial Class MainWindow
             End If
         End If
     End Function
-
 End Class
