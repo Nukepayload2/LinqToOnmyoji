@@ -91,6 +91,14 @@
                 }
             }
         }(window.location))
+
+        // Self-defined
+        window.setProperty = function(element, property, value) {
+            element[property]=value
+        }
+        window.clickElement = function(element) {
+            element.click()
+        }
     </script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
