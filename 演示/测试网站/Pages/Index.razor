@@ -9,7 +9,9 @@
 <h1>试用七老爷三周年庆御魂整理方案</h1>
 
 <p>用痒痒熊截取快照，然后拖放到下面的框里面。你的文件不会被发送到任何服务器上。</p>
-
+<p>
+    版本 1.0 preview 4, 适配痒痒熊快照 0.99.1 。
+</p>
 <style>
     .@dropTargetClass {
         display:block;
@@ -219,21 +221,10 @@
                             副属性4数值 = 取元素没有就返回空(s.副属性, 3)?.数值.ToString(取属性数字格式(副属性4))
                         };
                     var csvText = Nukepayload2.Csv.CsvConvert.SerializeObject(存储数据.ToArray());
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 正在编码报告...{nl}";
+                    Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
                     this.StateHasChanged();
                     await Task.Delay(10);
-                    // Blazor 的 UTF8Encoding 总是没 BOM。只能自己加了。
-                    var encodedBytes = new System.Text.UTF8Encoding(false).GetBytes(csvText);
-                    var bom = new byte[] { 0xEF, 0xBB, 0xBF };
-                    encodedBytes = bom.Concat(encodedBytes).ToArray();
-                    var encodedBase64 = System.Convert.ToBase64String(encodedBytes);
-                    var href = "data:application/octet-stream;base64," + encodedBase64;
-                    await JsRuntime.InvokeVoidAsync("setProperty", saveFileReference, "href", href);
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果你的浏览器没有提示保存了一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
-                    this.StateHasChanged();
-                    await Task.Delay(10);
-                    await JsRuntime.InvokeVoidAsync("setProperty", saveFileReference, "download", $"{System.IO.Path.GetFileNameWithoutExtension(fileInfo.Name ?? "未命名")}上次弃置的御魂.csv");
-                    await JsRuntime.InvokeVoidAsync("clickElement", saveFileReference);
+                    await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, $"{System.IO.Path.GetFileNameWithoutExtension(fileInfo.Name ?? "未命名")}上次弃置的御魂.csv");
                 }
                 catch (Exception ex)
                 {

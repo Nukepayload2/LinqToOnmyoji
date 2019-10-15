@@ -19,6 +19,7 @@
             <progress id="pbar"></progress>
         </div>
         <style>
+
             .loader-box {
                 width: 500px;
                 height: 120px;
@@ -39,10 +40,10 @@
             if (!window.XMLHttpRequest) {
                 return;
             }
-            
+
             var total = 0;
             var loaded = 0;
-            
+
             var proxied = window.XMLHttpRequest.prototype.open;
             window.XMLHttpRequest.prototype.open = function () {
                 var file = arguments[1];
@@ -91,15 +92,9 @@
                 }
             }
         }(window.location))
-
-        // Self-defined
-        window.setProperty = function(element, property, value) {
-            element[property]=value
-        }
-        window.clickElement = function(element) {
-            element.click()
-        }
     </script>
+    <script src="FileSaver.js"></script>
+    <script src="Program.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
 </body>
 </html>
