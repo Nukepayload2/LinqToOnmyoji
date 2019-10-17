@@ -19,10 +19,11 @@ Partial Class MainWindow
 
             TxtOut.Text = String.Empty
             Dim 整理前未弃置御魂 = 六星御魂.ToDictionary(Function(s) s.Id, Function(s) s)
-            Dim 整理前数量 = 六星御魂.Count
+            Dim 整理前数量 = 整理前未弃置御魂.Count
             TxtOut.AppendText($"整理前六星御魂数量: {整理前数量}" & vbCrLf)
             Await Task.Run(Sub() 御魂整理方案.七老爷三周年庆御魂整理方案(快照))
-            Dim 整理后数量 = 六星御魂.Count
+            Dim 整理后未弃置御魂 = 六星御魂.ToDictionary(Function(s) s.Id, Function(s) s)
+            Dim 整理后数量 = 整理后未弃置御魂.Count
             TxtOut.AppendText($"整理后六星御魂数量: {整理后数量}" & vbCrLf)
             If 整理后数量 > 整理前数量 Then
                 TxtOut.AppendText($"可能整理前弃置了胚子？" & vbCrLf)
@@ -30,7 +31,7 @@ Partial Class MainWindow
             If MsgBox("是否保存弃置的御魂到 csv 文件中？可以稍后使用 Excel 等工具查看 csv 文件。",
                       vbQuestion Or vbYesNo, "保存报告") = vbYes Then
                 _saveDlg.FileName = IO.Path.GetFileNameWithoutExtension(输入文件) & ".csv"
-                Await 保存数据Async(整理前未弃置御魂, 六星御魂)
+                Await 保存数据Async(整理前未弃置御魂, 整理后未弃置御魂, 六星御魂)
             End If
             TxtOut.AppendText("操作成功完成。")
         Catch ex As IO.IOException
@@ -46,24 +47,31 @@ Partial Class MainWindow
         End Try
     End Function
 
-    Private Async Function 保存数据Async(整理前未弃置御魂 As Dictionary(Of String, 御魂), 六星御魂 As IEnumerable(Of 御魂)) As Task
+    Private Async Function 保存数据Async(整理前未弃置御魂 As Dictionary(Of String, 御魂), 整理后未弃置御魂 As Dictionary(Of String, 御魂), 六星御魂 As IEnumerable(Of 御魂)) As Task
+        Dim 整理前未弃置Id = 整理前未弃置御魂.Keys.ToArray
         For Each s In 六星御魂
             整理前未弃置御魂.Remove(s.Id)
         Next
+        For Each id In 整理前未弃置Id
+            整理后未弃置御魂.Remove(id)
+        Next
 
-        Dim 待导出御魂 = 整理前未弃置御魂.Values
-        Await 保存数据Async(待导出御魂)
+        Dim 弃置的御魂 = From 御魂 In 整理前未弃置御魂.Values Select (御魂, 操作:="弃置")
+        Dim 恢复的御魂 = From 御魂 In 整理后未弃置御魂.Values Select (御魂, 操作:="恢复")
+
+        Await 保存数据Async(弃置的御魂.Concat(恢复的御魂))
     End Function
 
-    Private Async Function 保存数据Async(待导出御魂 As IEnumerable(Of 御魂)) As Task
+    Private Async Function 保存数据Async(待导出御魂 As IEnumerable(Of (御魂 As 御魂, 操作 As String))) As Task
         Dim 存储数据 =
-            From s In 待导出御魂
+            From grp In 待导出御魂
+            Let s = grp.御魂
             Let 副属性1 = s.副属性.取元素没有就返回空(0)?.属性分类.ToString,
                 副属性2 = s.副属性.取元素没有就返回空(1)?.属性分类.ToString,
                 副属性3 = s.副属性.取元素没有就返回空(2)?.属性分类.ToString,
                 副属性4 = s.副属性.取元素没有就返回空(3)?.属性分类.ToString,
                 主属性 = s.主属性.属性分类.ToString
-            Select 种类 = s.种类中文名, s.星级,
+            Select grp.操作, 种类 = s.种类中文名, s.星级,
                    s.等级, 位置 = s.位置从1开始,
                    主属性,
                    主属性数值 = s.主属性.数值.ToString(取属性数字格式(主属性)),
