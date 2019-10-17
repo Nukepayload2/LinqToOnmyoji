@@ -49,8 +49,8 @@ Partial Class MainWindow
 
     Private Async Function 保存数据Async(整理前未弃置御魂 As Dictionary(Of String, 御魂), 整理后未弃置御魂 As Dictionary(Of String, 御魂), 六星御魂 As IEnumerable(Of 御魂)) As Task
         Dim 整理前未弃置Id = 整理前未弃置御魂.Keys.ToArray
-        For Each s In 六星御魂
-            整理前未弃置御魂.Remove(s.Id)
+        For Each id In 整理后未弃置御魂.Keys
+            整理前未弃置御魂.Remove(id)
         Next
         For Each id In 整理前未弃置Id
             整理后未弃置御魂.Remove(id)

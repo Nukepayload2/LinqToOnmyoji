@@ -103,7 +103,7 @@
                     a.href = blob;
 
                     if (a.origin !== location.origin) {
-                        corsEnabled(a.href) ? download(blob, name, opts) : click(a, a.target = '_blank');
+                        click(a, a.target = '_blank');
                     } else {
                         click(a);
                     }
