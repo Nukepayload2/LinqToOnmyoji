@@ -10,7 +10,7 @@
 
 <p>用痒痒熊截取快照，然后拖放到下面的框里面。你的文件不会被发送到任何服务器上。</p>
 <p>
-    版本 1.0 preview 5, 适配痒痒熊快照 0.99.1 。
+    版本 1.0 preview 6, 适配 @痒痒熊快照.已适配的产品和版本 。
 </p>
 <style>
     .@dropTargetClass {
@@ -170,6 +170,10 @@
                     this.StateHasChanged();
                     await Task.Delay(10);
                     var snap = 痒痒熊快照.加载Json文件流(mem);
+                    if (snap.版本未适配)
+                    {
+                        Output += $"注意：本程序仅适配了{痒痒熊快照.已适配的产品和版本}，而这个文件的格式或者版本未经适配。{nl}";
+                    }
                     Output += $"[{timer.ElapsedMilliseconds}ms] 已解析痒痒熊快照文件，正在整理御魂。这不会花费太长时间。{nl}";
                     this.StateHasChanged();
                     await Task.Delay(10);

@@ -14,7 +14,9 @@ Partial Class MainWindow
 
             TxtOut.AppendText("载入中..." & vbCrLf)
             Dim 快照 = Await Task.Run(Function() 痒痒熊快照.加载Json文件(输入文件))
-
+            If 快照.版本未适配 Then
+                TxtOut.AppendText($"注意：本程序仅适配了{痒痒熊快照.已适配的产品和版本}，而这个文件的格式或者版本未经适配。" & vbCrLf)
+            End If
             Dim 六星御魂 = From s In 快照.数据.御魂 Where s.星级 = 6 AndAlso s.已弃置 = False
 
             TxtOut.Text = String.Empty

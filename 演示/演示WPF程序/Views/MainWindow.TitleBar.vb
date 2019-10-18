@@ -1,7 +1,9 @@
-﻿Partial Class MainWindow
+﻿Imports Nukepayload2.Linq.Onmyoji
+
+Partial Class MainWindow
 
     Private Sub BtnAbout_Click(sender As Object, e As RoutedEventArgs) Handles BtnAbout.Click
-        MsgBox("版本 1.0 preview 5, 适配痒痒熊导出器 0.99.1。
+        MsgBox($"版本 1.0 preview 6, 适配{痒痒熊快照.已适配的产品和版本}。
 作者: 
 B站、GitHub、百度贴吧、微博：Nukepayload2。
 阴阳师：依偎相守#2723416
