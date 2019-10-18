@@ -1,8 +1,8 @@
 ﻿Public Class 进度
 
-    <JsonPropertyName("max_value")>
+    <JsonProperty("max_value")>
     Public Property 最大值 As Integer
 
-    <JsonPropertyName("value")>
+    <JsonProperty("value")>
     Public Property 数值 As Integer
 End Class

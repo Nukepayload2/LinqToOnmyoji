@@ -1,41 +1,41 @@
 ﻿Public Class 式神
 
-    <JsonPropertyName("attrs")>
+    <JsonProperty("attrs")>
     Public Property 面板 As 面板属性
 
-    <JsonPropertyName("awake")>
+    <JsonProperty("awake")>
     Public Property 觉醒 As Integer
 
-    <JsonPropertyName("born")>
+    <JsonProperty("born")>
     Public Property 已召唤 As Integer
 
-    <JsonPropertyName("equips")>
+    <JsonProperty("equips")>
     Public Property 装备 As String()
 
-    <JsonPropertyName("exp")>
+    <JsonProperty("exp")>
     Public Property 经验 As Double
 
-    <JsonPropertyName("hero_id")>
+    <JsonProperty("hero_id")>
     Public Property 种类Id As Integer
 
-    <JsonPropertyName("id")>
+    <JsonProperty("id")>
     Public Property Id As String
 
-    <JsonPropertyName("level")>
+    <JsonProperty("level")>
     Public Property 等级 As Integer
 
-    <JsonPropertyName("lock")>
+    <JsonProperty("lock")>
     Public Property 锁定 As Boolean
 
-    <JsonPropertyName("nick_name")>
+    <JsonProperty("nick_name")>
     Public Property 昵称 As String
 
-    <JsonPropertyName("rarity")>
+    <JsonProperty("rarity")>
     Public Property 稀有度 As String
 
-    <JsonPropertyName("skills")>
+    <JsonProperty("skills")>
     Public Property 技能 As 技能()
 
-    <JsonPropertyName("star")>
+    <JsonProperty("star")>
     Public Property 星级 As Integer
 End Class

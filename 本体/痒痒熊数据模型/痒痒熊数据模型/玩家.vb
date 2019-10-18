@@ -1,14 +1,14 @@
 ﻿Public Class 玩家
 
-    <JsonPropertyName("id")>
+    <JsonProperty("id")>
     Public Property Id As Integer
 
-    <JsonPropertyName("level")>
+    <JsonProperty("level")>
     Public Property 等级 As Integer
 
-    <JsonPropertyName("name")>
+    <JsonProperty("name")>
     Public Property 名称 As String
 
-    <JsonPropertyName("server_id")>
+    <JsonProperty("server_id")>
     Public Property 服务器Id As Integer
 End Class

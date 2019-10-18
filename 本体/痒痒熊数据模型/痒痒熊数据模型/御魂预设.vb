@@ -1,8 +1,8 @@
 ﻿Public Class 御魂预设
 
-    <JsonPropertyName("items")>
+    <JsonProperty("items")>
     Public Property 内容 As String()
 
-    <JsonPropertyName("name")>
+    <JsonProperty("name")>
     Public Property 名称 As String
 End Class

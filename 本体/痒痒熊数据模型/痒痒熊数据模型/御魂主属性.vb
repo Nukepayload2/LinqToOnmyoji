@@ -1,8 +1,8 @@
 ﻿Public Class 御魂主属性
 
-    <JsonPropertyName("type")>
+    <JsonProperty("type")>
     Public Property 种类 As String
 
-    <JsonPropertyName("value")>
+    <JsonProperty("value")>
     Public Property 数值 As Double
 End Class

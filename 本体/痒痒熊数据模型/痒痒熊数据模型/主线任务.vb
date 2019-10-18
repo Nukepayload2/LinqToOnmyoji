@@ -1,8 +1,8 @@
 ﻿Public Class 主线任务
 
-    <JsonPropertyName("id")>
+    <JsonProperty("id")>
     Public Property Id As Integer
 
-    <JsonPropertyName("progress")>
+    <JsonProperty("progress")>
     Public Property 进度 As 进度
 End Class

@@ -1,65 +1,65 @@
 ﻿Public Class 资产
 
-    <JsonPropertyName("action_point")>
+    <JsonProperty("action_point")>
     Public Property 体力 As Integer
 
-    <JsonPropertyName("ar_amulet")>
+    <JsonProperty("ar_amulet")>
     Public Property 现世召唤符 As Integer
 
-    <JsonPropertyName("auto_point")>
+    <JsonProperty("auto_point")>
     Public Property 樱饼 As Integer
 
-    <JsonPropertyName("broken_amulet")>
+    <JsonProperty("broken_amulet")>
     Public Property 破碎的符咒 As Integer
 
-    <JsonPropertyName("coin")>
+    <JsonProperty("coin")>
     Public Property 金币 As Integer
 
-    <JsonPropertyName("contrib")>
+    <JsonProperty("contrib")>
     Public Property 阴阳寮功勋 As Integer
 
-    <JsonPropertyName("demon_soul")>
+    <JsonProperty("demon_soul")>
     Public Property 逢魔之魂 As Integer
 
-    <JsonPropertyName("foolery_pass")>
+    <JsonProperty("foolery_pass")>
     Public Property 痴念之卷 As Integer
 
-    <JsonPropertyName("gold_ofuda")>
+    <JsonProperty("gold_ofuda")>
     Public Property 金御札 As Integer
 
-    <JsonPropertyName("honor")>
+    <JsonProperty("honor")>
     Public Property 斗技荣誉 As Integer
 
-    <JsonPropertyName("jade")>
+    <JsonProperty("jade")>
     Public Property 勾玉 As Integer
 
-    <JsonPropertyName("medal")>
+    <JsonProperty("medal")>
     Public Property 勋章 As Integer
 
-    <JsonPropertyName("mystery_amulet")>
+    <JsonProperty("mystery_amulet")>
     Public Property 神秘的符咒 As Integer
 
-    <JsonPropertyName("ofuda")>
+    <JsonProperty("ofuda")>
     Public Property 御札 As Integer
 
-    <JsonPropertyName("realm_raid_pass")>
+    <JsonProperty("realm_raid_pass")>
     Public Property 结界挑战券 As Integer
 
-    <JsonPropertyName("reverse_scale")>
+    <JsonProperty("reverse_scale")>
     Public Property 大蛇的逆鳞 As Integer
 
-    <JsonPropertyName("s_jade")>
+    <JsonProperty("s_jade")>
     Public Property 魂玉 As Integer
 
-    <JsonPropertyName("scale")>
+    <JsonProperty("scale")>
     Public Property 八岐大蛇鳞片 As Integer
 
-    <JsonPropertyName("skin_token")>
+    <JsonProperty("skin_token")>
     Public Property 皮肤券 As Integer
 
-    <JsonPropertyName("sp_skin_token")>
+    <JsonProperty("sp_skin_token")>
     Public Property Sp皮肤券 As Integer
 
-    <JsonPropertyName("totem_pass")>
+    <JsonProperty("totem_pass")>
     Public Property 御灵境之钥 As Integer
 End Class

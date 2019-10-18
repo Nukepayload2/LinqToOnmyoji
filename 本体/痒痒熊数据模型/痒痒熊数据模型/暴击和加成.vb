@@ -1,14 +1,14 @@
 ﻿Public Class 暴击和加成
 
-    <JsonPropertyName("add_rate")>
+    <JsonProperty("add_rate")>
     Public Property 加成百分比 As Double
 
-    <JsonPropertyName("add_value")>
+    <JsonProperty("add_value")>
     Public Property 加成数值 As Double
 
-    <JsonPropertyName("base")>
+    <JsonProperty("base")>
     Public Property 基础数值 As Double
 
-    <JsonPropertyName("value")>
+    <JsonProperty("value")>
     Public Property 数值 As Double
 End Class
