@@ -6,6 +6,9 @@
     <RootNamespace>演示WPF程序</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netcoreapp3.0'">
     <PublishTrimmed>true</PublishTrimmed>
   </PropertyGroup>
 
