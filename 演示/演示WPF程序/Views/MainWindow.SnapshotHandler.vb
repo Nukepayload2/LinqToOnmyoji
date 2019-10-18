@@ -31,7 +31,7 @@ Partial Class MainWindow
             If MsgBox("是否保存弃置的御魂到 csv 文件中？可以稍后使用 Excel 等工具查看 csv 文件。",
                       vbQuestion Or vbYesNo, "保存报告") = vbYes Then
                 _saveDlg.FileName = IO.Path.GetFileNameWithoutExtension(输入文件) & ".csv"
-                Await 保存数据Async(整理前未弃置御魂, 整理后未弃置御魂, 六星御魂)
+                Await 保存数据Async(整理前未弃置御魂, 整理后未弃置御魂)
             End If
             TxtOut.AppendText("操作成功完成。")
         Catch ex As IO.IOException
@@ -47,7 +47,7 @@ Partial Class MainWindow
         End Try
     End Function
 
-    Private Async Function 保存数据Async(整理前未弃置御魂 As Dictionary(Of String, 御魂), 整理后未弃置御魂 As Dictionary(Of String, 御魂), 六星御魂 As IEnumerable(Of 御魂)) As Task
+    Private Async Function 保存数据Async(整理前未弃置御魂 As Dictionary(Of String, 御魂), 整理后未弃置御魂 As Dictionary(Of String, 御魂)) As Task
         Dim 整理前未弃置Id = 整理前未弃置御魂.Keys.ToArray
         For Each id In 整理后未弃置御魂.Keys
             整理前未弃置御魂.Remove(id)
