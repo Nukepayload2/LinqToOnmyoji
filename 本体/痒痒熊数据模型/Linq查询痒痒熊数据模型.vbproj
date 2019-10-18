@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <RootNamespace>Nukepayload2.Linq.Onmyoji</RootNamespace>
@@ -29,10 +29,12 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Text.Json" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Import Include="Newtonsoft.Json" />
+    <Import Include="System.Text.Json.Serialization" />
   </ItemGroup>
 
 </Project>
