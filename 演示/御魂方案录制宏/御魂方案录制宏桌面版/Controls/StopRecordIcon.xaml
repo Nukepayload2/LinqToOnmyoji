@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="StopRecordIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:御魂方案录制宏桌面版"
+             mc:Ignorable="d" Width="42" Height="42">
+    <Rectangle StrokeThickness="2" Stroke="#ffdf403b" Fill="White" Width="36" Height="36">
+            
+    </Rectangle>
+</UserControl>

@@ -28,6 +28,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "测试网站", "演示\七�
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "演示WPF程序", "演示\七老爷御魂方案\演示WPF程序\演示WPF程序.vbproj", "{229182BC-D492-47B1-9429-F6FCCABA4E78}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "整理方案录制宏", "整理方案录制宏", "{604FD27A-51AE-4FDF-B7AE-4760CADDAA22}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "御魂方案录制宏桌面版", "演示\御魂方案录制宏\御魂方案录制宏桌面版\御魂方案录制宏桌面版.vbproj", "{DD923810-215C-402E-8766-3A5971C5BE8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +62,10 @@ Global
 		{229182BC-D492-47B1-9429-F6FCCABA4E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{229182BC-D492-47B1-9429-F6FCCABA4E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{229182BC-D492-47B1-9429-F6FCCABA4E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD923810-215C-402E-8766-3A5971C5BE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD923810-215C-402E-8766-3A5971C5BE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD923810-215C-402E-8766-3A5971C5BE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD923810-215C-402E-8766-3A5971C5BE8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,8 @@ Global
 		{448CC192-4EA1-4728-BB66-5BDF6E4267C4} = {82BEADEB-93F2-455D-AD53-585E17F3C13A}
 		{0EE97FCF-6D32-4C82-96BD-EB9CD9FBCDB6} = {82BEADEB-93F2-455D-AD53-585E17F3C13A}
 		{229182BC-D492-47B1-9429-F6FCCABA4E78} = {82BEADEB-93F2-455D-AD53-585E17F3C13A}
+		{604FD27A-51AE-4FDF-B7AE-4760CADDAA22} = {14FCBCF3-C8F1-4F33-B550-9654E3721F9C}
+		{DD923810-215C-402E-8766-3A5971C5BE8E} = {604FD27A-51AE-4FDF-B7AE-4760CADDAA22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDA8255D-770A-4AA0-B31A-77888412B9C9}
