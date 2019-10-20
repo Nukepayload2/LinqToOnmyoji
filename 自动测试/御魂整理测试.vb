@@ -1,6 +1,3 @@
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
-Imports Nukepayload2.Linq.Onmyoji
-
 <TestClass>
 Public Class 御魂整理测试
     Private _快照 As 痒痒熊快照

@@ -25,4 +25,9 @@
     <ProjectReference Include="..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Import Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
+    <Import Include="Nukepayload2.Linq.Onmyoji" />
+  </ItemGroup>
+
 </Project>
