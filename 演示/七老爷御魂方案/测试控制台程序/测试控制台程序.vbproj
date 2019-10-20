@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\本体\实用工具\实用工具.vbproj" />
-    <ProjectReference Include="..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
+    <ProjectReference Include="..\..\..\本体\实用工具\实用工具.vbproj" />
+    <ProjectReference Include="..\..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
   </ItemGroup>
 
 </Project>
