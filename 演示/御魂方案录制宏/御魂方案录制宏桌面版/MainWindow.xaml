@@ -7,7 +7,7 @@
         MinWidth="250" MinHeight="250"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
-        Title="御魂方案录制宏" Height="480" Width="800">
+        Title="御魂方案录制宏" Height="600" Width="800">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -85,7 +85,151 @@
                     </Button>
                 </StackPanel>
                 <Grid Grid.Row="1" Margin="4">
-                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TabControl Grid.RowSpan="2">
+                        <TabItem Header="已弃置"></TabItem>
+                        <TabItem Header="待整理"></TabItem>
+                    </TabControl>
+                    <CheckBox HorizontalAlignment="Right" Margin="4" VerticalAlignment="Top">全选</CheckBox>
+                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
+                    <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">弃置</Button>
+                    <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="ToggleButton">
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="4">类型</TextBlock>
+                                <ItemsControl Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <ToggleButton Margin="4" Padding="12"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Button Grid.Column="2" Margin="4" Padding="16,8">选择</Button>
+                            </Grid>
+                            <Rectangle Height="1" Fill="DarkGray" Margin="4"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="4">位置</TextBlock>
+                                <StackPanel Margin="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <ToggleButton Padding="16,12">壹</ToggleButton>
+                                    <ToggleButton Padding="16,12">贰</ToggleButton>
+                                    <ToggleButton Padding="16,12">叁</ToggleButton>
+                                    <ToggleButton Padding="16,12">肆</ToggleButton>
+                                    <ToggleButton Padding="16,12">伍</ToggleButton>
+                                    <ToggleButton Padding="16,12">陆</ToggleButton>
+                                </StackPanel>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="4">星级</TextBlock>
+                                <StackPanel Margin="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <ToggleButton Padding="12.5,12">1星</ToggleButton>
+                                    <ToggleButton Padding="12.5,12">2星</ToggleButton>
+                                    <ToggleButton Padding="12.5,12">3星</ToggleButton>
+                                    <ToggleButton Padding="12.5,12">4星</ToggleButton>
+                                    <ToggleButton Padding="12.5,12">5星</ToggleButton>
+                                    <ToggleButton Padding="12.5,12">6星</ToggleButton>
+                                </StackPanel>
+                            </Grid>
+                            <Rectangle Height="1" Fill="DarkGray" Margin="4"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="4">主属性</TextBlock>
+                                <ItemsControl Margin="4" Grid.Column="1">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <ToggleButton Margin="4" Padding="12"/>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                            <Grid Margin="4">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="CheckBox">
+                                        <Setter Property="IsThreeState" Value="True"/>
+                                        <Setter Property="IsChecked" Value="{x:Null}"/>
+                                        <Setter Property="Margin" Value="4"/>
+                                    </Style>
+                                </Grid.Resources>
+                                <TextBlock VerticalAlignment="Center">副属性</TextBlock>
+                                <local:ThreeStatesToggleButton Header="攻击" Grid.Column="1"/>
+                                <local:ThreeStatesToggleButton Header="防御" Grid.Column="1" Grid.Row="1"/>
+                                <local:ThreeStatesToggleButton Header="生命" Grid.Column="1" Grid.Row="2"/>
+                                <local:ThreeStatesToggleButton Header="速度" Grid.Column="1" Grid.Row="3"/>
+                                <local:ThreeStatesToggleButton Header="抵抗" Grid.Column="1" Grid.Row="4"/>
+                                <local:ThreeStatesToggleButton Header="暴击伤害" Grid.Column="1" Grid.Row="5"/>
+                                <local:ThreeStatesToggleButton Header="攻击加成" Grid.Column="2"/>
+                                <local:ThreeStatesToggleButton Header="防御加成" Grid.Column="2" Grid.Row="1"/>
+                                <local:ThreeStatesToggleButton Header="生命加成" Grid.Column="2" Grid.Row="2"/>
+                                <local:ThreeStatesToggleButton Header="命中" Grid.Column="2" Grid.Row="3"/>
+                                <local:ThreeStatesToggleButton Header="暴击" Grid.Column="2" Grid.Row="4"/>
+                                <Grid Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="8">条数</TextBlock>
+                                    <ToggleButton Margin="4" Grid.Column="1" Padding="12">不足2条</ToggleButton>
+                                    <ToggleButton Margin="4" Grid.Column="2" Padding="12">2条</ToggleButton>
+                                    <ToggleButton Margin="4" Grid.Column="3" Padding="12">3条</ToggleButton>
+                                    <ToggleButton Margin="4" Grid.Column="4" Padding="12">4条</ToggleButton>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
                 </Grid>
             </Grid>
         </Border>
