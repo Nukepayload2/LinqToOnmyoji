@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:御魂方案录制宏桌面版" AllowsTransparency="True" WindowStyle="None"
-        MinWidth="250" MinHeight="250"
+        MinWidth="550" MinHeight="250"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
         Title="御魂方案录制宏" Height="600" Width="800">
@@ -21,6 +21,18 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid x:Name="TitleBar">
+            <Grid.Resources>
+                <Style TargetType="Button" x:Key="TitleBarIconButtonStyle">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,8,0"/>
+                    <Setter Property="VerticalAlignment" Value="Top"/>
+                    <Setter Property="Padding" Value="8"/>
+                    <Setter Property="TextElement.FontFamily" Value="Segoe MDL2 Assets"/>
+                    <Setter Property="TextElement.FontSize" Value="16"/>
+                </Style>
+            </Grid.Resources>
             <Rectangle x:Name="TitleBarDragElement">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -29,7 +41,15 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-            <TextBlock Margin="8" IsHitTestVisible="False">御魂方案录制宏</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="16,8" IsHitTestVisible="False">御魂方案录制宏</TextBlock>
+                <Button x:Name="BtnSave" ToolTip="保存" Style="{StaticResource TitleBarIconButtonStyle}">&#xE105;</Button>
+                <Button x:Name="BtnUndo" ToolTip="撤销" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10E;</Button>
+                <Button x:Name="BtnRedo" ToolTip="重做" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10D;</Button>
+                <Button x:Name="BtnLoad" ToolTip="载入" Style="{StaticResource TitleBarIconButtonStyle}">&#xE19C;</Button>
+                <Button x:Name="BtnNew" ToolTip="新建" Style="{StaticResource TitleBarIconButtonStyle}">&#xE160;</Button>
+                <TextBlock Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False">清理方案1.vb</TextBlock>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnAbout" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,8,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
                 <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
@@ -84,6 +104,7 @@
                         </Grid>
                     </Button>
                 </StackPanel>
+                <Rectangle Grid.Row="1" Fill="#9FFFFFFF"/>
                 <Grid Grid.Row="1" Margin="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -213,20 +234,13 @@
                                 <local:ThreeStatesToggleButton Header="生命加成" Grid.Column="2" Grid.Row="2"/>
                                 <local:ThreeStatesToggleButton Header="命中" Grid.Column="2" Grid.Row="3"/>
                                 <local:ThreeStatesToggleButton Header="暴击" Grid.Column="2" Grid.Row="4"/>
-                                <Grid Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="4">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="8">条数</TextBlock>
-                                    <ToggleButton Margin="4" Grid.Column="1" Padding="12">不足2条</ToggleButton>
-                                    <ToggleButton Margin="4" Grid.Column="2" Padding="12">2条</ToggleButton>
-                                    <ToggleButton Margin="4" Grid.Column="3" Padding="12">3条</ToggleButton>
-                                    <ToggleButton Margin="4" Grid.Column="4" Padding="12">4条</ToggleButton>
-                                </Grid>
+                                <WrapPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="4">
+                                    <TextBlock Margin="19,8">条数</TextBlock>
+                                    <ToggleButton Margin="4" Padding="12">不足2条</ToggleButton>
+                                    <ToggleButton Margin="4" Padding="12">2条</ToggleButton>
+                                    <ToggleButton Margin="4" Padding="12">3条</ToggleButton>
+                                    <ToggleButton Margin="4" Padding="12">4条</ToggleButton>
+                                </WrapPanel>
                             </Grid>
                         </StackPanel>
                     </ScrollViewer>
