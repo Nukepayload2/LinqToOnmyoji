@@ -51,6 +51,7 @@
                 <TextBlock Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False">清理方案1.vb</TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnViewSource" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
                 <Button x:Name="BtnAbout" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,8,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
                 <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
             </StackPanel>
@@ -104,7 +105,6 @@
                         </Grid>
                     </Button>
                 </StackPanel>
-                <Rectangle Grid.Row="1" Fill="#9FFFFFFF"/>
                 <Grid Grid.Row="1" Margin="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -122,7 +122,7 @@
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
                     <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">弃置</Button>
                     <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">
-                        <StackPanel>
+                        <StackPanel Margin="0,0,4,0">
                             <StackPanel.Resources>
                                 <Style TargetType="ToggleButton">
                                     <Setter Property="BorderThickness" Value="0"/>
@@ -212,8 +212,8 @@
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
+                                    <ColumnDefinition MaxWidth="200"/>
+                                    <ColumnDefinition MaxWidth="200"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.Resources>
                                     <Style TargetType="CheckBox">

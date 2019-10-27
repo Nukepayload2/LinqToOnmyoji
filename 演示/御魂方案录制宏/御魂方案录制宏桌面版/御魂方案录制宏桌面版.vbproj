@@ -25,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>
