@@ -52,7 +52,7 @@
 
     Public Shared Iterator Function 按套装属性英文名查找(属性类型 As String) As IEnumerable(Of 御魂图鉴条目)
         For Each v In s_data.Values
-            If v.属性.类型 = 属性类型 Then
+            If v.属性类型 = 属性类型 Then
                 Yield v
             End If
         Next

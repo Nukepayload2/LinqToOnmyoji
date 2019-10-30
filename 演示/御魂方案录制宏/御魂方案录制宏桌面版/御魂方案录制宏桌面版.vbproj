@@ -30,6 +30,5 @@
 
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

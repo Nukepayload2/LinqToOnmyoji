@@ -114,11 +114,12 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <TabControl Grid.RowSpan="2">
-                        <TabItem Header="已弃置"></TabItem>
-                        <TabItem Header="待整理"></TabItem>
-                    </TabControl>
-                    <CheckBox HorizontalAlignment="Right" Margin="4" VerticalAlignment="Top">全选</CheckBox>
+                    <CheckBox HorizontalAlignment="Right" Margin="4" VerticalAlignment="Center">全选</CheckBox>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <RadioButton Content="已弃置" Margin="4"/>
+                        <RadioButton Content="待整理" Margin="4"/>
+                    </StackPanel>
+                    <ListBox Grid.Row="1" Margin="4"/>
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
                     <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">弃置</Button>
                     <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">
