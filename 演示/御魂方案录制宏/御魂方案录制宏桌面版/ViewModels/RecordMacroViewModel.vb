@@ -7,11 +7,11 @@ Public Class RecordMacroViewModel
     Implements INotifyPropertyChanged
 
     ' 标题栏
-    Public ReadOnly Property Save As ICommand
-    Public ReadOnly Property Undo As ICommand
-    Public ReadOnly Property Redo As ICommand
-    Public ReadOnly Property OpenFile As ICommand
-    Public ReadOnly Property NewFile As ICommand
+    Public ReadOnly Property Save As New SaveDocumentCommand(Me)
+    Public ReadOnly Property Undo As New UndoCommand(Me)
+    Public ReadOnly Property Redo As New RedoCommand(Me)
+    Public ReadOnly Property OpenFile As New OpenDocumentCommand(Me)
+    Public ReadOnly Property NewFile As New NewDocumentCommand(Me)
 
     Dim _ActiveDocumentName As String
     Public Property ActiveDocumentName As String
@@ -27,10 +27,10 @@ Public Class RecordMacroViewModel
     End Property
 
     ' 大按钮
-    Public ReadOnly Property ViewCode As ICommand
-    Public ReadOnly Property ViewMacroList As ICommand
-    Public ReadOnly Property RecordMacro As ICommand
-    Public ReadOnly Property StopRecordMacro As ICommand
+    Public ReadOnly Property ViewCode As New ViewCodeCommand(Me)
+    Public ReadOnly Property ViewMacroList As New ViewMacroListCommand(Me)
+    Public ReadOnly Property RecordMacro As New RecordMacroCommand(Me)
+    Public ReadOnly Property StopRecordMacro As New StopRecordMacroCommand(Me)
 
     Dim _IsRecording As Boolean
     Public Property IsRecording As Boolean
@@ -86,11 +86,10 @@ Public Class RecordMacroViewModel
     End Property
 
     ' 右侧
-    Public ReadOnly Property Reset As ICommand
-    Public ReadOnly Property DiscardSelected As ICommand
+    Public ReadOnly Property Reset As New ResetFiltersCommand(Me)
+    Public ReadOnly Property DiscardSelected As New ApplyFiltersCommand(Me)
     Public ReadOnly Property EquipmentKinds As New ObservableCollection(Of 御魂图鉴条目)
     Public ReadOnly Property EquipmentKindCandidates As IReadOnlyList(Of 御魂图鉴条目)
-    Public ReadOnly Property SelectEquipmentKinds As ICommand
     Public ReadOnly Property Positions As IReadOnlyList(Of FilterIncludeProperty)
     Public ReadOnly Property Stars As IReadOnlyList(Of FilterIncludeProperty)
     Public ReadOnly Property PrimaryProperties As New ObservableCollection(Of FilterIncludeProperty)
