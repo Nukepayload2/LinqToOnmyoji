@@ -8,6 +8,8 @@
     End Sub
 
     Protected Overrides Function ExecuteAsync(parameter As Object) As Task
-        Throw New NotImplementedException()
+        Application.Current.CodeWindow.ShowDialog()
+
+        Return Task.CompletedTask
     End Function
 End Class

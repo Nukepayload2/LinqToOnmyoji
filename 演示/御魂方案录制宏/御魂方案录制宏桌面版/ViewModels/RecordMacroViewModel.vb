@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.ObjectModel
 Imports System.ComponentModel
 Imports Nukepayload2.Linq.Onmyoji
+Imports Nukepayload2.Linq.Onmyoji.Scripting
 
 Public Class RecordMacroViewModel
     Inherits Singleton(Of RecordMacroViewModel)
@@ -13,16 +14,14 @@ Public Class RecordMacroViewModel
     Public ReadOnly Property OpenFile As New OpenDocumentCommand(Me)
     Public ReadOnly Property NewFile As New NewDocumentCommand(Me)
 
-    Dim _ActiveDocumentName As String
-    Public Property ActiveDocumentName As String
+    Dim _ActiveDocument As 宏文档
+    Public Property ActiveDocument As 宏文档
         Get
-            Return _ActiveDocumentName
+            Return _ActiveDocument
         End Get
-        Set(value As String)
-            If _ActiveDocumentName <> value Then
-                _ActiveDocumentName = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(ActiveDocumentName)))
-            End If
+        Set(value As 宏文档)
+            _ActiveDocument = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(ActiveDocument)))
         End Set
     End Property
 
@@ -32,7 +31,7 @@ Public Class RecordMacroViewModel
     Public ReadOnly Property RecordMacro As New RecordMacroCommand(Me)
     Public ReadOnly Property StopRecordMacro As New StopRecordMacroCommand(Me)
 
-    Dim _IsRecording As Boolean
+    Dim _IsRecording As Boolean = True
     Public Property IsRecording As Boolean
         Get
             Return _IsRecording

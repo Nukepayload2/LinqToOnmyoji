@@ -1,4 +1,4 @@
-﻿Public Enum 宏录制界面操作类型
+﻿Public Enum 宏操作类型
     未知
     切换到已弃置
     切换到待整理
