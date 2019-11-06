@@ -1,4 +1,6 @@
-﻿Imports Nukepayload2.Linq.Onmyoji
+﻿Imports System.Text
+Imports Nukepayload2.Csv
+Imports Nukepayload2.Linq.Onmyoji
 Imports Nukepayload2.Linq.Onmyoji.Utilities
 
 Partial Class MainWindow
@@ -64,6 +66,10 @@ Partial Class MainWindow
         Await 保存数据Async(弃置的御魂.Concat(恢复的御魂))
     End Function
 
+    Private ReadOnly s_encodings As Encoding() = {
+        Encoding.UTF8, Encoding.GetEncoding("gb2312")
+    }
+
     Private Async Function 保存数据Async(待导出御魂 As IEnumerable(Of (御魂 As 御魂, 操作 As String))) As Task
         Dim 存储数据 =
             From grp In 待导出御魂
@@ -88,14 +94,36 @@ Partial Class MainWindow
 
         If _saveDlg.ShowDialog Then
             Dim outFileName = _saveDlg.FileName
-            Await Task.Run(
-            Sub()
-                Dim csvText = Nukepayload2.Csv.CsvConvert.SerializeObject(存储数据.ToArray)
-                IO.File.WriteAllText(outFileName, csvText, Text.Encoding.UTF8)
-            End Sub)
-            If MsgBox("文件已保存，是否打开?", vbQuestion Or vbYesNo, "已保存") = vbYes Then
+
+            Dim csvText = Await Task.Run(Function() CsvConvert.SerializeObject(存储数据.ToArray))
+
+            For Each encoding In s_encodings
+                Dim 最终文件名 = outFileName
+                If encoding IsNot Encoding.UTF8 Then
+                    最终文件名 = 添加编码名称(最终文件名, encoding)
+                End If
+                Await Task.Run(Sub() IO.File.WriteAllText(最终文件名, csvText, encoding))
+            Next
+
+            If MsgBox("文件已保存，是否打开? (如果乱码了请尝试手动打开与这个报告同时生成的文件)",
+                      vbQuestion Or vbYesNo, "已保存") = vbYes Then
                 Process.Start("explorer.exe", """" & outFileName & """")
             End If
         End If
+    End Function
+
+    Private Function 添加编码名称(outFileName As String, encoding As Encoding) As String
+        If Not outFileName Like "*?.csv" Then
+            Return outFileName
+        End If
+        Dim leftPart = LeftRev(outFileName, ".csv".Length)
+        Return leftPart & "_" & encoding.WebName & ".csv"
+    End Function
+
+    Private Function LeftRev(target As String, count As Integer) As String
+        If count < 0 OrElse target Is Nothing Then
+            Return target
+        End If
+        Return target.Substring(0, target.Length - count)
     End Function
 End Class
