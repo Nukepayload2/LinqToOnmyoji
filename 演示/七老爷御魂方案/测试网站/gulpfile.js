@@ -21,8 +21,8 @@ paths.concatJsDest = paths.webroot + "site.min.js";
 
 gulp.task("compress", function () {
     // xcopy node_modules lib
-    gulp.src(paths.node_modules_libs).
-         pipe(gulp.dest(paths.webroot + 'lib'))
+    //gulp.src(paths.node_modules_libs).
+    //     pipe(gulp.dest(paths.webroot + 'lib'))
     // del min
     rimraf(paths.concatJsDest, function () { })
     // create min
