@@ -5,7 +5,7 @@ Imports Nukepayload2.Linq.Onmyoji.副属性条数
 Partial Public NotInheritable Class 御魂整理方案
 
     ''' <summary>
-    ''' 七老爷三周年庆版本的清理方案，整理六星非首领御魂。 <see cref="https://www.bilibili.com/read/cv3643919/"/>
+    ''' 七老爷三周年庆版本的清理方案 SP1，整理六星非首领御魂。 <see cref="https://www.bilibili.com/read/cv3643919/"/>
     ''' </summary>
     Public Shared Sub 七老爷三周年庆御魂整理方案(快照 As 痒痒熊快照)
         With 快照.数据.御魂.创建御魂整理
@@ -160,7 +160,7 @@ Partial Public NotInheritable Class 御魂整理方案
             ' 副属性改为暴击伤害， 全选并恢复。地藏、蚌精、火灵等， 是为不知火预留的
             .种类.选择(御魂图鉴.查找种类(暴击))
             .种类.选择(御魂图鉴.查找种类(攻击加成))
-            .种类.选择(地藏像, 招财猫, 日女巳时, 火灵, 骰子鬼, 蚌精)
+            .种类.选择(地藏像, 招财猫, 日女巳时, 火灵, 骰子鬼, 蚌精, 薙魂) ' 薙魂给 SP 鬼切用
             .位置.选择(2, 4)
             .主属性.选择(攻击加成)
             .副属性有.选择(暴击)
@@ -259,6 +259,10 @@ Partial Public NotInheritable Class 御魂整理方案
             .主属性.选择(攻击加成)
             .副属性有.选择(效果命中)
             .副属性条数 = 三条或更多
+            .全选.恢复
+            .重置过滤器
+            ' 新御魂直接恢复
+            .种类.选择(涂佛, 青女房, 飞缘魔, 兵主部)
             .全选.恢复
         End With
     End Sub
