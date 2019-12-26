@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:御魂方案录制宏桌面版"
         mc:Ignorable="d"
-        Title="MacrosWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="宏" Height="450" Width="400">
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="4">宏名:</TextBlock>
+        <TextBox Grid.Row="1" Margin="4,4,4,0"/>
+        <ListBox Grid.Row="2" Margin="4,0,4,4"></ListBox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+            <Button Padding="16,6" Margin="4">执行 (_R)</Button>
+            <Button Padding="16,6" Margin="4">编辑 (_E)</Button>
+            <Button Padding="16,6" Margin="4">创建 (_C)</Button>
+            <Button Padding="16,6" Margin="4">删除 (_D)</Button>
+        </StackPanel>
+        <Button Grid.Column="1" Padding="24,8"
+                VerticalAlignment="Bottom" Margin="4"
+                IsCancel="True" IsDefault="True" Grid.Row="2">取消</Button>
     </Grid>
 </Window>

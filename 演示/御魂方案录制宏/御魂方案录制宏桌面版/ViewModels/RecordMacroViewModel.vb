@@ -58,19 +58,6 @@ Public Class RecordMacroViewModel
         End Set
     End Property
 
-    Dim _SelectAll As Boolean
-    Public Property SelectAll As Boolean
-        Get
-            Return _SelectAll
-        End Get
-        Set(value As Boolean)
-            If _SelectAll <> value Then
-                _SelectAll = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(SelectAll)))
-            End If
-        End Set
-    End Property
-
     Dim _ViewingEquipments As IReadOnlyList(Of 御魂)
     Public Property ViewingEquipments As IReadOnlyList(Of 御魂)
         Get
@@ -86,7 +73,7 @@ Public Class RecordMacroViewModel
 
     ' 右侧
     Public ReadOnly Property Reset As New ResetFiltersCommand(Me)
-    Public ReadOnly Property DiscardSelected As New ApplyFiltersCommand(Me)
+    Public ReadOnly Property ApplyFilters As New ApplyFiltersCommand(Me)
     Public ReadOnly Property EquipmentKinds As New ObservableCollection(Of 御魂图鉴条目)
     Public ReadOnly Property EquipmentKindCandidates As IReadOnlyList(Of 御魂图鉴条目)
     Public ReadOnly Property Positions As IReadOnlyList(Of FilterIncludeProperty)

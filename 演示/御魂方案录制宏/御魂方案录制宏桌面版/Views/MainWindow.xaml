@@ -114,14 +114,14 @@
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
-                    <CheckBox HorizontalAlignment="Right" Margin="4" VerticalAlignment="Center">全选</CheckBox>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <RadioButton Content="已弃置" Margin="4"/>
-                        <RadioButton Content="待整理" Margin="4"/>
+                        <RadioButton Content="待整理" Margin="4" IsChecked="True"/>
                     </StackPanel>
                     <ListBox Grid.Row="1" Margin="4"/>
+                    <Button Grid.Row="1" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
-                    <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">弃置</Button>
+                    <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">全选并弃置</Button>
                     <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,4,0">
                             <StackPanel.Resources>
