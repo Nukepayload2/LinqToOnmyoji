@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>御魂方案录制宏桌面版</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>

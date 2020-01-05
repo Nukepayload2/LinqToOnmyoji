@@ -1,5 +1,5 @@
 ﻿Public Class UniformWrapGrid
-    Inherits WrapPanel
+	Inherits WrapPanel
 
 	Protected Overrides Function MeasureOverride(availableSize As Size) As Size
 		If Children.Count > 0 Then

@@ -17,6 +17,7 @@ Public Class FilterIncludeProperty
     End Property
 
     Dim _IsSelected As Boolean
+
     Public Property IsSelected As Boolean
         Get
             Return _IsSelected
@@ -28,6 +29,14 @@ Public Class FilterIncludeProperty
             End If
         End Set
     End Property
+
+    Sub New()
+
+    End Sub
+
+    Public Sub New(name As String)
+        _Name = name
+    End Sub
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 End Class

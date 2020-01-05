@@ -16,31 +16,39 @@ Public Class FilterIncludeExcludeProperty
         End Set
     End Property
 
-    Dim _HasProperty As Boolean
-    Public Property HasProperty As Boolean
+    Dim _IncludeProperty As Boolean
+    Public Property IncludeProperty As Boolean
         Get
-            Return _HasProperty
+            Return _IncludeProperty
         End Get
         Set(value As Boolean)
-            If _HasProperty <> value Then
-                _HasProperty = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(HasProperty)))
+            If _IncludeProperty <> value Then
+                _IncludeProperty = value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IncludeProperty)))
             End If
         End Set
     End Property
 
-    Dim _DoesNotHasProperty As Boolean
-    Public Property DoesNotHasProperty As Boolean
+    Dim _ExcludeProperty As Boolean
+    Public Property ExcludeProperty As Boolean
         Get
-            Return _DoesNotHasProperty
+            Return _ExcludeProperty
         End Get
         Set(value As Boolean)
-            If _DoesNotHasProperty <> value Then
-                _DoesNotHasProperty = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(DoesNotHasProperty)))
+            If _ExcludeProperty <> value Then
+                _ExcludeProperty = value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(ExcludeProperty)))
             End If
         End Set
     End Property
+
+    Sub New()
+
+    End Sub
+
+    Public Sub New(name As String)
+        _Name = name
+    End Sub
 
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 End Class

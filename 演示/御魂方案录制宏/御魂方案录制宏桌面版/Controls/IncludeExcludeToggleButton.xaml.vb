@@ -1,4 +1,4 @@
-﻿Public Class ThreeStatesToggleButton
+﻿Public Class IncludeExcludeToggleButton
 
     Public Property Header As Object
         Get
@@ -10,11 +10,11 @@
     End Property
     Public Shared ReadOnly HeaderProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(Header),
-                           GetType(Object), GetType(ThreeStatesToggleButton),
+                           GetType(Object), GetType(IncludeExcludeToggleButton),
                            New PropertyMetadata(Nothing, AddressOf Header_Changed))
 
     Private Shared Sub Header_Changed(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
-        Dim instance As ThreeStatesToggleButton = d
+        Dim instance As IncludeExcludeToggleButton = d
         instance.CtlHeader.Content = e.NewValue
     End Sub
 
@@ -28,12 +28,12 @@
     End Property
     Public Shared ReadOnly IsIncludeCheckedProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(IsIncludeChecked),
-                           GetType(Boolean), GetType(ThreeStatesToggleButton),
+                           GetType(Boolean), GetType(IncludeExcludeToggleButton),
                            New PropertyMetadata(False, AddressOf IsIncludeChecked_Changed))
 
     Private Shared Sub IsIncludeChecked_Changed(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         If e.NewValue = e.OldValue Then Return
-        Dim instance As ThreeStatesToggleButton = d
+        Dim instance As IncludeExcludeToggleButton = d
         Dim newValue As Boolean = e.NewValue
         instance.BtnInclude.IsChecked = newValue
     End Sub
@@ -48,12 +48,12 @@
     End Property
     Public Shared ReadOnly IsExcludeCheckedProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(IsExcludeChecked),
-                           GetType(Boolean), GetType(ThreeStatesToggleButton),
+                           GetType(Boolean), GetType(IncludeExcludeToggleButton),
                            New PropertyMetadata(False, AddressOf IsExcludeChecked_Changed))
 
     Private Shared Sub IsExcludeChecked_Changed(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         If e.NewValue = e.OldValue Then Return
-        Dim instance As ThreeStatesToggleButton = d
+        Dim instance As IncludeExcludeToggleButton = d
         Dim newValue As Boolean = e.NewValue
         instance.BtnExclude.IsChecked = newValue
     End Sub

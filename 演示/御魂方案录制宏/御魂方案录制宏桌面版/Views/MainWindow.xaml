@@ -115,8 +115,8 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <RadioButton Content="已弃置" Margin="4"/>
-                        <RadioButton Content="待整理" Margin="4" IsChecked="True"/>
+                        <RadioButton Content="已弃置" GroupName="DiscardFilter" Margin="4"/>
+                        <RadioButton Content="待整理" GroupName="DiscardFilter" Margin="4" IsChecked="True"/>
                     </StackPanel>
                     <ListBox Grid.Row="1" Margin="4"/>
                     <Button Grid.Row="1" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
@@ -224,17 +224,17 @@
                                     </Style>
                                 </Grid.Resources>
                                 <TextBlock VerticalAlignment="Center">副属性</TextBlock>
-                                <local:ThreeStatesToggleButton Header="攻击" Grid.Column="1"/>
-                                <local:ThreeStatesToggleButton Header="防御" Grid.Column="1" Grid.Row="1"/>
-                                <local:ThreeStatesToggleButton Header="生命" Grid.Column="1" Grid.Row="2"/>
-                                <local:ThreeStatesToggleButton Header="速度" Grid.Column="1" Grid.Row="3"/>
-                                <local:ThreeStatesToggleButton Header="抵抗" Grid.Column="1" Grid.Row="4"/>
-                                <local:ThreeStatesToggleButton Header="暴击伤害" Grid.Column="1" Grid.Row="5"/>
-                                <local:ThreeStatesToggleButton Header="攻击加成" Grid.Column="2"/>
-                                <local:ThreeStatesToggleButton Header="防御加成" Grid.Column="2" Grid.Row="1"/>
-                                <local:ThreeStatesToggleButton Header="生命加成" Grid.Column="2" Grid.Row="2"/>
-                                <local:ThreeStatesToggleButton Header="命中" Grid.Column="2" Grid.Row="3"/>
-                                <local:ThreeStatesToggleButton Header="暴击" Grid.Column="2" Grid.Row="4"/>
+                                <local:IncludeExcludeToggleButton Header="攻击" Grid.Column="1"/>
+                                <local:IncludeExcludeToggleButton Header="防御" Grid.Column="1" Grid.Row="1"/>
+                                <local:IncludeExcludeToggleButton Header="生命" Grid.Column="1" Grid.Row="2"/>
+                                <local:IncludeExcludeToggleButton Header="速度" Grid.Column="1" Grid.Row="3"/>
+                                <local:IncludeExcludeToggleButton Header="抵抗" Grid.Column="1" Grid.Row="4"/>
+                                <local:IncludeExcludeToggleButton Header="暴击伤害" Grid.Column="1" Grid.Row="5"/>
+                                <local:IncludeExcludeToggleButton Header="攻击加成" Grid.Column="2"/>
+                                <local:IncludeExcludeToggleButton Header="防御加成" Grid.Column="2" Grid.Row="1"/>
+                                <local:IncludeExcludeToggleButton Header="生命加成" Grid.Column="2" Grid.Row="2"/>
+                                <local:IncludeExcludeToggleButton Header="命中" Grid.Column="2" Grid.Row="3"/>
+                                <local:IncludeExcludeToggleButton Header="暴击" Grid.Column="2" Grid.Row="4"/>
                                 <WrapPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="4">
                                     <TextBlock Margin="19,8">条数</TextBlock>
                                     <ToggleButton Margin="4" Padding="12">不足2条</ToggleButton>
