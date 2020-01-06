@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
     <ProjectReference Include="..\..\..\本体\脚本化\脚本化.vbproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\SplashCommands\" />
+  </ItemGroup>
 </Project>

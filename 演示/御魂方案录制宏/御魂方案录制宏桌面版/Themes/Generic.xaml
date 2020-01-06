@@ -29,12 +29,12 @@
                                 BorderThickness="{TemplateBinding BorderThickness}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="20">
                             </Border>
                             <Ellipse Margin="5,1" x:Name="rcThumb" Fill="{TemplateBinding BorderBrush}" Width="10" Height="10" HorizontalAlignment="Left" VerticalAlignment="Center" ></Ellipse>
-                            <TextBlock Grid.Column="1" Margin="12,0" FontSize="15" x:Name="tblOnOff" Text="Off"/>
+                            <TextBlock Grid.Column="1" Margin="12,0" FontSize="15" x:Name="tblOnOff" Text="关"/>
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="tblOnOff" Property="Text" Value="On"/>
+                            <Setter TargetName="tblOnOff" Property="Text" Value="开"/>
                             <Setter TargetName="rcThumb" Property="HorizontalAlignment" Value="Right" />
                             <Setter TargetName="rcThumb" Property="Fill" Value="White" />
                             <Setter TargetName="bd" Property="Background" Value="{Binding Path=Background,RelativeSource={RelativeSource TemplatedParent},Mode=OneWay}"/>

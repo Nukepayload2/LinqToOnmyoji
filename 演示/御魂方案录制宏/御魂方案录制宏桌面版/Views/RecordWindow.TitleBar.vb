@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.Linq.Onmyoji
 
-Partial Class MainWindow
+Partial Class RecordWindow
 
     Private Sub BtnAbout_Click(sender As Object, e As RoutedEventArgs) Handles BtnAbout.Click
         MsgBox($"版本 1.1 preview 1, 适配{痒痒熊快照.已适配的产品和版本}。
