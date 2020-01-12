@@ -14,6 +14,7 @@
                            New PropertyMetadata(Nothing, AddressOf Header_Changed))
 
     Private Shared Sub Header_Changed(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+        If e.NewValue = e.OldValue Then Return
         Dim instance As IncludeExcludeToggleButton = d
         instance.CtlHeader.Content = e.NewValue
     End Sub

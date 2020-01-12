@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.UI.Win32
 
-Partial Public Class SplashWindow
+Partial Public Class HomeWindow
 
     Private Sub MainWindow_SourceInitialized(sender As Object, e As EventArgs) Handles Me.SourceInitialized
         Dim windowCompositionFactory As New WindowCompositionFactory

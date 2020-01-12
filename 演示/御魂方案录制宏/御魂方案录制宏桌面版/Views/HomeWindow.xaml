@@ -1,14 +1,14 @@
-﻿<ext:BorderlessWindow x:Class="SplashWindow"
+﻿<ext:BorderlessWindow x:Class="HomeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:御魂方案录制宏桌面版"
-         AllowsTransparency="True" WindowStyle="None"
+        AllowsTransparency="True" WindowStyle="None"
         MinHeight="350" MinWidth="500"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
-        Title="MainWindow" Height="450" Width="625">
+        Title="御魂方案录制宏桌面版" Height="450" Width="625">
     <ext:BorderlessWindow.Resources>
         <Style x:Key="AccentColorButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle">
@@ -98,11 +98,17 @@
             <TextBlock Grid.Row="1" FontSize="20" Margin="8,0">打开</TextBlock>
             <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                           VerticalScrollBarVisibility="Auto" Grid.Row="2">
-                <ItemsControl>
+                <ItemsControl x:Name="LstRecentFiles">
 
                 </ItemsControl>
             </ScrollViewer>
-            <Button Grid.Row="3" Margin="8,4" Padding="24,8"
+            <ProgressBar x:Name="PrgLoadRecent" Height="6" Foreground="White" Background="Transparent" 
+                         BorderThickness="0" Grid.Row="2" Margin="4,0" 
+                         IsIndeterminate="True" VerticalAlignment="Center"/>
+            <TextBlock x:Name="TblRecentHere" Grid.Row="2" Margin="8,4" VerticalAlignment="Top">
+                最近的文件将显示在这里
+            </TextBlock>
+            <Button x:Name="BtnBrowse" Grid.Row="3" Margin="8,4" Padding="24,8"
                     Background="DodgerBlue" Foreground="White" BorderThickness="2"
                     BorderBrush="LightBlue" Style="{DynamicResource AccentColorButtonStyle}">
                 浏览文件...

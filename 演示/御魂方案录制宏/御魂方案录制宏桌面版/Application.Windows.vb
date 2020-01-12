@@ -69,26 +69,26 @@
     End Sub
 #End Region
 
-#Region "SplashWindow 窗口的单实例管理"
-    Private _splashWindow As SplashWindow
+#Region "HomeWindow 窗口的单实例管理"
+    Private _homeWindow As HomeWindow
 
     ''' <summary>
     ''' 应用程序的初始窗口
     ''' </summary>
-    Public ReadOnly Property SplashWindow As SplashWindow
+    Public ReadOnly Property HomeWindow As HomeWindow
         Get
-            If _splashWindow Is Nothing Then
-                _splashWindow = New SplashWindow
-                AddHandler _splashWindow.Closed, AddressOf SplashWindowClosed
+            If _homeWindow Is Nothing Then
+                _homeWindow = New HomeWindow
+                AddHandler _homeWindow.Closed, AddressOf HomeWindowClosed
             End If
 
-            Return _splashWindow
+            Return _homeWindow
         End Get
     End Property
 
-    Private Sub SplashWindowClosed(sender As Object, e As EventArgs)
-        RemoveHandler _splashWindow.Closed, AddressOf SplashWindowClosed
-        _splashWindow = Nothing
+    Private Sub HomeWindowClosed(sender As Object, e As EventArgs)
+        RemoveHandler _homeWindow.Closed, AddressOf HomeWindowClosed
+        _homeWindow = Nothing
     End Sub
 #End Region
 

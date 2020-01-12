@@ -12,8 +12,15 @@ Class Application
     End Property
 
     Private Sub Application_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
-        MainWindow = SplashWindow
-        SplashWindow.Show()
+        MainWindow = HomeWindow
+        HomeWindow.Show()
     End Sub
 
+    Private Sub Application_Exit(sender As Object, e As ExitEventArgs) Handles Me.[Exit]
+        Try
+            My.Settings.Save()
+        Catch ex As Exception
+            MsgBox(ex.Message, vbExclamation, "保存设置失败")
+        End Try
+    End Sub
 End Class
