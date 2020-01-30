@@ -5,7 +5,13 @@
 ''' </summary>
 Public Class 宏文档
 
-    Public Property 名称 As String
+    ''' <summary>
+    ''' 保留的属性，不一定支持。
+    ''' 提供宏文档的作者对文档信息和宏列表进行数字签名以降低篡改可能性的能力。
+    ''' </summary>
+    Public Property 数字签名 As 文档数字签名
+
+    Public Property 信息 As 文档信息
 
     Public ReadOnly Property 宏列表 As New ObservableCollection(Of 宏过程)
 

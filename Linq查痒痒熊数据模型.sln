@@ -32,7 +32,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "整理方案录制宏", "�
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "御魂方案录制宏桌面版", "演示\御魂方案录制宏\御魂方案录制宏桌面版\御魂方案录制宏桌面版.vbproj", "{DD923810-215C-402E-8766-3A5971C5BE8E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "脚本化", "本体\脚本化\脚本化.vbproj", "{BFA90EF9-623C-4D9F-B650-4A7075EFECBF}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "脚本化", "本体\脚本化\脚本化.vbproj", "{BFA90EF9-623C-4D9F-B650-4A7075EFECBF}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "录制宏诊断模式", "演示\御魂方案录制宏\录制宏诊断模式\录制宏诊断模式.vbproj", "{F8161EB5-9870-4FAE-80BF-C3659F90F913}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{BFA90EF9-623C-4D9F-B650-4A7075EFECBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFA90EF9-623C-4D9F-B650-4A7075EFECBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFA90EF9-623C-4D9F-B650-4A7075EFECBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8161EB5-9870-4FAE-80BF-C3659F90F913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8161EB5-9870-4FAE-80BF-C3659F90F913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8161EB5-9870-4FAE-80BF-C3659F90F913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8161EB5-9870-4FAE-80BF-C3659F90F913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{604FD27A-51AE-4FDF-B7AE-4760CADDAA22} = {14FCBCF3-C8F1-4F33-B550-9654E3721F9C}
 		{DD923810-215C-402E-8766-3A5971C5BE8E} = {604FD27A-51AE-4FDF-B7AE-4760CADDAA22}
 		{BFA90EF9-623C-4D9F-B650-4A7075EFECBF} = {D501821E-6998-4815-950A-AA28D802EBD8}
+		{F8161EB5-9870-4FAE-80BF-C3659F90F913} = {604FD27A-51AE-4FDF-B7AE-4760CADDAA22}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDA8255D-770A-4AA0-B31A-77888412B9C9}

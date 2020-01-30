@@ -7,7 +7,7 @@ Public Class 宏录制操作步骤信息
     ''' </summary>
     Public Property 操作 As 宏操作类型
     ''' <summary>
-    ''' 御魂或者属性的名称
+    ''' 参数
     ''' </summary>
-    Public Property 目标 As String
+    Public ReadOnly Property 参数 As New Dictionary(Of String, Object)
 End Class
