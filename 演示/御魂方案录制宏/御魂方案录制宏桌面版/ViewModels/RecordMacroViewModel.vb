@@ -88,18 +88,18 @@ Public Class RecordMacroViewModel
         New FilterIncludeProperty("6星")
     }
 
-    Public ReadOnly Property PrimaryProperties As IReadOnlyList(Of FilterIncludeProperty) = {
-        New FilterIncludeProperty("攻击"), ' 1
-        New FilterIncludeProperty("攻击加成"), ' 246
-        New FilterIncludeProperty("防御"), ' 3
-        New FilterIncludeProperty("防御加成"), ' 246
-        New FilterIncludeProperty("生命"), ' 5
-        New FilterIncludeProperty("生命加成"), ' 246
-        New FilterIncludeProperty("速度"), ' 2
-        New FilterIncludeProperty("命中"), ' 4
-        New FilterIncludeProperty("抵抗"), ' 4
-        New FilterIncludeProperty("暴击"), ' 6
-        New FilterIncludeProperty("暴击伤害") ' 6
+    Public ReadOnly Property PrimaryProperties As IReadOnlyList(Of FilterIncludePropertyWithVisibility) = {
+        New FilterIncludePropertyWithVisibility("攻击"), ' 1
+        New FilterIncludePropertyWithVisibility("攻击加成"), ' 246
+        New FilterIncludePropertyWithVisibility("防御"), ' 3
+        New FilterIncludePropertyWithVisibility("防御加成"), ' 246
+        New FilterIncludePropertyWithVisibility("生命"), ' 5
+        New FilterIncludePropertyWithVisibility("生命加成"), ' 246
+        New FilterIncludePropertyWithVisibility("速度"), ' 2
+        New FilterIncludePropertyWithVisibility("命中"), ' 4
+        New FilterIncludePropertyWithVisibility("抵抗"), ' 4
+        New FilterIncludePropertyWithVisibility("暴击"), ' 6
+        New FilterIncludePropertyWithVisibility("暴击伤害") ' 6
     }
 
     Public ReadOnly Property SecondaryProperties As IReadOnlyList(Of FilterIncludeExcludeProperty) = {

@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports System.Runtime.CompilerServices
 
 Public Class FilterIncludeProperty
     Implements INotifyPropertyChanged
@@ -11,7 +12,7 @@ Public Class FilterIncludeProperty
         Set(value As String)
             If _Name <> value Then
                 _Name = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Name)))
+                RaisePropertyChanged()
             End If
         End Set
     End Property
@@ -25,10 +26,14 @@ Public Class FilterIncludeProperty
         Set(value As Boolean)
             If _IsSelected <> value Then
                 _IsSelected = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(IsSelected)))
+                RaisePropertyChanged()
             End If
         End Set
     End Property
+
+    Protected Sub RaisePropertyChanged(<CallerMemberName> Optional name As String = Nothing)
+        RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(name))
+    End Sub
 
     Sub New()
 

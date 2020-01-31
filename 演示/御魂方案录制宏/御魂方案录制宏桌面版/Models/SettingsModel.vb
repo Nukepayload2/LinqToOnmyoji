@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Class SettingsModel
-    Public Property RecentFiles As IReadOnlyList(Of String)
+    Public Property RecentFiles As IList(Of String)
 
     Public Property IsLoaded As Boolean
 
@@ -13,7 +13,7 @@ Class SettingsModel
         End If
         Dim doc = XDocument.Load(SaveFileName)
         RecentFiles = (From ele In doc.Root.<RecentFiles>.<File>
-                       Select ele.@Value).ToArray
+                       Select ele.@Value).ToList
         IsLoaded = True
     End Sub
 
