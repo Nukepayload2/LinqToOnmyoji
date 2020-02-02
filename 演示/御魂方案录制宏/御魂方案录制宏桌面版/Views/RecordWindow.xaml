@@ -14,6 +14,9 @@
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="pack://application:,,,/Nukepayload2.UI.Win32;component/Themes/Generic.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
+                <local:InvisibleConverter x:Key="InvisibleConverter"/>
+                <local:VisibleConverter x:Key="VisibleConverter"/>
+                <local:NotConverter x:Key="NotConverter"/>
             </ResourceDictionary>
         </Grid.Resources>
         <Grid.RowDefinitions>
@@ -43,12 +46,12 @@
             </Rectangle>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="16,8" IsHitTestVisible="False">御魂方案录制宏</TextBlock>
-                <Button x:Name="BtnSave" ToolTip="保存" Style="{StaticResource TitleBarIconButtonStyle}">&#xE105;</Button>
-                <Button x:Name="BtnUndo" ToolTip="撤销" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10E;</Button>
-                <Button x:Name="BtnRedo" ToolTip="重做" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10D;</Button>
-                <Button x:Name="BtnLoad" ToolTip="载入" Style="{StaticResource TitleBarIconButtonStyle}">&#xE19C;</Button>
-                <Button x:Name="BtnNew" ToolTip="新建" Style="{StaticResource TitleBarIconButtonStyle}">&#xE160;</Button>
-                <TextBlock Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False">清理方案1.vb</TextBlock>
+                <Button x:Name="BtnSave" Command="{Binding Save}" ToolTip="保存" Style="{StaticResource TitleBarIconButtonStyle}">&#xE105;</Button>
+                <Button x:Name="BtnUndo" Command="{Binding Undo}" ToolTip="撤销" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10E;</Button>
+                <Button x:Name="BtnRedo" Command="{Binding Redo}" ToolTip="重做" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10D;</Button>
+                <Button x:Name="BtnLoad" Command="{Binding OpenFile}" ToolTip="载入" Style="{StaticResource TitleBarIconButtonStyle}">&#xE19C;</Button>
+                <Button x:Name="BtnNew" Command="{Binding NewFile}" ToolTip="新建" Style="{StaticResource TitleBarIconButtonStyle}">&#xE160;</Button>
+                <TextBlock Text="{Binding ActiveDocument.信息.名称,FallbackValue=清理方案1}" Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnViewSource" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
@@ -64,7 +67,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal"
                             Background="WhiteSmoke">
-                    <Button BorderThickness="0" Background="Transparent" Margin="4,0">
+                    <Button Command="{Binding ViewCode}" BorderThickness="0" Background="Transparent" Margin="4,0">
                         <Grid Width="72" Margin="4">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -74,7 +77,7 @@
                             <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">Visual Basic</TextBlock>
                         </Grid>
                     </Button>
-                    <Button BorderThickness="0" Background="Transparent" Margin="4,0">
+                    <Button Command="{Binding ViewMacroList}" BorderThickness="0" Background="Transparent" Margin="4,0">
                         <Grid Width="72" Margin="4">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -84,7 +87,9 @@
                             <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">宏</TextBlock>
                         </Grid>
                     </Button>
-                    <Button BorderThickness="0" Background="Transparent" Margin="4,0">
+                    <Button Command="{Binding RecordMacro}"
+                            Visibility="{Binding IsRecording,Converter={StaticResource InvisibleConverter}}" 
+                            BorderThickness="0" Background="Transparent" Margin="4,0">
                         <Grid Width="72" Margin="4">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -94,7 +99,9 @@
                             <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">录制宏</TextBlock>
                         </Grid>
                     </Button>
-                    <Button BorderThickness="0" Background="Transparent" Margin="4,0">
+                    <Button Command="{Binding StopRecordMacro}" BorderThickness="0" 
+                            Visibility="{Binding IsRecording,Converter={StaticResource VisibleConverter}}" 
+                            Background="Transparent" Margin="4,0">
                         <Grid Width="72" Margin="4">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
@@ -115,14 +122,37 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <RadioButton Content="已弃置" GroupName="DiscardFilter" Margin="4"/>
-                        <RadioButton Content="待整理" GroupName="DiscardFilter" Margin="4" IsChecked="True"/>
+                        <RadioButton Content="已弃置" 
+                                     IsChecked="{Binding ViewDiscarded,Mode=TwoWay}"
+                                     GroupName="DiscardFilter" Margin="4"/>
+                        <RadioButton Content="待整理" 
+                                     IsChecked="{Binding ViewDiscarded,Mode=OneWay,Converter={StaticResource NotConverter}}" 
+                                     GroupName="DiscardFilter" Margin="4"/>
                     </StackPanel>
-                    <ListBox Grid.Row="1" Margin="4"/>
-                    <Button Grid.Row="1" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
-                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
-                    <Button Grid.Column="1" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">全选并弃置</Button>
+                    <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}"/>
+                    <Button Grid.Row="1" Command="{Binding SortEquipments}" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
+                    <Button Grid.Column="1" Command="{Binding Reset}" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
+                    <Button Grid.Column="1" Command="{Binding ApplyFiltersAndDiscard}" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">全选并弃置</Button>
                     <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer.Resources>
+                            <DataTemplate x:Key="IncludeButtonTemplate">
+                                <ToggleButton Content="{Binding Name}" Padding="12.5,12" IsChecked="{Binding IsSelected}"/>
+                            </DataTemplate>
+                            <DataTemplate x:Key="IncludeExcludeButtonTemplate">
+                                <local:IncludeExcludeToggleButton 
+                                    Header="{Binding Name}" MinWidth="190"
+                                    IsIncludeChecked="{Binding IncludeProperty}"
+                                    IsExcludeChecked="{Binding ExcludeProperty}"/>
+                            </DataTemplate>
+                            <DataTemplate x:Key="IncludeButtonWithVisibilityTemplate">
+                                <ToggleButton Content="{Binding Name}" Padding="12.5,12"
+                                              IsChecked="{Binding IsSelected}"
+                                              Visibility="{Binding IsVisible, Converter={StaticResource VisibleConverter}}"/>
+                            </DataTemplate>
+                            <ItemsPanelTemplate x:Key="IncludeButtonListTemplate">
+                                <WrapPanel IsItemsHost="True" Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ScrollViewer.Resources>
                         <StackPanel Margin="0,0,4,0">
                             <StackPanel.Resources>
                                 <Style TargetType="ToggleButton">
@@ -136,7 +166,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Margin="4">类型</TextBlock>
-                                <ItemsControl Grid.Column="1">
+                                <ItemsControl Grid.Column="1" ItemsSource="{Binding EquipmentKinds}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel IsItemsHost="True"/>
@@ -148,7 +178,7 @@
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-                                <Button Grid.Column="2" Margin="4" Padding="16,8">选择</Button>
+                                <Button Grid.Column="2" Command="{Binding PickEquipmentKinds}" Margin="4" Padding="16,8">选择</Button>
                             </Grid>
                             <Rectangle Height="1" Fill="DarkGray" Margin="4"/>
                             <Grid>
@@ -157,14 +187,10 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Margin="4">位置</TextBlock>
-                                <StackPanel Margin="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <ToggleButton Padding="16,12">壹</ToggleButton>
-                                    <ToggleButton Padding="16,12">贰</ToggleButton>
-                                    <ToggleButton Padding="16,12">叁</ToggleButton>
-                                    <ToggleButton Padding="16,12">肆</ToggleButton>
-                                    <ToggleButton Padding="16,12">伍</ToggleButton>
-                                    <ToggleButton Padding="16,12">陆</ToggleButton>
-                                </StackPanel>
+                                <ItemsControl Margin="4" Grid.Column="1" HorizontalAlignment="Right"
+                                              ItemsSource="{Binding Positions}" 
+                                              ItemsPanel="{StaticResource IncludeButtonListTemplate}"
+                                              ItemTemplate="{StaticResource IncludeButtonTemplate}"/>
                             </Grid>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -172,14 +198,10 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Margin="4">星级</TextBlock>
-                                <StackPanel Margin="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <ToggleButton Padding="12.5,12">1星</ToggleButton>
-                                    <ToggleButton Padding="12.5,12">2星</ToggleButton>
-                                    <ToggleButton Padding="12.5,12">3星</ToggleButton>
-                                    <ToggleButton Padding="12.5,12">4星</ToggleButton>
-                                    <ToggleButton Padding="12.5,12">5星</ToggleButton>
-                                    <ToggleButton Padding="12.5,12">6星</ToggleButton>
-                                </StackPanel>
+                                <ItemsControl Margin="4" Grid.Column="1" HorizontalAlignment="Right"
+                                              ItemsSource="{Binding Stars}" 
+                                              ItemsPanel="{StaticResource IncludeButtonListTemplate}"
+                                              ItemTemplate="{StaticResource IncludeButtonTemplate}"/>
                             </Grid>
                             <Rectangle Height="1" Fill="DarkGray" Margin="4"/>
                             <Grid>
@@ -188,60 +210,32 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Margin="4">主属性</TextBlock>
-                                <ItemsControl Margin="4" Grid.Column="1">
-                                    <ItemsControl.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel IsItemsHost="True"/>
-                                        </ItemsPanelTemplate>
-                                    </ItemsControl.ItemsPanel>
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <ToggleButton Margin="4" Padding="12"/>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+                                <ItemsControl Margin="4" Grid.Column="1" HorizontalAlignment="Right"
+                                              ItemsSource="{Binding PrimaryProperties}" 
+                                              ItemsPanel="{StaticResource IncludeButtonListTemplate}"
+                                              ItemTemplate="{StaticResource IncludeButtonWithVisibilityTemplate}"/>
                             </Grid>
                             <Grid Margin="4">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition MaxWidth="200"/>
-                                    <ColumnDefinition MaxWidth="200"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="CheckBox">
-                                        <Setter Property="IsThreeState" Value="True"/>
-                                        <Setter Property="IsChecked" Value="{x:Null}"/>
-                                        <Setter Property="Margin" Value="4"/>
-                                    </Style>
-                                </Grid.Resources>
-                                <TextBlock VerticalAlignment="Center">副属性</TextBlock>
-                                <local:IncludeExcludeToggleButton Header="攻击" Grid.Column="1"/>
-                                <local:IncludeExcludeToggleButton Header="防御" Grid.Column="1" Grid.Row="1"/>
-                                <local:IncludeExcludeToggleButton Header="生命" Grid.Column="1" Grid.Row="2"/>
-                                <local:IncludeExcludeToggleButton Header="速度" Grid.Column="1" Grid.Row="3"/>
-                                <local:IncludeExcludeToggleButton Header="抵抗" Grid.Column="1" Grid.Row="4"/>
-                                <local:IncludeExcludeToggleButton Header="暴击伤害" Grid.Column="1" Grid.Row="5"/>
-                                <local:IncludeExcludeToggleButton Header="攻击加成" Grid.Column="2"/>
-                                <local:IncludeExcludeToggleButton Header="防御加成" Grid.Column="2" Grid.Row="1"/>
-                                <local:IncludeExcludeToggleButton Header="生命加成" Grid.Column="2" Grid.Row="2"/>
-                                <local:IncludeExcludeToggleButton Header="命中" Grid.Column="2" Grid.Row="3"/>
-                                <local:IncludeExcludeToggleButton Header="暴击" Grid.Column="2" Grid.Row="4"/>
-                                <WrapPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Margin="4">
-                                    <TextBlock Margin="19,8">条数</TextBlock>
-                                    <ToggleButton Margin="4" Padding="12">不足2条</ToggleButton>
-                                    <ToggleButton Margin="4" Padding="12">2条</ToggleButton>
-                                    <ToggleButton Margin="4" Padding="12">3条</ToggleButton>
-                                    <ToggleButton Margin="4" Padding="12">4条</ToggleButton>
-                                </WrapPanel>
+                                <TextBlock VerticalAlignment="Top">副属性</TextBlock>
+                                <ItemsControl Margin="4" Grid.Column="1" Grid.ColumnSpan="2"
+                                              ItemsSource="{Binding SecondaryProperties}" 
+                                              ItemsPanel="{StaticResource IncludeButtonListTemplate}"
+                                              ItemTemplate="{StaticResource IncludeExcludeButtonTemplate}"/>
+                                <TextBlock Grid.Column="1" Grid.Row="1" MinWidth="70"
+                                           TextAlignment="Center" VerticalAlignment="Center">条数</TextBlock>
+                                <ItemsControl Margin="4" Grid.Column="2" Grid.Row="1"
+                                              ItemsSource="{Binding SecondaryCounts}" 
+                                              ItemsPanel="{StaticResource IncludeButtonListTemplate}"
+                                              ItemTemplate="{StaticResource IncludeButtonTemplate}"/>
                             </Grid>
                         </StackPanel>
                     </ScrollViewer>

@@ -1,4 +1,4 @@
-﻿Public Class ApplyFiltersAndDiscardCommand
+﻿Public Class PickEquipmentKindsCommand
     Inherits AsyncCommandBase
 
     Private ReadOnly _viewModel As RecordMacroViewModel

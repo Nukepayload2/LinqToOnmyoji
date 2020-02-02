@@ -17,7 +17,11 @@
 
     Public Async Sub Execute(parameter As Object) Implements ICommand.Execute
         CanExec = False
-        Await ExecuteAsync(parameter)
+        Try
+            Await ExecuteAsync(parameter)
+        Catch ex As Exception
+            MsgBox(ex.Message, vbExclamation, "错误")
+        End Try
         CanExec = True
     End Sub
 

@@ -31,7 +31,7 @@ Public Class RecordMacroViewModel
     Public ReadOnly Property RecordMacro As New RecordMacroCommand(Me)
     Public ReadOnly Property StopRecordMacro As New StopRecordMacroCommand(Me)
 
-    Dim _IsRecording As Boolean = True
+    Dim _IsRecording As Boolean
     Public Property IsRecording As Boolean
         Get
             Return _IsRecording
@@ -75,10 +75,19 @@ Public Class RecordMacroViewModel
 
     ' 右侧
     Public ReadOnly Property Reset As New ResetFiltersCommand(Me)
-    Public ReadOnly Property ApplyFilters As New ApplyFiltersCommand(Me)
+    Public ReadOnly Property ApplyFiltersAndDiscard As New ApplyFiltersAndDiscardCommand(Me)
     Public ReadOnly Property EquipmentKinds As New ObservableCollection(Of 御魂图鉴条目)
     Public ReadOnly Property EquipmentKindCandidates As IReadOnlyList(Of 御魂图鉴条目)
-    Public ReadOnly Property Positions As IReadOnlyList(Of FilterIncludeProperty)
+    Public ReadOnly Property PickEquipmentKinds As New PickEquipmentKindsCommand(Me)
+    Public ReadOnly Property Positions As IReadOnlyList(Of FilterIncludeProperty) = {
+        New FilterIncludeProperty("壹"),
+        New FilterIncludeProperty("贰"),
+        New FilterIncludeProperty("叁"),
+        New FilterIncludeProperty("肆"),
+        New FilterIncludeProperty("伍"),
+        New FilterIncludeProperty("陆")
+    }
+
     Public ReadOnly Property Stars As IReadOnlyList(Of FilterIncludeProperty) = {
         New FilterIncludeProperty("1星"),
         New FilterIncludeProperty("2星"),

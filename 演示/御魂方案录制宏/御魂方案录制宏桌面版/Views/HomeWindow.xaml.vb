@@ -17,7 +17,7 @@ Public Class HomeWindow
     End Sub
 
     Private Sub BtnAddEmptyMacro_Click(sender As Object, e As RoutedEventArgs) Handles BtnAddEmptyMacro.Click
-        RecordMacroViewModel.Instance.ActiveDocument = New 宏文档
+        RecordMacroViewModel.Instance.ActiveDocument = 宏文档.新建空白
         Hide()
         Application.Current.RecordWindow.Show()
     End Sub

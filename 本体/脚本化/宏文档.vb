@@ -5,10 +5,12 @@
 ''' </summary>
 Public Class 宏文档
 
+    Private Shared s_createCount As Integer = 0
+
     ''' <summary>
     ''' 文档的
     ''' </summary>
-    Public Property 信息 As 文档信息
+    Public ReadOnly Property 信息 As New 文档信息
 
     Public ReadOnly Property 宏列表 As New ObservableCollection(Of 宏过程)
 
@@ -30,5 +32,12 @@ Public Class 宏文档
 
     Public Shared Function 打开文件(recordFile As String) As 宏文档
         Throw New NotImplementedException()
+    End Function
+
+    Public Shared Function 新建空白() As 宏文档
+        Dim doc As New 宏文档
+        s_createCount += 1
+        doc.信息.名称 = "清理方案" & s_createCount
+        Return doc
     End Function
 End Class
