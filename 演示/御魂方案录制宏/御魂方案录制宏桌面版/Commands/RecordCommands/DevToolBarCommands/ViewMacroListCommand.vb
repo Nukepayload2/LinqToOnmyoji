@@ -8,7 +8,7 @@
     End Sub
 
     Protected Overrides Function ExecuteAsync(parameter As Object) As Task
-        Application.Current.CodeWindow.ShowDialog()
+        Application.Current.MacrosWindow.ShowDialog()
 
         Return Task.CompletedTask
     End Function

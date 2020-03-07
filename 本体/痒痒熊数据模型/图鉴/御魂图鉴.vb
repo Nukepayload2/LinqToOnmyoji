@@ -69,4 +69,10 @@
     Public Shared Function 收录了此类型的御魂(类型 As 御魂种类) As Boolean
         Return s_data.ContainsKey(类型)
     End Function
+
+    Public Shared ReadOnly Property 所有条目 As 御魂图鉴条目()
+        Get
+            Return s_data.Values.ToArray
+        End Get
+    End Property
 End Class

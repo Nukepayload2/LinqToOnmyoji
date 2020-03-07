@@ -77,7 +77,7 @@ Public Class RecordMacroViewModel
     Public ReadOnly Property Reset As New ResetFiltersCommand(Me)
     Public ReadOnly Property ApplyFiltersAndDiscard As New ApplyFiltersAndDiscardCommand(Me)
     Public ReadOnly Property EquipmentKinds As New ObservableCollection(Of 御魂图鉴条目)
-    Public ReadOnly Property EquipmentKindCandidates As IReadOnlyList(Of 御魂图鉴条目)
+    Public ReadOnly Property EquipmentKindCandidates As IReadOnlyList(Of 御魂图鉴条目) = 御魂图鉴.所有条目
     Public ReadOnly Property PickEquipmentKinds As New PickEquipmentKindsCommand(Me)
     Public ReadOnly Property Positions As IReadOnlyList(Of FilterIncludeProperty) = {
         New FilterIncludeProperty("壹"),
