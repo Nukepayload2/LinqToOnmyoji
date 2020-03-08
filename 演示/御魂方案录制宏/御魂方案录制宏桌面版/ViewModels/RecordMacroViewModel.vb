@@ -9,6 +9,7 @@ Public Class RecordMacroViewModel
 
     ' 标题栏
     Public ReadOnly Property Save As New SaveDocumentCommand(Me)
+    Public ReadOnly Property SaveAs As New SaveDocumentAsCommand(Me)
     Public ReadOnly Property Undo As New UndoCommand(Me)
     Public ReadOnly Property Redo As New RedoCommand(Me)
     Public ReadOnly Property OpenFile As New OpenDocumentCommand(Me)
@@ -30,6 +31,7 @@ Public Class RecordMacroViewModel
     Public ReadOnly Property ViewMacroList As New ViewMacroListCommand(Me)
     Public ReadOnly Property RecordMacro As New RecordMacroCommand(Me)
     Public ReadOnly Property StopRecordMacro As New StopRecordMacroCommand(Me)
+    Public ReadOnly Property ImportYyxJson As New ImportYyxJsonCommand(Me)
 
     Dim _IsRecording As Boolean
     Public Property IsRecording As Boolean

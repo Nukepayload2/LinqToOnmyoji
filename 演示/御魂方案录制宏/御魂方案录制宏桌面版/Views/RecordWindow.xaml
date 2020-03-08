@@ -47,9 +47,10 @@
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="16,8" IsHitTestVisible="False">御魂方案录制宏</TextBlock>
                 <Button x:Name="BtnSave" Command="{Binding Save}" ToolTip="保存" Style="{StaticResource TitleBarIconButtonStyle}">&#xE105;</Button>
+                <Button x:Name="BtnSaveAs" Command="{Binding SaveAs}" ToolTip="另存为" Style="{StaticResource TitleBarIconButtonStyle}">&#xE792;</Button>
                 <Button x:Name="BtnUndo" Command="{Binding Undo}" ToolTip="撤销" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10E;</Button>
                 <Button x:Name="BtnRedo" Command="{Binding Redo}" ToolTip="重做" Style="{StaticResource TitleBarIconButtonStyle}">&#xE10D;</Button>
-                <Button x:Name="BtnLoad" Command="{Binding OpenFile}" ToolTip="载入" Style="{StaticResource TitleBarIconButtonStyle}">&#xE19C;</Button>
+                <Button x:Name="BtnLoad" Command="{Binding OpenFile}" ToolTip="打开" Style="{StaticResource TitleBarIconButtonStyle}">&#xED25;</Button>
                 <Button x:Name="BtnNew" Command="{Binding NewFile}" ToolTip="新建" Style="{StaticResource TitleBarIconButtonStyle}">&#xE160;</Button>
                 <TextBlock Text="{Binding ActiveDocument.信息.名称,FallbackValue=清理方案1}" Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False"/>
             </StackPanel>
@@ -65,53 +66,91 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal"
-                            Background="WhiteSmoke">
-                    <Button Command="{Binding ViewCode}" BorderThickness="0" Background="Transparent" Margin="4,0">
-                        <Grid Width="72" Margin="4">
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" 
+                              HorizontalScrollBarVisibility="Auto" 
+                              Background="WhiteSmoke" TextElement.Foreground="#FF3F3F3F">
+                    <ScrollViewer.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Foreground" Value="#FF3F3F3F"/>
+                        </Style>
+                    </ScrollViewer.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <local:VBIcon />
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">Visual Basic</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding ViewCode}" BorderThickness="0" Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:VBIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">Visual Basic</TextBlock>
+                                    </Grid>
+                                </Button>
+                                <Button Command="{Binding ViewMacroList}" BorderThickness="0" Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:MacroIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">宏</TextBlock>
+                                    </Grid>
+                                </Button>
+                                <Button Command="{Binding RecordMacro}"
+                                        Visibility="{Binding IsRecording,Converter={StaticResource InvisibleConverter}}" 
+                                        BorderThickness="0" Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:RecordIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">录制宏</TextBlock>
+                                    </Grid>
+                                </Button>
+                                <Button Command="{Binding StopRecordMacro}" BorderThickness="0" 
+                                        Visibility="{Binding IsRecording,Converter={StaticResource VisibleConverter}}" 
+                                        Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:StopRecordIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">停止录制</TextBlock>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0,4">开发工具</TextBlock>
                         </Grid>
-                    </Button>
-                    <Button Command="{Binding ViewMacroList}" BorderThickness="0" Background="Transparent" Margin="4,0">
-                        <Grid Width="72" Margin="4">
+                        <Rectangle Width="1" Margin="0,4" Fill="DarkGray"/>
+                        <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
                                 <RowDefinition/>
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            <local:MacroIcon />
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">宏</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding ImportYyxJson}" BorderThickness="0" Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:JsonIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">从痒痒熊</TextBlock>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0,4">获取数据</TextBlock>
                         </Grid>
-                    </Button>
-                    <Button Command="{Binding RecordMacro}"
-                            Visibility="{Binding IsRecording,Converter={StaticResource InvisibleConverter}}" 
-                            BorderThickness="0" Background="Transparent" Margin="4,0">
-                        <Grid Width="72" Margin="4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <local:RecordIcon />
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">录制宏</TextBlock>
-                        </Grid>
-                    </Button>
-                    <Button Command="{Binding StopRecordMacro}" BorderThickness="0" 
-                            Visibility="{Binding IsRecording,Converter={StaticResource VisibleConverter}}" 
-                            Background="Transparent" Margin="4,0">
-                        <Grid Width="72" Margin="4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <local:StopRecordIcon />
-                            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Foreground="#FF3F3F3F">停止录制</TextBlock>
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                        <Rectangle Width="1" Margin="0,4" Fill="DarkGray"/>
+                    </StackPanel>
+                </ScrollViewer>
                 <Grid Grid.Row="1" Margin="4">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
