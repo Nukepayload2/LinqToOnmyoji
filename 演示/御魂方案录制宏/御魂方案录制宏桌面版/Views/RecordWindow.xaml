@@ -141,8 +141,8 @@
                             <DataTemplate x:Key="IncludeExcludeButtonTemplate">
                                 <local:IncludeExcludeToggleButton 
                                     Header="{Binding Name}" MinWidth="190"
-                                    IsIncludeChecked="{Binding IncludeProperty}"
-                                    IsExcludeChecked="{Binding ExcludeProperty}"/>
+                                    IsIncludeChecked="{Binding IncludeProperty, Mode=TwoWay}"
+                                    IsExcludeChecked="{Binding ExcludeProperty, Mode=TwoWay}"/>
                             </DataTemplate>
                             <DataTemplate x:Key="IncludeButtonWithVisibilityTemplate">
                                 <ToggleButton Content="{Binding Name}" Padding="12.5,12"

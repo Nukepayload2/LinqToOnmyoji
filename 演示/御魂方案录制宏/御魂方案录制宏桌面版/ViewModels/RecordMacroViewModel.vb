@@ -132,5 +132,22 @@ Public Class RecordMacroViewModel
         New FilterIncludeProperty("4条")
     }
 
+    ' 隐藏命令
+    Public ReadOnly Property TryApplyFiltersForCurrentView As New TryApplyFiltersForCurrentViewCommand(Me)
+
+    Public ReadOnly Property HiddenCommandBindings As New HiddenCommandBindingCollection
+
+    Sub New()
+        Dim apply = TryApplyFiltersForCurrentView
+        With HiddenCommandBindings
+            .AddRange(Positions, NameOf(FilterIncludeProperty.IsSelected), apply)
+            .AddRange(Stars, NameOf(FilterIncludeProperty.IsSelected), apply)
+            .AddRange(PrimaryProperties, NameOf(FilterIncludePropertyWithVisibility.IsSelected), apply)
+            .AddRange(SecondaryProperties, NameOf(FilterIncludeExcludeProperty.IncludeProperty), apply)
+            .AddRange(SecondaryProperties, NameOf(FilterIncludeExcludeProperty.ExcludeProperty), apply)
+            .AddRange(SecondaryCounts, NameOf(FilterIncludeProperty.IsSelected), apply)
+        End With
+    End Sub
+
     Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 End Class
