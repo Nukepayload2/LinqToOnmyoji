@@ -13,10 +13,5 @@ Partial Public Class HomeWindow
                 Background = Brushes.Transparent
             End If
         End If
-
-        If Win32ApiInformation.IsProcessDpiAwarenessApiPresent Then
-            ' Enable DPI awareness
-            DpiAwareness = ProcessDpiAwareness.PerMonitorDpiAware
-        End If
     End Sub
 End Class

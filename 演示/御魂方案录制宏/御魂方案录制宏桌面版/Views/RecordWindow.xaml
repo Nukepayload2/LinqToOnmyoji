@@ -81,6 +81,26 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding ImportYyxJson}" BorderThickness="0" Background="Transparent" Margin="4,0">
+                                    <Grid Width="72" Margin="4">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <local:JsonIcon />
+                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">从痒痒熊</TextBlock>
+                                    </Grid>
+                                </Button>
+                            </StackPanel>
+                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0,4">获取数据</TextBlock>
+                        </Grid>
+                        <Rectangle Width="1" Margin="0,4" Fill="DarkGray"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal">
                                 <Button Command="{Binding ViewCode}" BorderThickness="0" Background="Transparent" Margin="4,0">
                                     <Grid Width="72" Margin="4">
                                         <Grid.RowDefinitions>
@@ -127,26 +147,6 @@
                                 </Button>
                             </StackPanel>
                             <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0,4">开发工具</TextBlock>
-                        </Grid>
-                        <Rectangle Width="1" Margin="0,4" Fill="DarkGray"/>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding ImportYyxJson}" BorderThickness="0" Background="Transparent" Margin="4,0">
-                                    <Grid Width="72" Margin="4">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <local:JsonIcon />
-                                        <TextBlock HorizontalAlignment="Center" Grid.Row="1">从痒痒熊</TextBlock>
-                                    </Grid>
-                                </Button>
-                            </StackPanel>
-                            <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0,4">获取数据</TextBlock>
                         </Grid>
                         <Rectangle Width="1" Margin="0,4" Fill="DarkGray"/>
                     </StackPanel>

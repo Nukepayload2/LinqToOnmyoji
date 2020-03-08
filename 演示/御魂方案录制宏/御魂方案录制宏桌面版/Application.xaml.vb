@@ -1,7 +1,5 @@
 ﻿Imports Nukepayload2.Linq.Onmyoji.Scripting
 
-<Assembly: DisableDpiAwareness>
-
 Class Application
 
     ' 应用程序级事件(例如 Startup、Exit 和 DispatcherUnhandledException)
