@@ -26,6 +26,17 @@ Public Class RecordMacroViewModel
         End Set
     End Property
 
+    Dim _YyxData As 痒痒熊快照
+    Public Property YyxData As 痒痒熊快照
+        Get
+            Return _YyxData
+        End Get
+        Set(value As 痒痒熊快照)
+            _YyxData = value
+            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(YyxData)))
+        End Set
+    End Property
+
     ' 大按钮
     Public ReadOnly Property ViewCode As New ViewCodeCommand(Me)
     Public ReadOnly Property ViewMacroList As New ViewMacroListCommand(Me)

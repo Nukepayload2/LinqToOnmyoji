@@ -168,7 +168,13 @@
                                      IsChecked="{Binding ViewDiscarded,Mode=OneWay,Converter={StaticResource NotConverter}}" 
                                      GroupName="DiscardFilter" Margin="4"/>
                     </StackPanel>
-                    <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}"/>
+                    <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <local:EquipmentControl Equipment="{Binding .}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <Button Grid.Row="1" Command="{Binding SortEquipments}" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
                     <Button Grid.Column="1" Command="{Binding Reset}" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
                     <Button Grid.Column="1" Command="{Binding ApplyFiltersAndDiscard}" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">全选并弃置</Button>

@@ -17,9 +17,9 @@ Public Class FrmDiagnosisMode
     End Sub
 
     Private Sub FrmDiagnosisMode_Load(sender As Object, e As EventArgs) Handles Me.Load
-        LstAsms.Columns.Add("全名", 300, HorizontalAlignment.Left)
-        LstAsms.Columns.Add("文件路径", 400, HorizontalAlignment.Left)
-        LstAsms.Columns.Add("文件版本", 100, HorizontalAlignment.Left)
+        LstAsms.Columns.Add("全名", 300, Windows.Forms.HorizontalAlignment.Left)
+        LstAsms.Columns.Add("文件路径", 400, Windows.Forms.HorizontalAlignment.Left)
+        LstAsms.Columns.Add("文件版本", 100, Windows.Forms.HorizontalAlignment.Left)
 
         AddHandler AppDomain.CurrentDomain.AssemblyResolve, AddressOf CurrentDomain_AssemblyResolve
     End Sub
