@@ -32,6 +32,11 @@
                         <local:EquipmentJade/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
             </ItemsControl>
             <CheckBox Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Content="锁"/>
         </Grid>
@@ -39,8 +44,10 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock Text="{Binding Name}"/>
-                        <TextBlock HorizontalAlignment="Right">+<Run Text="{Binding Value,StringFormat='P2'}"/></TextBlock>
+                        <TextBlock Text="{Binding Name, Mode=OneTime}"/>
+                        <local:FormattedTextBlock HorizontalAlignment="Right"
+                                                  Value="{Binding Value, Mode=OneTime}"
+                                                  Format="{Binding Format}"/>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

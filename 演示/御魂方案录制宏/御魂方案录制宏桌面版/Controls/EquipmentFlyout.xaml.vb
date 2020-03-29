@@ -17,7 +17,7 @@
                            New PropertyMetadata(String.Empty, AddressOf OnTypeNameChanged))
 
     ''' <summary>
-    ''' 强化等级 (1~15)
+    ''' 强化等级 (0~15)
     ''' </summary>
     Public Property Level As Integer
         Get
@@ -46,7 +46,7 @@
                            New PropertyMetadata(1, AddressOf OnJadeChanged))
 
     ''' <summary>
-    ''' 主属性和副属性。数据类型：Name As String, Value As Double
+    ''' 主属性和副属性。数据类型：Name As String, Value As Double, Format As String
     ''' </summary>
     Public Property Properties As IEnumerable
         Get
@@ -60,6 +60,19 @@
                            DependencyProperty.Register(NameOf(Properties),
                            GetType(IEnumerable), GetType(EquipmentFlyout),
                            New PropertyMetadata(Array.Empty(Of Object), AddressOf OnPropertiesChanged))
+
+    Public Property Direction As Integer
+        Get
+            Return GetValue(DirectionProperty)
+        End Get
+        Set
+            SetValue(DirectionProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly DirectionProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(Direction),
+                           GetType(Integer), GetType(EquipmentFlyout),
+                           New PropertyMetadata(1, AddressOf OnDirectionChanged))
 
     Private Shared Sub OnTypeNameChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         Dim inst As EquipmentFlyout = d
@@ -84,7 +97,11 @@
         inst.ItmProps.ItemsSource = e.NewValue
     End Sub
 
-    Private Shared ReadOnly s_jade As New Object
+    Private Shared Sub OnDirectionChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+        ' 影响贴图
+    End Sub
+
+    Private Shared ReadOnly s_jade As String = "J"
     Private Shared ReadOnly s_1Jade As IEnumerable = {s_jade}
     Private Shared ReadOnly s_2Jades As IEnumerable = {s_jade, s_jade}
     Private Shared ReadOnly s_3Jades As IEnumerable = {s_jade, s_jade, s_jade}
@@ -96,7 +113,4 @@
         s_1Jade, s_2Jades, s_3Jades, s_4Jades, s_5Jades, s_6Jades
     }
 
-    Private Sub EquipmentFlyout_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        ItmJades.ItemsSource = s_1Jade
-    End Sub
 End Class
