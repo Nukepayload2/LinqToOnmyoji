@@ -20,6 +20,7 @@ Public Class EquipmentControl
         Dim eq As 御魂 = e.NewValue
         If eq IsNot Nothing Then
             ctl.TxtInfo.Text = $"{eq.星级}星{eq.位置从1开始}号位{eq.种类中文名}"
+            ctl.TipMoreInfo.Content = $"{eq.主属性.属性分类} {eq.主属性.数值:P2}"
         Else
             ctl.TxtInfo.Text = String.Empty
         End If
