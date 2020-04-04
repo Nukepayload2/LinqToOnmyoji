@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:御魂方案录制宏桌面版"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Gold">
-            
+             d:DesignHeight="64" d:DesignWidth="64">
+    <Grid Height="64" Width="64">
+        <Ellipse Margin="4.7,4.6,3.9,4.6">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/Assets/Equipments/300030.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Image Stretch="Fill" Source="/Assets/EquipmentFrame.png"/>
     </Grid>
 </UserControl>
