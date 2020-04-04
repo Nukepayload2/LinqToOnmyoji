@@ -4,14 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:御魂方案录制宏桌面版"
-             mc:Ignorable="d" 
-             d:DesignHeight="64" d:DesignWidth="64">
-    <Grid Height="64" Width="64">
+             mc:Ignorable="d">
+    <Grid Height="64" Width="64" >
         <Ellipse Margin="4.7,4.6,3.9,4.6">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="/Assets/Equipments/300030.png"/>
+                <ImageBrush x:Name="ImgEquipment" 
+                            ImageSource="pack://application:,,,/御魂方案录制宏桌面版;component/Assets/Equipments/300030.png"/>
             </Ellipse.Fill>
         </Ellipse>
-        <Image Stretch="Fill" Source="/Assets/EquipmentFrame.png"/>
+        <Image x:Name="ImgFrame" Stretch="Fill" 
+               Source="pack://application:,,,/御魂方案录制宏桌面版;component/Assets/EquipmentFrame.png"
+               RenderTransformOrigin="0.508,0.5">
+            <Image.RenderTransform>
+                <RotateTransform x:Name="RotFrame"/>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </UserControl>
