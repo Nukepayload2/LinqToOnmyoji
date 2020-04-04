@@ -171,11 +171,30 @@
                     <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <local:EquipmentControl Equipment="{Binding .}"/>
+                                <Viewbox Width="56" Height="56">
+                                    <local:EquipmentControl Equipment="{Binding .}" Width="64" Height="64"/>
+                                </Viewbox>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.Template>
+                            <ControlTemplate>
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" IsTabStop="False">
+                                        <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Border>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <local:VirtualizingWrapPanel IsItemsHost="True" 
+                                                             CanHorizontallyScroll="False"
+                                                             CanVerticallyScroll="True"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
                     </ListBox>
-                    <Button Grid.Row="1" Command="{Binding SortEquipments}" Margin="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
+                    <Button Grid.Row="1" Command="{Binding SortEquipments}" Margin="0,0,24,4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="32,8">排序</Button>
                     <Button Grid.Column="1" Command="{Binding Reset}" HorizontalAlignment="Left" Margin="8,4" Padding="32,8">重置</Button>
                     <Button Grid.Column="1" Command="{Binding ApplyFiltersAndDiscard}" HorizontalAlignment="Right" Margin="8,4" Padding="32,8">全选并弃置</Button>
                     <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="4" VerticalScrollBarVisibility="Auto">

@@ -9,7 +9,7 @@
         <Ellipse Margin="4.7,4.6,3.9,4.6">
             <Ellipse.Fill>
                 <ImageBrush x:Name="ImgEquipment" 
-                            ImageSource="pack://application:,,,/御魂方案录制宏桌面版;component/Assets/Equipments/300030.png"/>
+                            ImageSource="pack://application:,,,/御魂方案录制宏桌面版;component/Assets/Equipments/300002.png"/>
             </Ellipse.Fill>
         </Ellipse>
         <Image x:Name="ImgFrame" Stretch="Fill" 

@@ -21,9 +21,9 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <local:EquipmentPresenter x:Name="IcoEquipmentType" Width="48" Height="48" Margin="2" Grid.RowSpan="2"/>
+            <local:EquipmentPresenter x:Name="IcoEquipmentType" Width="64" Height="64" Margin="2,2,12,2" Grid.RowSpan="2"/>
             <TextBlock Grid.Column="1" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Left">
-                <Run x:Name="RunType"/>+<Run x:Name="RunLevel" Text="1"/>
+                <Run x:Name="RunType" Text="雪幽魂"/>+<Run x:Name="RunLevel" Text="1"/>
             </TextBlock>
             <ItemsControl x:Name="ItmJades" Grid.Column="1" Grid.Row="1" Margin="2"
                           VerticalAlignment="Top" HorizontalAlignment="Left">

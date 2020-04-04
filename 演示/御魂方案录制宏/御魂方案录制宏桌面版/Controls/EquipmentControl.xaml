@@ -5,15 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:御魂方案录制宏桌面版"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="50">
+             d:DesignHeight="64" d:DesignWidth="64">
     <Grid>
         <Grid.ToolTip>
             <ToolTip>
                 <local:EquipmentFlyout x:Name="TipMoreInfo"/>
             </ToolTip>
         </Grid.ToolTip>
-        <TextBlock x:Name="TxtInfo">
-
-        </TextBlock>
+        <local:EquipmentPresenter x:Name="TxtInfo"/>
     </Grid>
 </UserControl>

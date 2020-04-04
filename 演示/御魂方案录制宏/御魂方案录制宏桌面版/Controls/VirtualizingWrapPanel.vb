@@ -69,8 +69,13 @@ Public Class VirtualizingWrapPanel
         GetType(VirtualizingWrapPanel), New FrameworkPropertyMetadata(Orientation.Horizontal))
 
     Public Sub SetFirstRowViewItemIndex(index As Integer)
-        SetVerticalOffset(index \ Math.Floor(_viewport.Width \ _childSize.Width))
-        SetHorizontalOffset(index \ Math.Floor(_viewport.Height \ _childSize.Height))
+        If index = 0 Then
+            SetVerticalOffset(0)
+            SetHorizontalOffset(0)
+        Else
+            SetVerticalOffset(index / Math.Floor(_viewport.Width / _childSize.Width))
+            SetHorizontalOffset(index / Math.Floor(_viewport.Height / _childSize.Height))
+        End If
     End Sub
 
     Private Sub Resizing(sender As Object, e As EventArgs)
@@ -347,7 +352,7 @@ Public Class VirtualizingWrapPanel
 
     Protected Overrides Function MeasureOverride(availableSize As Size) As Size
         If _itemsControl Is Nothing OrElse _itemsControl.Items.Count = 0 Then
-            Return availableSize
+            Return New Size
         End If
         If _abstractPanel Is Nothing Then
             _abstractPanel = New WrapPanelAbstraction(_itemsControl.Items.Count)
@@ -522,7 +527,6 @@ Public Class VirtualizingWrapPanel
         Dim section As Integer = _abstractPanel(itemIndex).Section
         Dim elementRect As Rect = _realizedChildLayout(element)
         If Orientation = Orientation.Horizontal Then
-            'INSTANT VB NOTE: The variable viewportHeight was renamed since Visual Basic does not handle local variables named the same as class members well:
             Dim viewportHeight_Renamed As Double = _pixelMeasuredViewport.Height
             If elementRect.Bottom > viewportHeight_Renamed Then
                 _offset.Y += 1
@@ -530,7 +534,6 @@ Public Class VirtualizingWrapPanel
                 _offset.Y -= 1
             End If
         Else
-            'INSTANT VB NOTE: The variable viewportWidth was renamed since Visual Basic does not handle local variables named the same as class members well:
             Dim viewportWidth_Renamed As Double = _pixelMeasuredViewport.Width
             If elementRect.Right > viewportWidth_Renamed Then
                 _offset.X += 1
@@ -610,7 +613,7 @@ Public Class VirtualizingWrapPanel
             ScrollOwner.InvalidateScrollInfo()
         End If
 
-        '_trans.Y = -offset;
+        '_trans.Y = -offset
 
         InvalidateMeasure()
         _firstIndex = GetFirstVisibleIndex()

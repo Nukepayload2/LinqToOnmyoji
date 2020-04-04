@@ -1,20 +1,19 @@
-﻿Public Class EquipmentFlyout
+﻿Imports Nukepayload2.Linq.Onmyoji
 
-    ''' <summary>
-    ''' 御魂类型名称
-    ''' </summary>
-    Public Property TypeName As String
+Public Class EquipmentFlyout
+
+    Public Property EquipmentType As 御魂种类
         Get
-            Return GetValue(TypeNameProperty)
+            Return GetValue(EquipmentTypeProperty)
         End Get
         Set
-            SetValue(TypeNameProperty, Value)
+            SetValue(EquipmentTypeProperty, Value)
         End Set
     End Property
-    Public Shared ReadOnly TypeNameProperty As DependencyProperty =
-                           DependencyProperty.Register(NameOf(TypeName),
-                           GetType(String), GetType(EquipmentFlyout),
-                           New PropertyMetadata(String.Empty, AddressOf OnTypeNameChanged))
+    Public Shared ReadOnly EquipmentTypeProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(EquipmentType),
+                           GetType(御魂种类), GetType(EquipmentFlyout),
+                           New PropertyMetadata(御魂种类.雪幽魂, AddressOf OnEquipmentTypeChanged))
 
     ''' <summary>
     ''' 强化等级 (0~15)
@@ -74,9 +73,11 @@
                            GetType(Integer), GetType(EquipmentFlyout),
                            New PropertyMetadata(1, AddressOf OnDirectionChanged))
 
-    Private Shared Sub OnTypeNameChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+    Private Shared Sub OnEquipmentTypeChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         Dim inst As EquipmentFlyout = d
-        inst.RunType.Text = e.NewValue
+        Dim type As 御魂种类 = e.NewValue
+        inst.RunType.Text = type.ToString
+        inst.IcoEquipmentType.EquipmentType = type
     End Sub
 
     Private Shared Sub OnLevelChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
@@ -98,7 +99,8 @@
     End Sub
 
     Private Shared Sub OnDirectionChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
-        ' 影响贴图
+        Dim inst As EquipmentFlyout = d
+        inst.IcoEquipmentType.Direction = e.NewValue
     End Sub
 
     Private Shared ReadOnly s_jade As String = "J"

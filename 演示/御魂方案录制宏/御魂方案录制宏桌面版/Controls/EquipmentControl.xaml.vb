@@ -20,7 +20,8 @@ Public Class EquipmentControl
         Dim 御魂 As 御魂 = e.NewValue
         If 御魂 IsNot Nothing Then
             Dim 种类中文名 = 御魂.种类中文名
-            ctl.TxtInfo.Text = $"{御魂.星级}星{御魂.位置从1开始}号位{种类中文名}"
+            ctl.TxtInfo.EquipmentType = 御魂.种类
+            ctl.TxtInfo.Direction = 御魂.位置从1开始
             Dim 主属性 = 御魂.主属性
             Dim primary = New With {
                 .Name = 主属性.属性分类.ToString,
@@ -37,12 +38,14 @@ Public Class EquipmentControl
             Dim props = Enumerable.Repeat(primary, 1).Concat(secondaries)
             With ctl.TipMoreInfo
                 .Jade = 御魂.星级
-                .TypeName = 种类中文名
+                .EquipmentType = 御魂.种类
                 .Level = 御魂.等级
                 .Properties = props
+                .Direction = 御魂.位置从1开始
             End With
         Else
-            ctl.TxtInfo.Text = String.Empty
+            ctl.TxtInfo.EquipmentType = 御魂种类.雪幽魂
+            ctl.TxtInfo.Direction = 7 ' 坏掉的位置
         End If
     End Sub
 
