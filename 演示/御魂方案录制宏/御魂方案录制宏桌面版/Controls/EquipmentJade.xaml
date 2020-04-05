@@ -4,7 +4,7 @@
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
          xmlns:local="clr-namespace:御魂方案录制宏桌面版"
-         mc:Ignorable="d" Width="8" Height="10" Margin="-1,0">
+         mc:Ignorable="d" Width="10" Height="14" Margin="-0.8,0,-0.7,-0.9">
     <Viewbox>
         <Canvas Width="76" Height="100">
             <Path Fill="#fff0ece8" Data="F1 M 0.967,99.015 C 5.272,99.030 9.578,99.045 13.884,99.061 C 21.258,97.545 28.634,97.091 36.017,99.002 C 49.000,99.006 61.983,99.011 74.967,99.015 C 74.143,99.682 73.322,100.927 72.495,100.931 C 49.476,101.036 26.457,101.036 3.438,100.931 C 2.611,100.927 1.790,99.682 0.967,99.015 Z"/>

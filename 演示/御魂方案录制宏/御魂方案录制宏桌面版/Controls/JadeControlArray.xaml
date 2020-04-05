@@ -10,7 +10,7 @@
                   VerticalAlignment="Top" HorizontalAlignment="Left">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <local:EquipmentJade Width="6"/>
+                <local:EquipmentJade Width="10" Height="16"/>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
         <ItemsControl.ItemsPanel>

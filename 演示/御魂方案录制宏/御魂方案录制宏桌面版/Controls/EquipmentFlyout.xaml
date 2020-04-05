@@ -21,7 +21,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <local:EquipmentIcon x:Name="IcoEquipmentType" Width="42" Height="42" Margin="2,2,12,2" Grid.RowSpan="2"/>
+            <local:EquipmentIcon x:Name="IcoEquipmentType" Width="42" Height="42" Margin="2,2,8,2" Grid.RowSpan="2"/>
             <TextBlock Grid.Column="1" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Left">
                 <Run x:Name="RunType" Text="雪幽魂"/>+<Run x:Name="RunLevel" Text="1"/>
             </TextBlock>

@@ -7,7 +7,7 @@
         MinWidth="550" MinHeight="250"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
-        Title="御魂方案录制宏" Height="600" Width="800">
+        Title="御魂方案录制宏" Height="600" Width="900">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -157,8 +157,8 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="6*"/>
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <RadioButton Content="已弃置" 
@@ -171,7 +171,7 @@
                     <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <local:EquipmentControl Equipment="{Binding .}" Width="56" Height="56"/>
+                                <local:EquipmentControl Equipment="{Binding .}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                         <ListBox.ItemContainerStyle>

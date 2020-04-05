@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:御魂方案录制宏桌面版"
              mc:Ignorable="d" 
-             Height="56" Width="56">
+             Height="80" Width="80">
     <Grid>
         <Grid.ToolTip>
             <ToolTip>
@@ -23,7 +23,7 @@
         </Border>
         <local:CachedJadeControlArray VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                       x:Name="ArrJades" JadeCount="6"/>
-        <local:EquipmentIcon x:Name="TxtInfo" Height="36" Width="36"/>
+        <local:EquipmentIcon x:Name="TxtInfo" Height="52" Width="52"/>
         <Border HorizontalAlignment="Left"
                 VerticalAlignment="Top" Margin="2,0,0,0">
             <Border.Background>
