@@ -42,9 +42,13 @@ Public Class EquipmentControl
                 .Level = 御魂.等级
                 .Properties = props
                 .Direction = 御魂.位置从1开始
+                .IsLocked = 御魂.已锁定
             End With
             ctl.ArrJades.JadeCount = 御魂.星级
             ctl.RunLevel.Text = 御魂.等级
+            If 御魂.已锁定 Then
+                ctl.TblLock.Visibility = Visibility.Visible
+            End If
         Else
             ctl.TxtInfo.EquipmentType = 御魂种类.雪幽魂
             ctl.TxtInfo.Direction = 7 ' 坏掉的位置

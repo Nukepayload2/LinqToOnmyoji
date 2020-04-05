@@ -73,6 +73,24 @@ Public Class EquipmentFlyout
                            GetType(Integer), GetType(EquipmentFlyout),
                            New PropertyMetadata(1, AddressOf OnDirectionChanged))
 
+    Public Property IsLocked As Boolean
+        Get
+            Return GetValue(IsLockedProperty)
+        End Get
+        Set
+            SetValue(IsLockedProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly IsLockedProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(IsLocked),
+                           GetType(Boolean), GetType(EquipmentFlyout),
+                           New PropertyMetadata(False, AddressOf OnLockedChanged))
+
+    Private Shared Sub OnLockedChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+        Dim inst As EquipmentFlyout = d
+        inst.ChkLocked.IsChecked = e.NewValue
+    End Sub
+
     Private Shared Sub OnEquipmentTypeChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         Dim inst As EquipmentFlyout = d
         Dim type As 御魂种类 = e.NewValue

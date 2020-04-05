@@ -24,6 +24,10 @@
         <local:CachedJadeControlArray VerticalAlignment="Bottom" HorizontalAlignment="Center"
                                       x:Name="ArrJades" JadeCount="6"/>
         <local:EquipmentIcon x:Name="TxtInfo" Height="52" Width="52"/>
+        <TextBlock x:Name="TblLock" HorizontalAlignment="Right"
+                   VerticalAlignment="Top" Background="Black"
+                   Foreground="WhiteSmoke" Margin="0,1,3,0"
+                   Visibility="Collapsed" Padding="2">锁</TextBlock>
         <Border HorizontalAlignment="Left"
                 VerticalAlignment="Top" Margin="2,0,0,0">
             <Border.Background>
