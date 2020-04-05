@@ -21,24 +21,14 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <local:EquipmentPresenter x:Name="IcoEquipmentType" Width="64" Height="64" Margin="2,2,12,2" Grid.RowSpan="2"/>
+            <local:EquipmentIcon x:Name="IcoEquipmentType" Width="42" Height="42" Margin="2,2,12,2" Grid.RowSpan="2"/>
             <TextBlock Grid.Column="1" VerticalAlignment="Bottom" Margin="2" HorizontalAlignment="Left">
                 <Run x:Name="RunType" Text="雪幽魂"/>+<Run x:Name="RunLevel" Text="1"/>
             </TextBlock>
-            <ItemsControl x:Name="ItmJades" Grid.Column="1" Grid.Row="1" Margin="2"
-                          VerticalAlignment="Top" HorizontalAlignment="Left">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <local:EquipmentJade/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Orientation="Horizontal" IsItemsHost="True"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-            <CheckBox Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" Content="锁"/>
+            <local:CachedJadeControlArray x:Name="ItmJades" JadeCount="6" Grid.Column="1" Grid.Row="1" Margin="2"
+                          VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <CheckBox Grid.Column="2" Grid.RowSpan="2" Margin="12,0,0,0"
+                      VerticalAlignment="Center" Content="锁"/>
         </Grid>
         <ItemsControl x:Name="ItmProps" Grid.Row="1">
             <ItemsControl.ItemTemplate>

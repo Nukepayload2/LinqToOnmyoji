@@ -5,13 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:御魂方案录制宏桌面版"
              mc:Ignorable="d" 
-             d:DesignHeight="64" d:DesignWidth="64">
+             Height="56" Width="56">
     <Grid>
         <Grid.ToolTip>
             <ToolTip>
                 <local:EquipmentFlyout x:Name="TipMoreInfo"/>
             </ToolTip>
         </Grid.ToolTip>
-        <local:EquipmentPresenter x:Name="TxtInfo"/>
+        <Border BorderThickness="2">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="#FFEC6C33"/>
+                    <GradientStop Color="#FFF3873F" Offset="0.5"/>
+                    <GradientStop Color="#FFEC6C33" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+        </Border>
+        <local:CachedJadeControlArray VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                                      x:Name="ArrJades" JadeCount="6"/>
+        <local:EquipmentIcon x:Name="TxtInfo" Height="36" Width="36"/>
+        <Border HorizontalAlignment="Left"
+                VerticalAlignment="Top" Margin="2,0,0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0">
+                    <GradientStop Color="Gray" Offset="0"/>
+                    <GradientStop Color="Black" Offset="0.2"/>
+                    <GradientStop Color="Black" Offset="0.8"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock Foreground="WhiteSmoke" Margin="3,0">
+                +<Run x:Name="RunLevel" Text="0"/>
+            </TextBlock>
+        </Border>
     </Grid>
 </UserControl>

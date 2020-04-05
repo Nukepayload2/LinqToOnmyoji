@@ -43,6 +43,8 @@ Public Class EquipmentControl
                 .Properties = props
                 .Direction = 御魂.位置从1开始
             End With
+            ctl.ArrJades.JadeCount = 御魂.星级
+            ctl.RunLevel.Text = 御魂.等级
         Else
             ctl.TxtInfo.EquipmentType = 御魂种类.雪幽魂
             ctl.TxtInfo.Direction = 7 ' 坏掉的位置

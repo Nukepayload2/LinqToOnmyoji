@@ -171,21 +171,17 @@
                     <ListBox Grid.Row="1" Margin="4" ItemsSource="{Binding ViewingEquipments}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Viewbox Width="56" Height="56">
-                                    <local:EquipmentControl Equipment="{Binding .}" Width="64" Height="64"/>
-                                </Viewbox>
+                                <local:EquipmentControl Equipment="{Binding .}" Width="56" Height="56"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
-                        <ListBox.Template>
-                            <ControlTemplate>
-                                <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                        BorderThickness="{TemplateBinding BorderThickness}">
-                                    <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" IsTabStop="False">
-                                        <ItemsPresenter />
-                                    </ScrollViewer>
-                                </Border>
-                            </ControlTemplate>
-                        </ListBox.Template>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                                <Setter Property="VerticalAlignment" Value="Top"/>
+                                <Setter Property="VerticalContentAlignment" Value="Top"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <local:VirtualizingWrapPanel IsItemsHost="True" 
