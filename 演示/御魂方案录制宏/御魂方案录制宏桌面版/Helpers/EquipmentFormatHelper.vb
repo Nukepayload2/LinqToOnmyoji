@@ -26,4 +26,9 @@ Module EquipmentFormatHelper
                 Return s_generalFormat
         End Select
     End Function
+
+    <Extension>
+    Function 数字格式(随机属性 As 御魂随机属性强化比率) As String
+        Return s_percentageFormat
+    End Function
 End Module

@@ -86,6 +86,49 @@ Public Class EquipmentFlyout
                            GetType(Boolean), GetType(EquipmentFlyout),
                            New PropertyMetadata(False, AddressOf OnLockedChanged))
 
+    Public Property PropertyGrowths As IEnumerable
+        Get
+            Return GetValue(PropertyGrowthsProperty)
+        End Get
+        Set
+            SetValue(PropertyGrowthsProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly PropertyGrowthsProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(PropertyGrowths),
+                           GetType(IEnumerable), GetType(EquipmentFlyout),
+                           New PropertyMetadata(Array.Empty(Of Object), AddressOf OnPropertyGrowthChanged))
+
+    Public Property SingleProperty As 御魂单个属性
+        Get
+            Return GetValue(SinglePropertyProperty)
+        End Get
+        Set
+            SetValue(SinglePropertyProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly SinglePropertyProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(SingleProperty),
+                           GetType(御魂单个属性), GetType(EquipmentFlyout),
+                           New PropertyMetadata(Nothing, AddressOf OnSinglePropertyChanged))
+
+    Private Shared Sub OnSinglePropertyChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+        Dim inst As EquipmentFlyout = d
+        Dim newVal As 御魂单个属性 = e.NewValue
+        If newVal Is Nothing Then
+            inst.BdrSingleProp.Visibility = Visibility.Collapsed
+        Else
+            inst.BdrSingleProp.Visibility = Visibility.Visible
+            inst.RunSinglePropName.Text = newVal.属性分类.ToString
+            inst.RunSinglePropValue.Text = newVal.数值.ToString("P0")
+        End If
+    End Sub
+
+    Private Shared Sub OnPropertyGrowthChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
+        Dim inst As EquipmentFlyout = d
+        inst.ItmPropGrows.ItemsSource = e.NewValue
+    End Sub
+
     Private Shared Sub OnLockedChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         Dim inst As EquipmentFlyout = d
         inst.ChkLocked.IsChecked = e.NewValue

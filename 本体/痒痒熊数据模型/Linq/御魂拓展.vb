@@ -89,6 +89,16 @@ Public Module 御魂拓展
     End Function
 
     <Extension>
+    Public Function 属性分类(随机比率 As 御魂随机属性强化比率) As 御魂属性类型
+        Return 种类英文名转御魂属性类型(随机比率.种类)
+    End Function
+
+    <Extension>
+    Public Function 属性分类(固有属性 As 御魂单个属性) As 御魂属性类型
+        Return 种类英文名转御魂属性类型(固有属性.种类)
+    End Function
+
+    <Extension>
     Public Sub 弃置(御魂 As IEnumerable(Of 御魂), Optional 弃置带锁的御魂 As Boolean = False)
         For Each s In 御魂
             If Not 弃置带锁的御魂 AndAlso s.已锁定 Then Continue For

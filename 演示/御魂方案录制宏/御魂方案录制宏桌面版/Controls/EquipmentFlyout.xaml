@@ -10,6 +10,9 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -31,6 +34,27 @@
                       VerticalAlignment="Center" Content="锁"/>
         </Grid>
         <ItemsControl x:Name="ItmProps" Grid.Row="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Text="{Binding Name, Mode=OneTime}"/>
+                        <local:FormattedTextBlock HorizontalAlignment="Right"
+                                                  Value="{Binding Value, Mode=OneTime}"
+                                                  Format="{Binding Format}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Border x:Name="BdrSingleProp" Margin="0,4,0,0" Grid.Row="2"
+                Visibility="Collapsed" BorderThickness="0,1,0,0" BorderBrush="Gray">
+            <TextBlock Margin="0,4,0,0">
+                固有属性:<LineBreak/><Run x:Name="RunSinglePropName" /> <Run x:Name="RunSinglePropValue" />
+            </TextBlock>
+        </Border>
+        <Border Grid.Row="3" Margin="0,4,0,0" BorderThickness="0,1,0,0" BorderBrush="Gray">
+            <TextBlock Margin="0,4">副属性增加过的比率</TextBlock>
+        </Border>
+        <ItemsControl x:Name="ItmPropGrows" Grid.Row="4">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
