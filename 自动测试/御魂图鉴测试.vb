@@ -23,10 +23,8 @@ Public Class 御魂图鉴测试
     Sub 测试按类型查找()
         With 御魂图鉴.按类型查找(御魂种类.三味)
             Assert.AreEqual(御魂种类.三味.value__, .Id)
-            With .属性
-                Assert.AreEqual(0.15, .数值)
-                Assert.AreEqual(御魂属性类型英文名.暴击, .类型)
-            End With
+            Assert.AreEqual(0.15, .属性数值)
+            Assert.AreEqual(御魂属性类型英文名.暴击, .属性类型)
         End With
     End Sub
 
@@ -35,10 +33,8 @@ Public Class 御魂图鉴测试
         Dim 查到了结果 = False
         For Each 御魂 In 御魂图鉴.按套装属性英文名查找(御魂属性类型英文名.暴击)
             查到了结果 = True
-            With 御魂.属性
-                Assert.AreEqual(0.15, .数值)
-                Assert.AreEqual(御魂属性类型英文名.暴击, .类型)
-            End With
+            Assert.AreEqual(0.15, 御魂.属性数值)
+            Assert.AreEqual(御魂属性类型英文名.暴击, 御魂.属性类型)
         Next
         Assert.IsTrue(查到了结果, "未能查询到暴击御魂")
     End Sub
