@@ -58,12 +58,31 @@
         Next
     End Function
 
+    Public Shared Iterator Function 按套装属性英文名查找(属性类型 As IEnumerable(Of String)) As IEnumerable(Of 御魂图鉴条目)
+        For Each v In s_data.Values
+            ' 这样写包含会使用 String.Equals, 脱离 Option Compare 的控制。
+            ' If 属性类型.Contains(v.属性类型) Then
+            ' 改成下面的写法
+            For Each propType In 属性类型
+                If v.属性类型 = propType Then
+                    Yield v
+                End If
+            Next
+        Next
+    End Function
+
     Public Shared Function 按英文名查找种类(属性类型 As String) As 御魂种类()
         Return Aggregate s In 按套装属性英文名查找(属性类型) Select CType(s.Id, 御魂种类) Into ToArray
     End Function
 
     Public Shared Function 查找种类(属性类型 As 御魂属性类型) As 御魂种类()
         Return 按英文名查找种类(属性类型.英文名)
+    End Function
+
+    Public Shared Function 查找种类(属性类型 As IEnumerable(Of 御魂属性类型)) As IEnumerable(Of 御魂种类)
+        Dim 御魂条目 = 按套装属性英文名查找(From itm In 属性类型 Select itm.英文名)
+        Dim 种类 = From e In 御魂条目 Select CType(e.Id, 御魂种类)
+        Return 种类
     End Function
 
     Public Shared Function 收录了此类型的御魂(类型 As 御魂种类) As Boolean

@@ -12,7 +12,7 @@ Public Module 御魂整理状态拓展
     End Function
 
     ''' <summary>
-    ''' 重置过滤器。默认不重置整理视图(已弃置/待整理)，因为阴阳师三周年庆版本的 UI 不会这样做。
+    ''' 重置过滤器。默认不重置整理视图(已弃置/待整理)，因为阴阳师缘结神版本的 UI 不会这样做。
     ''' </summary>
     <Extension>
     Public Function 重置过滤器(御魂整理状态 As 御魂整理状态,
