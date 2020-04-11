@@ -47,12 +47,19 @@
         </ItemsControl>
         <Border x:Name="BdrSingleProp" Margin="0,4,0,0" Grid.Row="2"
                 Visibility="Collapsed" BorderThickness="0,1,0,0" BorderBrush="Gray">
-            <TextBlock Margin="0,4,0,0">
-                固有属性:<LineBreak/><Run x:Name="RunSinglePropName" /> <Run x:Name="RunSinglePropValue" />
-            </TextBlock>
+            <StackPanel>
+                <TextBlock Margin="0,4,0,0">
+                    固有属性:
+                </TextBlock>
+                <Grid>
+                    <TextBlock x:Name="RunSinglePropName"/>
+                    <TextBlock x:Name="RunSinglePropValue" HorizontalAlignment="Right"/>
+                </Grid>
+            </StackPanel>
         </Border>
+
         <Border Grid.Row="3" Margin="0,4,0,0" BorderThickness="0,1,0,0" BorderBrush="Gray">
-            <TextBlock Margin="0,4">副属性增加过的比率</TextBlock>
+            <TextBlock Margin="0,4,0,0">副属性收益:</TextBlock>
         </Border>
         <ItemsControl x:Name="ItmPropGrows" Grid.Row="4">
             <ItemsControl.ItemTemplate>

@@ -2,6 +2,7 @@
 Imports Nukepayload2.Linq.Onmyoji
 
 Module EquipmentFormatHelper
+    Private ReadOnly s_countFormat As String = "{0:N2}次"
     Private ReadOnly s_percentageFormat As String = "+{0:P2}"
     Private ReadOnly s_generalFormat As String = "+{0:N2}"
 
@@ -29,6 +30,6 @@ Module EquipmentFormatHelper
 
     <Extension>
     Function 数字格式(随机属性 As 御魂随机属性强化比率) As String
-        Return s_percentageFormat
+        Return s_countFormat
     End Function
 End Module

@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Win32
+﻿Imports System.Collections.ObjectModel
+Imports Microsoft.Win32
 Imports Nukepayload2.Linq.Onmyoji
 
 Public Class ImportYyxJsonCommand
@@ -14,18 +15,32 @@ Public Class ImportYyxJsonCommand
         .Filter = "JSON 文件|*.json"
     }
 
-    Protected Overrides Function ExecuteAsync(parameter As Object) As Task
+    Protected Overrides Async Function ExecuteAsync(parameter As Object) As Task
         If _openDataDialog.ShowDialog Then
             Dim yyxJsonFile = _openDataDialog.FileName
             Try
-                Dim snap = 痒痒熊快照.加载Json文件(yyxJsonFile)
+                Await Task.Yield
+                Dim snap = Await Task.Run(Function() 痒痒熊快照.加载Json文件(yyxJsonFile))
                 _viewModel.YyxData = snap
-                _viewModel.ViewingEquipments = snap.数据.御魂
+                Dim equipments = snap.数据.御魂
+                Dim useBlockedLoad = False
+                If useBlockedLoad Then
+                    Dim filterResult As New ObservableCollection(Of 御魂)
+                    _viewModel.ViewingEquipments = filterResult
+                    Const BlockSize = 100
+                    For i = 0 To equipments.Length - 1
+                        filterResult.Add(equipments(i))
+                        If i Mod BlockSize = 0 Then
+                            Await Task.Delay(10)
+                        End If
+                    Next
+                Else
+                    _viewModel.ViewingEquipments = equipments
+                End If
             Catch ex As Exception
                 _viewModel.YyxData = Nothing
                 MsgBox(ex.Message, vbExclamation, "加载快照失败")
             End Try
         End If
-        Return Task.CompletedTask
     End Function
 End Class
