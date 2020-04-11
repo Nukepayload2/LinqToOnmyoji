@@ -19,7 +19,7 @@ Module Program
             Console.WriteLine($"整理前六星御魂数量: {六星御魂.Count}")
 
             '御魂整理方案.七老爷三周年庆御魂整理方案(快照)
-            御魂整理方案.阿毛缘结神版本御魂整理方案(快照)
+            御魂整理宏示例.阿毛缘结神版本御魂整理方案(快照)
 
             Console.WriteLine($"整理后六星御魂数量: {六星御魂.Count}")
         Catch ex As Exception

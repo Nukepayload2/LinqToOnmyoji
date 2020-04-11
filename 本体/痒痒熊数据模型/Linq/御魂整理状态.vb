@@ -1,8 +1,12 @@
 ﻿Public Class 御魂整理状态
-    Private ReadOnly _御魂数据 As IReadOnlyList(Of 御魂)
+    Public Property 御魂数据 As IReadOnlyList(Of 御魂)
 
     Public Sub New(御魂数据 As IReadOnlyList(Of 御魂))
-        _御魂数据 = 御魂数据
+        Me.御魂数据 = 御魂数据
+    End Sub
+
+    Sub New()
+
     End Sub
 
     ''' <summary>
@@ -38,8 +42,15 @@
     ''' </summary>
     Public Property 副属性条数 As Func(Of Integer, Boolean)
 
+    ''' <summary>
+    ''' 从御魂数据中过滤御魂。
+    ''' </summary>
+    ''' <returns>御魂过滤结果</returns>
     Public Function 全选() As IEnumerable(Of 御魂)
-        全选 = From s In _御魂数据 Where s.已弃置 = 在弃置御魂中查找
+        If 御魂数据 Is Nothing Then
+            Return Enumerable.Empty(Of 御魂)
+        End If
+        全选 = From s In 御魂数据 Where s.已弃置 = 在弃置御魂中查找
         If 种类.Any Then
             全选 = From s In 全选 Where 种类.Contains(s.种类)
         End If

@@ -7,6 +7,10 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <NoWarn>42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="测试数据.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

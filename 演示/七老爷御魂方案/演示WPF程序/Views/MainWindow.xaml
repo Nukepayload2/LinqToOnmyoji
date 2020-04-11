@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <Grid x:Name="TitleBar">
             <Rectangle x:Name="TitleBarDragElement" Fill="#01FFFFFF"/>
-            <TextBlock Margin="8" IsHitTestVisible="False">试用七老爷的三周年版本御魂清理</TextBlock>
+            <TextBlock Margin="8" IsHitTestVisible="False">试用御魂清理</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnViewSource" Background="#3F7F007F" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
                 <Button x:Name="BtnAbout" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>

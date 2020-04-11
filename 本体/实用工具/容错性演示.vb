@@ -8,7 +8,7 @@ Imports Nukepayload2.Linq.Onmyoji.副属性条数
 Imports Nukepayload2.Linq.Onmyoji.御魂种类别名
 Imports Nukepayload2.Linq.Onmyoji.御魂属性类型别名
 
-Public NotInheritable Class 御魂整理方案
+Public NotInheritable Class 御魂整理宏示例
     ''' <summary>
     ''' 弃置五星御魂中瘸腿的和不含暴击+爆伤组合的
     ''' </summary>

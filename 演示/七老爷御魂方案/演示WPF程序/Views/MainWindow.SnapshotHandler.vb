@@ -25,7 +25,7 @@ Partial Class MainWindow
             Dim 整理前未弃置御魂 = 六星御魂.ToDictionary(Function(s) s.Id, Function(s) s)
             Dim 整理前数量 = 整理前未弃置御魂.Count
             TxtOut.AppendText($"整理前六星御魂数量: {整理前数量}" & vbCrLf)
-            Await Task.Run(Sub() 御魂整理方案.七老爷三周年庆御魂整理方案(快照))
+            Await Task.Run(Sub() 御魂整理宏示例.七老爷三周年庆御魂整理方案(快照))
             Dim 整理后未弃置御魂 = 六星御魂.ToDictionary(Function(s) s.Id, Function(s) s)
             Dim 整理后数量 = 整理后未弃置御魂.Count
             TxtOut.AppendText($"整理后六星御魂数量: {整理后数量}" & vbCrLf)
