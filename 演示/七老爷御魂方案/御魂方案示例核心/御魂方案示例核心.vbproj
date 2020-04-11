@@ -5,4 +5,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Nukepayload2.Csv" Version="1.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\本体\痒痒熊数据模型\Linq查询痒痒熊数据模型.vbproj" />
+  </ItemGroup>
+
 </Project>
