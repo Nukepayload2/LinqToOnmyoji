@@ -252,11 +252,12 @@
             await Task.Delay(10);
 
             var csvText = await 御魂方案示例核心.Csv导出器.保存数据Async(整理前未弃置御魂, 整理后未弃置御魂);
-            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
+            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成, 正在保存。{nl}";
             this.StateHasChanged();
             await Task.Delay(10);
             var fileName = $"{System.IO.Path.GetFileNameWithoutExtension(_currentSnapName ?? "未命名")}{name}.csv";
             await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, "utf-8");
+            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已保存。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
         }
         catch (Exception ex)
         {

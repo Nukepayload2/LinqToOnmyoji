@@ -2,7 +2,7 @@ Imports Nukepayload2.Linq.Onmyoji.御魂种类
 Imports Nukepayload2.Linq.Onmyoji.御魂属性类型
 Imports Nukepayload2.Linq.Onmyoji.副属性条数
 
-Partial Public NotInheritable Class 御魂整理宏示例
+Partial Class 御魂整理宏示例
 
     ''' <summary>
     ''' 七老爷三周年庆版本的清理方案 SP1，整理六星非首领御魂。 <see cref="https://www.bilibili.com/read/cv3643919/"/>

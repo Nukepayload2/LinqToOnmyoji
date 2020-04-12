@@ -2,7 +2,7 @@
 Imports Nukepayload2.Linq.Onmyoji.御魂属性类型
 Imports Nukepayload2.Linq.Onmyoji.副属性条数
 
-Partial Public Class 御魂整理宏示例
+Partial Class 御魂整理宏示例
 
     ''' <summary>
     ''' http://www.bilibili.com/video/av98225095
