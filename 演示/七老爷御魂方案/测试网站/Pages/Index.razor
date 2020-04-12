@@ -13,7 +13,7 @@
     如果乱码了请更新 Excel，或者手动转换编码到 gb2312，或者使用 <a href="https://gitee.com/nukepayload2/LinqToOnmyojiDemoSite/releases">桌面版</a>。
 </p>
 <p>
-    版本 1.0 preview 8, 适配 @痒痒熊快照.已适配的产品和版本 。
+    版本 1.0, 适配 @痒痒熊快照.已适配的产品和版本 。
 </p>
 <style>
     .@dropTargetClass {
@@ -29,6 +29,9 @@
     }
 </style>
 
+<p>
+    1. 加载数据
+</p>
 <div class="@DropClass"
      @ref=dropTargetElement
      @ondrop=OnDrop
@@ -43,21 +46,24 @@
         <p>@fileInfo.Name</p>
     }
 </div>
-
 <p>
     <progress value=@progress />
 </p>
-<textarea style="max-width: 100%;" cols="50" rows="15">@Output</textarea>
-<p hidden="hidden">
-    <a @ref=saveFileReference download="上次弃置的御魂.csv"></a>
+<p>
+    2. 选择整理方案
 </p>
+<p>
+    <input type="button" @onclick=BtnQiLaoYe_Click value="解说七老爷的整理方案" />
+    <input type="button" @onclick=BtnAMao_Click value="这里阿毛酱的整理方案" />
+</p>
+<textarea style="max-width: 100%;" cols="50" rows="15">@Output</textarea>
+
 <p>
     B站、GitHub、百度贴吧、微博：Nukepayload2。阴阳师：依偎相守#2723416
 </p>
 
 @code {
     [Inject] IJSRuntime JsRuntime { get; set; }
-    ElementReference saveFileReference;
     ElementReference dropTargetElement;
     ElementReference fileOpenPicker;
     IFileReaderRef dropReference;
@@ -123,6 +129,16 @@
         await ReadFile();
     }
 
+    public async Task BtnQiLaoYe_Click(EventArgs e)
+    {
+        await ApplyMacro(m => m.七老爷三周年庆御魂整理方案(), "七老爷方案");
+    }
+
+    public async Task BtnAMao_Click(EventArgs e)
+    {
+        await ApplyMacro(m => m.阿毛缘结神版本御魂整理方案(), "阿毛方案");
+    }
+
     private async Task RefreshFileList()
     {
         this.FileList.Clear();
@@ -135,6 +151,9 @@
         }
         this.StateHasChanged();
     }
+
+    private 痒痒熊快照 _currentSnap;
+    private string _currentSnapName;
 
     public async Task ReadFile()
     {
@@ -177,37 +196,10 @@
                     {
                         Output += $"注意：本程序仅适配了{痒痒熊快照.已适配的产品和版本}，而这个文件的格式或者版本未经适配。{nl}";
                     }
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 已解析痒痒熊快照文件，正在整理御魂。这不会花费太长时间。{nl}";
-                    this.StateHasChanged();
-                    await Task.Delay(10);
-                    IEnumerable<御魂> 六星御魂()
-                    {
-                        return snap.数据.御魂.Where(s => s.星级 == 6 && !s.已弃置);
-                    }
-                    var 整理前未弃置御魂 = 六星御魂().ToDictionary(s => s.Id, s => s);
-                    var 整理前六星御魂数量 = 整理前未弃置御魂.Count;
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 整理前六星御魂: {整理前六星御魂数量} 个{nl}";
-                    this.StateHasChanged();
-                    await Task.Delay(10);
-                    var 方案 = new 御魂整理宏示例(snap.数据.御魂);
-                    方案.七老爷三周年庆御魂整理方案();
-                    var 整理后未弃置御魂 = 六星御魂().ToDictionary(s => s.Id, s => s);
-                    var 整理后六星御魂数量 = 整理后未弃置御魂.Count;
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 整理后六星御魂: {整理后六星御魂数量} 个{nl}";
-                    if (整理后六星御魂数量 > 整理前六星御魂数量)
-                    {
-                        Output += $"[{timer.ElapsedMilliseconds}ms] 整理后御魂反而多说明此账号弃置过胚子。{nl}";
-                    }
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 正在生成报告...{nl}";
-                    this.StateHasChanged();
-                    await Task.Delay(10);
-
-                    var csvText = 御魂方案示例核心.Csv导出器.保存数据Async(整理前未弃置御魂, 整理后未弃置御魂);
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
-                    this.StateHasChanged();
-                    await Task.Delay(10);
-                    var fileName = $"{System.IO.Path.GetFileNameWithoutExtension(fileInfo.Name ?? "未命名")}上次弃置的御魂.csv";
-                    await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, "utf-8");
+                    Output += $"[{timer.ElapsedMilliseconds}ms] 已解析痒痒熊快照文件，请选择御魂整理方案。{nl}";
+                    _currentSnap = snap;
+                    _currentSnapName = fileInfo.Name;
+                    timer.Stop();
                 }
                 catch (Exception ex)
                 {
@@ -218,8 +210,60 @@
             } // End Using
             this.StateHasChanged();
         } // Next file
-        await ClearFile();
     } // End Function ' ReadFile
+
+    private async Task ApplyMacro(Action<御魂整理宏示例> macroSelector, string name)
+    {
+        Output = string.Empty;
+        var nl = Environment.NewLine;
+        try
+        {
+            var snap = _currentSnap;
+            if (snap == null)
+            {
+                Output += $"请先加载数据。{nl}";
+                return;
+            }
+            this.StateHasChanged();
+            await Task.Delay(10);
+            var 御魂备份 = (from e in snap.数据.御魂 select e.浅克隆()).ToArray();
+            IEnumerable<御魂> 六星御魂()
+            {
+                return 御魂备份.Where(s => s.星级 == 6 && !s.已弃置);
+            }
+            var timer = new Stopwatch();
+            timer.Start();
+            var 整理前未弃置御魂 = 六星御魂().ToDictionary(s => s.Id, s => s);
+            var 整理前六星御魂数量 = 整理前未弃置御魂.Count;
+            Output += $"[{timer.ElapsedMilliseconds}ms] 整理前六星御魂: {整理前六星御魂数量} 个{nl}";
+            this.StateHasChanged();
+            await Task.Delay(10);
+            var 方案 = new 御魂整理宏示例(御魂备份);
+            macroSelector(方案);
+            var 整理后未弃置御魂 = 六星御魂().ToDictionary(s => s.Id, s => s);
+            var 整理后六星御魂数量 = 整理后未弃置御魂.Count;
+            Output += $"[{timer.ElapsedMilliseconds}ms] 整理后六星御魂: {整理后六星御魂数量} 个{nl}";
+            if (整理后六星御魂数量 > 整理前六星御魂数量)
+            {
+                Output += $"[{timer.ElapsedMilliseconds}ms] 整理后御魂反而多说明此账号弃置过胚子。{nl}";
+            }
+            Output += $"[{timer.ElapsedMilliseconds}ms] 正在生成报告...{nl}";
+            this.StateHasChanged();
+            await Task.Delay(10);
+
+            var csvText = await 御魂方案示例核心.Csv导出器.保存数据Async(整理前未弃置御魂, 整理后未弃置御魂);
+            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
+            this.StateHasChanged();
+            await Task.Delay(10);
+            var fileName = $"{System.IO.Path.GetFileNameWithoutExtension(_currentSnapName ?? "未命名")}{name}.csv";
+            await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, "utf-8");
+        }
+        catch (Exception ex)
+        {
+            Output += $"出现错误{nl}";
+            Output += ex.ToString();
+        } // End Try
+    }
 
     // End Code
 }
