@@ -25,9 +25,10 @@
             <TextBlock Margin="8" IsHitTestVisible="False">御魂清理方案试用</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnViewSource" Background="#3F7F007F" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
-                <Button x:Name="BtnAbout" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
+                <Button x:Name="BtnAbout" Background="#3F7F007F" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
+                <Button x:Name="BtnMin" Style="{StaticResource MinimizeButtonStyle}" ToolTip="最小化"/>
+                <Button x:Name="BtnClose" Style="{StaticResource CloseButtonStyle}" ToolTip="关闭"/>
             </StackPanel>
-            <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
         </Grid>
         <Border x:Name="ClientArea" Grid.Row="1" TextElement.FontSize="14" Padding="4">
             <Grid>
