@@ -189,7 +189,7 @@
                     Output += $"[{timer.ElapsedMilliseconds}ms] 整理前六星御魂: {整理前六星御魂数量} 个{nl}";
                     this.StateHasChanged();
                     await Task.Delay(10);
-                    var 方案 = new 御魂整理宏示例(snap);
+                    var 方案 = new 御魂整理宏示例(snap.数据.御魂);
                     方案.七老爷三周年庆御魂整理方案();
                     var 整理后未弃置御魂 = 六星御魂().ToDictionary(s => s.Id, s => s);
                     var 整理后六星御魂数量 = 整理后未弃置御魂.Count;
@@ -206,7 +206,8 @@
                     Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
                     this.StateHasChanged();
                     await Task.Delay(10);
-                    await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, $"{System.IO.Path.GetFileNameWithoutExtension(fileInfo.Name ?? "未命名")}上次弃置的御魂.csv");
+                    var fileName = $"{System.IO.Path.GetFileNameWithoutExtension(fileInfo.Name ?? "未命名")}上次弃置的御魂.csv";
+                    await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, "utf-8");
                 }
                 catch (Exception ex)
                 {

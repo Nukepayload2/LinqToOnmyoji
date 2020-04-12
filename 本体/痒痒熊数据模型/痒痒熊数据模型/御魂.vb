@@ -47,4 +47,11 @@
 
     <JsonProperty("suit_id"), JsonPropertyName("suit_id")>
     Public Property 套装类型Id As Integer
+
+    ''' <summary>
+    ''' 整理御魂之前, 使用浅克隆备份御魂弃置的状态。
+    ''' </summary>
+    Public Function 浅克隆() As 御魂
+        Return DirectCast(MemberwiseClone(), 御魂)
+    End Function
 End Class

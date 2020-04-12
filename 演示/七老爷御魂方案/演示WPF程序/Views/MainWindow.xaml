@@ -7,7 +7,7 @@
         MinWidth="250" MinHeight="250"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
-        Title="MainWindow" Height="480" Width="640">
+        Title="御魂清理方案试用" Height="480" Width="640">
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <Grid x:Name="TitleBar">
             <Rectangle x:Name="TitleBarDragElement" Fill="#01FFFFFF"/>
-            <TextBlock Margin="8" IsHitTestVisible="False">试用御魂清理</TextBlock>
+            <TextBlock Margin="8" IsHitTestVisible="False">御魂清理方案试用</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="BtnViewSource" Background="#3F7F007F" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
                 <Button x:Name="BtnAbout" Background="#3F7F007F" BorderThickness="0" Margin="0,0,48,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
@@ -35,19 +35,20 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel>
-                    <TextBlock Margin="4,0">1. 导入数据</TextBlock>
-                    <Button Margin="4" x:Name="BtnFileDrop" Height="80" Background="LightGray" AllowDrop="True">
+                <StackPanel Margin="4,0">
+                    <TextBlock>1. 导入数据</TextBlock>
+                    <TextBlock x:Name="TblDataStatus" TextWrapping="Wrap">数据尚未导入。</TextBlock>
+                    <Button Margin="0,4" x:Name="BtnFileDrop" Height="80" Background="LightGray" AllowDrop="True">
                         <TextBlock Text="请将痒痒熊快照产生的 Json 文件拖进来或者点击选取文件" 
                                VerticalAlignment="Center" IsHitTestVisible="False" TextWrapping="Wrap"
                                HorizontalAlignment="Center"/>
                     </Button>
-                    <TextBlock Margin="4,0">2. 选择方案</TextBlock>
-                    <StackPanel Margin="2" Orientation="Horizontal">
+                    <TextBlock>2. 选择方案</TextBlock>
+                    <StackPanel Margin="0,2" Orientation="Horizontal">
                         <Button x:Name="BtnExportLao7" Margin="2" Padding="16,8">使用七老爷方案</Button>
                         <Button x:Name="BtnExportAMao" Margin="2" Padding="16,8">使用阿毛方案</Button>
                     </StackPanel>
-                    <TextBlock Margin="4,0">3. 查看结果</TextBlock>
+                    <TextBlock>3. 查看结果</TextBlock>
                 </StackPanel>
                 <TextBox Margin="4" x:Name="TxtOut" IsReadOnly="True" Grid.Row="1"/>
             </Grid>

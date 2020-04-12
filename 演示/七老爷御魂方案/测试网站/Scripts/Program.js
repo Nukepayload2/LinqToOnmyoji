@@ -4,7 +4,7 @@
 window.clickElement = function (element) {
     element.click()
 }
-window.saveAsBlob = function (blobBody, fileName) {
-    var blob = new Blob([String.fromCharCode(0xFEFF), blobBody], { type: "text/csv;charset=utf-8" })
+window.saveAsBlob = function (blobBody, fileName, charset) {
+    var blob = new Blob([String.fromCharCode(0xFEFF), blobBody], { type: "text/csv;charset=" + charset })
     window.saveAs(blob, fileName)
 }
