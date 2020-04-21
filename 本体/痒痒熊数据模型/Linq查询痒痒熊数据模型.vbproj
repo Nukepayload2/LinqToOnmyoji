@@ -4,14 +4,15 @@
     <RootNamespace>Nukepayload2.Linq.Onmyoji</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Nukepayload2.Linq.Onmyoji</AssemblyName>
-    <Version>1.1.0</Version>
+    <Version>1.1.0-preview1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/Nukepayload2/LinqToOnmyoji</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/Nukepayload2/LinqToOnmyoji.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>netease onmyoji linq 阴阳师 御魂</PackageTags>
-    <PackageReleaseNotes>修复了御魂图鉴 API 按类型查找失败的问题</PackageReleaseNotes>
+    <PackageReleaseNotes>1. 现在可以在多重值过滤器里面用更少的代码按属性过滤御魂了，不再需要查阅御魂图鉴。
+2. 御魂图鉴现在支持按多个套装属性英文名查找的模式了。</PackageReleaseNotes>
     <Description>提供一组 .NET Standard 2.0 的 API，使用语言集成查询分析痒痒熊导出器导出的数据。</Description>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <FileVersion>1.1.0.0</FileVersion>
