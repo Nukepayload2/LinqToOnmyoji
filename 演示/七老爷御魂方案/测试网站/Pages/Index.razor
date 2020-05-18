@@ -188,10 +188,10 @@
                     var buf = new byte[fs.Length];
                     await fs.ReadAsync(buf, 0, buf.Length);
                     var mem = new MemoryStream(buf);
-                    Output += $"[{timer.ElapsedMilliseconds}ms] 文件已加载，开始解析痒痒熊快照文件。请不要关闭浏览器...{nl}";
+                    Output += $"[{timer.ElapsedMilliseconds}ms] 文件 ({fs.Length/1024.0/1024:N2}MB) 已加载，开始解析痒痒熊快照文件。请不要关闭浏览器...{nl}";
                     this.StateHasChanged();
                     await Task.Delay(10);
-                    var snap = 痒痒熊快照.加载Json文件流(mem);
+                    痒痒熊快照 snap = 痒痒熊快照.加载Json文件流(mem);
                     if (snap.版本未适配)
                     {
                         Output += $"注意：本程序仅适配了{痒痒熊快照.已适配的产品和版本}，而这个文件的格式或者版本未经适配。{nl}";
