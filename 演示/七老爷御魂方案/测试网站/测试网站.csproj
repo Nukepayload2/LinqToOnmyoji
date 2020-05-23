@@ -22,4 +22,8 @@
     <ProjectReference Include="..\御魂方案示例核心\御魂方案示例核心.vbproj" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="call generate_min_js.bat" />
+  </Target>
+
 </Project>

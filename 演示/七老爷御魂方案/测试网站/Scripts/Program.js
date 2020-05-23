@@ -8,6 +8,8 @@ window.clickElement = function (element) {
     element.click()
 }
 window.saveAsBlob = function (blobBody, fileName, charset) {
-    var blob = new Blob([String.fromCharCode(0xFEFF), blobBody], { type: "text/csv;charset=" + charset })
+    var needBom = charset === "utf-8"
+    var blobData = needBom ? [String.fromCharCode(0xFEFF), blobBody] : [blobBody]
+    var blob = new Blob(blobData, { type: "text/plain;charset=" + charset + ";" })
     window.saveAs(blob, fileName)
 }
