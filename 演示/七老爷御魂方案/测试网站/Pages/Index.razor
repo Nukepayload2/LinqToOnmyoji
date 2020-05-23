@@ -9,11 +9,11 @@
 <h1>试用御魂整理方案</h1>
 
 <p>
-    用痒痒熊截取快照，然后拖放到下面的框里面。你的文件不会被发送到任何服务器上。
-    如果乱码了请更新 Excel，或者手动转换编码到 gb2312，或者使用 <a href="https://gitee.com/nukepayload2/LinqToOnmyojiDemoSite/releases">桌面版</a>。
+    用痒痒熊截取快照，然后拖放到下面的框里面。你的文件不会被发送到任何服务器上。<br />
+    需要经常使用此程序？试试 <a href="https://gitee.com/nukepayload2/LinqToOnmyojiDemoSite/releases">桌面版</a>。
 </p>
 <p>
-    版本 1.0, 适配 @痒痒熊快照.已适配的产品和版本 。
+    版本 1.1, 适配 @痒痒熊快照.已适配的产品和版本 。
 </p>
 <style>
     .@dropTargetClass {
@@ -29,9 +29,9 @@
     }
 </style>
 
-<p>
+<h3>
     1. 加载数据
-</p>
+</h3>
 <div class="@DropClass"
      @ref=dropTargetElement
      @ondrop=OnDrop
@@ -49,15 +49,32 @@
 <p>
     <progress value=@progress />
 </p>
-<p>
+<h3>
     2. 选择整理方案
-</p>
+</h3>
 <p>
     <input type="button" @onclick=BtnQiLaoYe_Click value="解说七老爷的整理方案" />
     <input type="button" @onclick=BtnAMao_Click value="这里阿毛酱的整理方案" />
 </p>
+
 <textarea style="max-width: 100%;" cols="50" rows="15">@Output</textarea>
 
+<h3>
+    高级设置
+</h3>
+<p>
+    导出的 csv 乱码了？试试指定文本编码。
+</p>
+<p>
+    <select @bind=selectedEncoding>
+        <option value="utf-8">utf-8 (适合 Excel 2013, 2016, 2019 和 Office 365)</option>
+        <option value="gb2312">gb2312 (适合旧版中文 Excel)</option>
+    </select>
+</p>
+
+<h3>
+    关于
+</h3>
 <p>
     B站、GitHub、百度贴吧、微博：Nukepayload2。阴阳师：依偎相守#2723416
 </p>
@@ -70,6 +87,7 @@
     IFileReaderRef fileOpenPickReference;
     bool Additive { get; set; }
     object progress = 0;
+    string selectedEncoding = "utf-8";
 
     const string dropTargetDragClass = "droptarget-drag";
     const string dropTargetClass = "droptarget";
@@ -252,11 +270,11 @@
             await Task.Delay(10);
 
             var csvText = await 御魂方案示例核心.Csv导出器.保存数据Async(整理前未弃置御魂, 整理后未弃置御魂);
-            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成, 正在保存。{nl}";
+            Output += $"[{timer.ElapsedMilliseconds}ms] 报告已生成, 正在保存, 编码是 {selectedEncoding}。{nl}";
             this.StateHasChanged();
             await Task.Delay(10);
             var fileName = $"{System.IO.Path.GetFileNameWithoutExtension(_currentSnapName ?? "未命名")}{name}.csv";
-            await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, "utf-8");
+            await JsRuntime.InvokeVoidAsync("saveAsBlob", csvText, fileName, selectedEncoding);
             Output += $"[{timer.ElapsedMilliseconds}ms] 报告已保存。{nl}注意: 不是所有浏览器都支持保存此报告。如果 30 秒内你的浏览器没有提示保存一个 csv 文件，建议改别的浏览器或者使用此工具的桌面版。{nl}";
         }
         catch (Exception ex)

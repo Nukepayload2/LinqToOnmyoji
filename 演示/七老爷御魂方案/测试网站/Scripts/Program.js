@@ -1,6 +1,9 @@
 ﻿window.setProperty = function (element, property, value) {
     element[property] = value
 }
+window.getProperty = function (element, property) {
+    return element[property]
+}
 window.clickElement = function (element) {
     element.click()
 }

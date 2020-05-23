@@ -1,482 +1,24 @@
 ﻿@page "/ReferenceSource"
+@using 测试网站.Pages.ReferenceSourceParts
 
 <h2>御魂整理脚本</h2>
 
 <p>
-    <input type="button" style=@btnLao7Style value="七老爷的方案" @onclick=BtnLao7_Click/>
-    <input type="button" style=@btnAMaoStyle value="阿毛的方案" @onclick=BtnAMao_Click />
+    <input type="button" style=@_buttonStyles[0] value="七老爷的方案" @onclick=BtnLao7_Click />
+    <input type="button" style=@_buttonStyles[1] value="阿毛的方案" @onclick=BtnAMao_Click />
+    <input type="button" style=@_buttonStyles[2] value="整理方案公用代码" @onclick=BtnCommon_Click />
 </p>
 
-<div style=@lao7Style>
-    <pre style="font-family:Consolas;font-size:13px;color:black;background:white;"><span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">御魂种类</span>
-<span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">御魂属性类型</span>
-<span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">副属性条数</span>
- 
-<span style="color:blue;">Partial</span>&nbsp;<span style="color:blue;">Class</span>&nbsp;<span style="color:#2b91af;">御魂整理宏示例</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;</span><span style="color:gray;">&lt;</span><span style="color:gray;">summary</span><span style="color:gray;">&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;整理六星非首领御魂。&nbsp;</span><span style="color:gray;">&lt;</span><span style="color:gray;">see&nbsp;</span><span style="color:gray;">cref</span><span style="color:gray;">=</span><span style="color:gray;">&quot;</span>https<span style="color:#555555;">://www.bilibili.com/read/cv3643919/</span><span style="color:gray;">&quot;</span><span style="color:gray;">/&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;</span><span style="color:gray;">&lt;/</span><span style="color:gray;">summary</span><span style="color:gray;">&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">Public</span>&nbsp;<span style="color:blue;">Sub</span>&nbsp;<span style="color:#74531f;">七老爷三周年庆御魂整理方案</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;第一步：选中所有两条腿六星，全扔了。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;星级.<span style="color:#74531f;">选择</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;两条
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">弃置</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;第二步：全部六星弃置</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">弃置</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;接下来要做的是反向慢慢恢复，这样无论效率还是彻底程度都比正向要快很多。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在弃置御魂中查找&nbsp;=&nbsp;<span style="color:blue;">True</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;6种首领御魂（土蜘蛛、胧车、荒骷髅、地震鲶、蜃气楼、鬼灵歌伎）全部恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(土蜘蛛,&nbsp;胧车,&nbsp;荒骷髅,&nbsp;地震鲶,&nbsp;蜃气楼,&nbsp;鬼灵歌伎)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;第三步：恢复所有散件胚子。包括：速度、极品抵抗、极品命中</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.1&nbsp;选择13456号位，副属性选速度，数量选4条。全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;四条
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.2&nbsp;选择2号位，主属性选速度，副属性选速度，数量选3条+4条。全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.3&nbsp;选择4号位，主属性选命中，副属性选命中，数量选3条+4条。全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为速度，&nbsp;全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(4)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.4&nbsp;选择4号位，主属性选抵抗，副属性选抵抗，数量选3条+4条。全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为速度，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(4)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.5&nbsp;选择6号位，主属性暴击，副属性暴击，数量选3条+4条。全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为暴击伤害，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.6&nbsp;选择6号位，主属性暴击伤害，副属性暴击，数量选3条+4条。全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为暴击伤害，全选并恢复（极限暴击伤害给到山风、面灵气）</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;3.7&nbsp;此为可选项考虑到百目鬼、御馔津等命中抵抗双堆式神。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;可以选择4号位，主属性选抵抗副属性选命中，数量选3条+4条。全选并恢复。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;再反过来主属性命中副属性抵抗，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(4)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;第四步：恢复常规御魂套装属性胚子</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.1&nbsp;生命加成类型选地藏、涅槃、被服、镜姬、钟灵、薙魂、树妖共7种</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(地藏像,&nbsp;涅槃之火,&nbsp;被服,&nbsp;镜姬,&nbsp;钟灵,&nbsp;薙魂,&nbsp;树妖)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.1.1&nbsp;位置选1、3、5号，主属性不选，副属性选生命加成，数量选3条+4条。全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.1.2&nbsp;位置选2、4、6号，主、副属性都选生命加成，数量选3条+4条。全选并恢复。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;恢复生命加成胚子，书翁极品</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.2&nbsp;攻击加成类型选蝙翼、招财、轮入道、狰、心眼、阴摩罗、鸣屋、狂骨共8种。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;招财给到极限鸩或者招财万攻面灵气之类</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(蝠翼,&nbsp;招财猫,&nbsp;轮入道,&nbsp;狰,&nbsp;心眼,&nbsp;阴摩罗,&nbsp;鸣屋,&nbsp;狂骨)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.2.1&nbsp;位置选1、3、5号，主属性不选，副属性选攻击加成，数量选3条+4条。全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.2.2&nbsp;位置选2、4、6号，主、副属性都选攻击加成，数量选3条+4条。全选并恢复。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;恢复攻击加成胚子，&nbsp;万攻鸩&nbsp;/&nbsp;面灵气等</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.3&nbsp;暴击/暴击伤害：在4.2所有攻击加成基础上，添加雪幽魂、地藏、三味、招财、反枕、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;日女、镜姬、钟灵、火灵、木魅、树妖、网切、伤魂鸟、破势、镇墓兽、珍珠、骰子鬼、蚌精、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;魅妖、针女20种（可见暴击应用有多广…），加上攻击一共是27种</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;其中反枕、钟灵和魅妖是为兼顾输出的控制彼岸花留的，目前版本并不吃香可以去掉。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;主要是考虑未来版本不一定啥时候就用到了…保险起见还是建议保留</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;补充：薙魂留给&nbsp;SP&nbsp;鬼切用</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(蝠翼,&nbsp;轮入道,&nbsp;狰,&nbsp;心眼,&nbsp;阴摩罗,&nbsp;鸣屋,&nbsp;狂骨)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(雪幽魂,&nbsp;地藏像,&nbsp;三味,&nbsp;招财猫,&nbsp;反枕,&nbsp;日女巳时,&nbsp;镜姬,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;钟灵,&nbsp;火灵,&nbsp;木魅,&nbsp;树妖,&nbsp;网切,&nbsp;伤魂鸟,&nbsp;破势,&nbsp;镇墓兽,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;珍珠,&nbsp;骰子鬼,&nbsp;蚌精,&nbsp;魅妖,&nbsp;针女,&nbsp;薙魂)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.3.1&nbsp;位置选1、3、5号，主属性不选，副属性选暴击，数量选3条+4条全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.3.2&nbsp;副属性去掉暴击再选暴击伤害，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.3.3&nbsp;类型中去掉所有攻击加成类即去掉狂骨、蝙翼、轮入道、狰、鸣屋、心眼、阴摩罗。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;位置选2号和4号，&nbsp;主属性选生命加成、副属性选暴击，&nbsp;全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为暴击伤害，&nbsp;全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">去掉</span>(蝠翼,&nbsp;轮入道,&nbsp;狰,&nbsp;心眼,&nbsp;阴摩罗,&nbsp;鸣屋,&nbsp;狂骨)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;4)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.3.4&nbsp;重置类型，选择所有暴击套、攻击套外加地藏、招财、日女、火灵、骰子鬼、蚌精。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;位置选2号和4号，&nbsp;主属性选攻击加成、副属性选暴击，&nbsp;全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;副属性改为暴击伤害，&nbsp;全选并恢复。地藏、蚌精、火灵等，&nbsp;是为不知火预留的。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;补充：薙魂留给&nbsp;SP&nbsp;鬼切用</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(<span style="color:#2b91af;">御魂图鉴</span>.<span style="color:#74531f;">查找种类</span>(暴击))
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(<span style="color:#2b91af;">御魂图鉴</span>.<span style="color:#74531f;">查找种类</span>(攻击加成))
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(地藏像,&nbsp;招财猫,&nbsp;日女巳时,&nbsp;火灵,&nbsp;骰子鬼,&nbsp;蚌精,&nbsp;薙魂)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;4)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4&nbsp;效果抵抗：重置，&nbsp;选择返魂香、三味、魍魉、招财、轮入道、火灵、薙魂、木魅、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;骰子鬼、蚌精、幽谷响共11种。三味可以不选，&nbsp;但怕以后有什么骚套路保险起见建议保留</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(返魂香,&nbsp;三味,&nbsp;魍魉之匣,&nbsp;招财猫,&nbsp;轮入道,&nbsp;火灵,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薙魂,&nbsp;木魅,&nbsp;骰子鬼,&nbsp;蚌精,&nbsp;幽谷响)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4.1&nbsp;位置选1、3、5号，主属性不选，副属性选抵抗，数量选3条+4条全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4.2&nbsp;位置选2、6号，主属性选生命加成、副属性选抵抗，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4.3&nbsp;位置选2号，主属性选速度、副属性选抵抗，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4.4&nbsp;位置4号就不用选了，因为在之前第三步中就已经把抵抗和速度胚子恢复了</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.4.5&nbsp;类型重置，选择返魂香、魍魉、火灵、薙魂、木魅、蚌精6种，位置选2号和6号，</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;主属性选攻击加成、副属性选抵抗，全选并恢复。这个是专门给生命抵抗攻击御馔津留的,&nbsp;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;曾经没用，&nbsp;但御馔津出来后就有用了</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(返魂香,&nbsp;魍魉之匣,&nbsp;火灵,&nbsp;薙魂,&nbsp;木魅,&nbsp;蚌精)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5&nbsp;效果命中：重置，&nbsp;选择雪幽魂、返魂香、魍魉、招财、反枕、轮入道、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;日女（日女命中暂时没啥大用处，&nbsp;但保险起见最好选上。日女小松丸啥的）、钟灵、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;狰（和日女同理）、火灵、心眼（丑女）、木魅（和日女同理）、破势（丑女）、</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;骰子鬼、蚌精、魅妖、鸣屋、狂骨（丑女）、幽谷响共19种。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(雪幽魂,&nbsp;返魂香,&nbsp;魍魉之匣,&nbsp;招财猫,&nbsp;反枕,&nbsp;轮入道,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日女巳时,&nbsp;钟灵,&nbsp;狰,&nbsp;火灵,&nbsp;心眼,&nbsp;木魅,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;破势,&nbsp;骰子鬼,&nbsp;蚌精,&nbsp;魅妖,&nbsp;鸣屋,&nbsp;狂骨,&nbsp;幽谷响)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.1&nbsp;位置选1、3、5号，主属性不选，副属性选命中，数量选3条+4条全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.2&nbsp;位置选6号，主属性选生命加成、副属性选命中，全选并恢复；副属性维持命中不变，</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;主属性分别换为防御加成、暴击、暴击伤害，依次全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(防御加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.3&nbsp;位置选2号，主属性选速度、副属性选命中，全选并恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>(<span style="color:#1f377f;">重置御魂种类</span>:=<span style="color:blue;">False</span>)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.4&nbsp;位置4号同样不用选，之前第三步中就已经把抵抗和速度胚子恢复了</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.5&nbsp;类型中去掉骰子鬼、狂骨、雪幽魂、招财、轮入道、日女、狰、心眼、破势、鸣屋，</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;保留剩下9种蚌精、魅妖、返魂香、幽谷响、魍魉、反枕、钟灵、火灵和木魅，</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;位置选2号，&nbsp;主属性选生命加成、副属性选命中，&nbsp;全选并恢复；</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;主属性改为攻击加成、副属性命中，&nbsp;全选并恢复。给极限命中彼岸花和御馔津留胚子。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">去掉</span>(骰子鬼,&nbsp;狂骨,&nbsp;雪幽魂,&nbsp;招财猫,&nbsp;轮入道,&nbsp;日女巳时,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;狰,&nbsp;心眼,&nbsp;破势,&nbsp;鸣屋)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;4.5.6&nbsp;类型重置后选雪幽魂，位置选6号，主属性选攻击加成、副属性选命中，全选并恢复。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;这个单独为PVE清姬筛留的</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(雪幽魂)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">选择</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">选择</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;新御魂直接恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">选择</span>(涂佛,&nbsp;青女房,&nbsp;飞缘魔,&nbsp;兵主部)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">End</span>&nbsp;<span style="color:blue;">Sub</span>
- 
-<span style="color:blue;">End</span>&nbsp;<span style="color:blue;">Class</span>
-</pre>
+<div style=@_codeStyles[0]>
+    <Laoye777 />
 </div>
 
-<div style=@aMaoStyle>
-    <pre style="font-family:Consolas;font-size:13px;color:black;background:white;"><span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">御魂种类</span>
-<span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">御魂属性类型</span>
-<span style="color:blue;">Imports</span>&nbsp;Nukepayload2.Linq.Onmyoji.<span style="color:#2b91af;">副属性条数</span>
- 
-<span style="color:blue;">Partial</span>&nbsp;<span style="color:blue;">Class</span>&nbsp;<span style="color:#2b91af;">御魂整理宏示例</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;</span><span style="color:gray;">&lt;</span><span style="color:gray;">summary</span><span style="color:gray;">&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;http://www.bilibili.com/video/av98225095</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:gray;">&#39;&#39;&#39;</span><span style="color:green;">&nbsp;</span><span style="color:gray;">&lt;/</span><span style="color:gray;">summary</span><span style="color:gray;">&gt;</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">Public</span>&nbsp;<span style="color:blue;">Sub</span>&nbsp;<span style="color:#74531f;">阿毛缘结神版本御魂整理方案</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;全部六星弃置</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;星级.<span style="color:#74531f;">改为</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">弃置</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;接下来要做的是反向慢慢恢复,这样无论效率还是彻底程度都比正向要快很多。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在弃置御魂中查找&nbsp;=&nbsp;<span style="color:blue;">True</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;目前有用的是攻击加成,暴击,暴击伤害,&nbsp;命中（土蜘蛛）,生命（地震鲶）。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;但是由于首领御魂少,&nbsp;不过滤。</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(土蜘蛛,&nbsp;胧车,&nbsp;荒骷髅,&nbsp;地震鲶,&nbsp;蜃气楼,&nbsp;鬼灵歌伎)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;速度御魂</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;1,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6&nbsp;副属性&nbsp;速度&nbsp;恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">选择</span>(1,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;2&nbsp;号主速度副速度三条以上恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;命中和抵抗</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;暴击和暴伤全恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;暴击类</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(雪幽魂,&nbsp;地藏像,&nbsp;三味,&nbsp;招财猫,&nbsp;轮入道,&nbsp;狰,&nbsp;火灵,&nbsp;薙魂,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心眼,&nbsp;木魅,&nbsp;树妖,&nbsp;网切,&nbsp;青女房,&nbsp;伤魂鸟,&nbsp;破势,&nbsp;镇墓兽,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;珍珠,&nbsp;骰子鬼,&nbsp;蚌精,&nbsp;针女,&nbsp;鸣屋,&nbsp;狂骨,&nbsp;兵主部,&nbsp;涂佛)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;135&nbsp;三条或更多,副属性&nbsp;暴击&nbsp;或者&nbsp;暴击伤害</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;2&nbsp;号速度,副属性&nbsp;暴击&nbsp;或者&nbsp;暴击伤害</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;去掉树妖和珍珠,246&nbsp;主攻击加成,副属性&nbsp;暴击&nbsp;或者&nbsp;暴击伤害</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">去掉</span>(树妖,&nbsp;珍珠)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;去掉雪幽魂,骰子鬼,轮入道,狰等等,246主生命加成副属性暴击暴击伤害</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">按属性去掉</span>(防御加成,&nbsp;攻击加成,&nbsp;效果命中,&nbsp;效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(暴击伤害)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;生命类</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(地藏像,&nbsp;招财猫,&nbsp;薙魂,&nbsp;涅槃之火,&nbsp;树妖,&nbsp;被服,&nbsp;钟灵,&nbsp;镜姬,&nbsp;涂佛)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;135&nbsp;三条或更多,&nbsp;副属性生命加成</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;246&nbsp;主属性副属性生命加成</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;攻击类</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(招财猫,&nbsp;蝠翼,&nbsp;心眼,&nbsp;狰,&nbsp;轮入道,&nbsp;狂骨,&nbsp;阴摩罗,&nbsp;兵主部,&nbsp;鸣屋)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;135&nbsp;三条或更多,&nbsp;副属性攻击加成</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;246&nbsp;主属性副属性攻击加成</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2,&nbsp;4,&nbsp;6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;效果命中类&nbsp;1</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(雪幽魂,&nbsp;招财猫,&nbsp;地藏像,&nbsp;三味,&nbsp;狂骨,&nbsp;蚌精,&nbsp;日女巳时,&nbsp;魅妖,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鸣屋,&nbsp;木魅,&nbsp;反枕,&nbsp;薙魂,&nbsp;火灵,&nbsp;钟灵,&nbsp;返魂香,&nbsp;魍魉之匣,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;飞缘魔,&nbsp;轮入道,&nbsp;心眼,&nbsp;破势)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;135&nbsp;三条或更多,&nbsp;副属性效果命中</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;2&nbsp;号位主属性速度副属性命中</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;6&nbsp;号位副属性命中</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">重置</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;效果命中类&nbsp;2</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(雪幽魂,&nbsp;招财猫,&nbsp;蚌精,&nbsp;魅妖,&nbsp;火灵,&nbsp;幽谷响,&nbsp;钟灵,&nbsp;魍魉之匣,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;木魅,&nbsp;反枕,&nbsp;鸣屋,&nbsp;返魂香)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;二号位主属性攻击加成,副属性效果命中</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果命中)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;去掉鸣屋,主属性生命加成,副属性效果命中恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">去掉</span>(鸣屋)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">重置</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;效果抵抗类&nbsp;1</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(招财猫,&nbsp;地藏像,&nbsp;三味,&nbsp;蚌精,&nbsp;魅妖,&nbsp;镜姬,&nbsp;火灵,&nbsp;幽谷响,
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薙魂,&nbsp;木魅,&nbsp;返魂香,&nbsp;骰子鬼,&nbsp;轮入道,&nbsp;魍魉之匣)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;135&nbsp;三条或更多,&nbsp;副属性效果抵抗</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(1,&nbsp;3,&nbsp;5)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;三条或更多
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性条数&nbsp;=&nbsp;不限
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;2&nbsp;号位主属性速度副属性抵抗</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(速度)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;6&nbsp;号位副属性抵抗</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(6)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">重置</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
- 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;效果抵抗类&nbsp;2</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">改为</span>(蚌精,&nbsp;木魅,&nbsp;招财猫,&nbsp;返魂香,&nbsp;骰子鬼,&nbsp;火灵,&nbsp;魍魉之匣,&nbsp;魅妖,&nbsp;薙魂)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;二号位主属性攻击加成,副属性效果抵抗</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">改为</span>(2)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(攻击加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;副属性有.<span style="color:#74531f;">改为</span>(效果抵抗)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green;">&#39;&nbsp;去掉骰子鬼,主属性生命加成,副属性效果抵抗恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种类.<span style="color:#74531f;">去掉</span>(骰子鬼)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位置.<span style="color:#74531f;">重置</span>()
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主属性.<span style="color:#74531f;">改为</span>(生命加成)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">全选</span>.<span style="color:#74531f;">恢复</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#74531f;">重置过滤器</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:blue;">End</span>&nbsp;<span style="color:blue;">Sub</span>
-<span style="color:blue;">End</span>&nbsp;<span style="color:blue;">Class</span>
-</pre>
+<div style=@_codeStyles[1]>
+    <ZheliAMaoJ />
+</div>
+
+<div style=@_codeStyles[2]>
+    <CommonCode />
 </div>
 
 @code{
@@ -484,26 +26,61 @@
     const string VisibleStyle = "display:inline";
     const string BoldStyle = "font-weight:bold";
     const string NormalStyle = "font-weight:normal";
-    string lao7Style = VisibleStyle;
-    string btnLao7Style = BoldStyle;
-    string aMaoStyle = HiddenStyle;
-    string btnAMaoStyle = NormalStyle;
+
+    string[] _buttonStyles = { BoldStyle, NormalStyle, NormalStyle };
+    string[] _codeStyles = { VisibleStyle, HiddenStyle, HiddenStyle };
+    int _selectedIndex = 0;
+
+    public int SelectedIndex
+    {
+        get
+        {
+            return _selectedIndex;
+        }
+        set
+        {
+            if (_selectedIndex == value)
+            {
+                return;
+            }
+            _selectedIndex = value;
+            OnSelectedIndexChanged(value);
+        }
+    }
+
+    void OnSelectedIndexChanged(int value)
+    {
+        for (int i = 0; i < _buttonStyles.Length; i++)
+        {
+            if (i == value)
+            {
+                _buttonStyles[i] = BoldStyle;
+                _codeStyles[i] = VisibleStyle;
+            }
+            else
+            {
+                _buttonStyles[i] = NormalStyle;
+                _codeStyles[i] = HiddenStyle;
+            }
+        }
+        StateHasChanged();
+    }
 
     void BtnLao7_Click()
     {
-        lao7Style = VisibleStyle;
-        btnLao7Style = BoldStyle;
-        aMaoStyle = HiddenStyle;
-        btnAMaoStyle = NormalStyle;
+        SelectedIndex = 0;
         StateHasChanged();
     }
 
     void BtnAMao_Click()
     {
-        lao7Style = HiddenStyle;
-        btnLao7Style = NormalStyle;
-        aMaoStyle = VisibleStyle;
-        btnAMaoStyle = BoldStyle;
+        SelectedIndex = 1;
+        StateHasChanged();
+    }
+
+    void BtnCommon_Click()
+    {
+        SelectedIndex = 2;
         StateHasChanged();
     }
 }
