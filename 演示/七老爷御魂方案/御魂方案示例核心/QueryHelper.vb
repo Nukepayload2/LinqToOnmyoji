@@ -3,7 +3,10 @@
 Module QueryHelper
 
     Function 取属性数字格式(属性 As String) As String
-        If 属性.EndsWith("加成") OrElse 属性.StartsWith("暴击") OrElse 属性.StartsWith("效果") Then
+        Const BinaryCompare = StringComparison.Ordinal
+        If 属性.EndsWith("加成", BinaryCompare) OrElse
+            属性.StartsWith("暴击", BinaryCompare) OrElse
+            属性.StartsWith("效果", BinaryCompare) Then
             Return "P2"
         Else
             Return "N2"
