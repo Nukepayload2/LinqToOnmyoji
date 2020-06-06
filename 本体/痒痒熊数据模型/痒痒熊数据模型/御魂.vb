@@ -36,6 +36,12 @@
     <JsonProperty("quality"), JsonPropertyName("quality")>
     Public Property 星级 As Integer
 
+    ''' <summary>
+    ''' （可能为空）一组属性名称和小数的组合，代表副属性强化的程度。
+    ''' 如果为空说明痒痒熊无法读取此数据。
+    ''' 六星御魂强化一次的强化程度最多为 1（不包含），低星御魂则上限降低。
+    ''' 一般副属性强化程度越高越容易强化到，所以这些值与副属性的强化概率也有一定关系。
+    ''' </summary>
     <JsonProperty("random_attr_rates"), JsonPropertyName("random_attr_rates")>
     Public Property 随机属性比率 As 御魂随机属性强化比率()
 

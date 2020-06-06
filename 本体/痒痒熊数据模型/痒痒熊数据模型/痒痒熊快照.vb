@@ -14,18 +14,18 @@ Public Class 痒痒熊快照
 
     Public ReadOnly Property 版本未适配 As Boolean
         Get
-            Return 版本 <> "0.99.1"
+            Return 版本 <> "1.6.1"
         End Get
     End Property
 
     ''' <summary>
-    ''' 痒痒熊快照 0.99.1
+    ''' 痒痒熊快照 1.6.1
     ''' </summary>
-    Public Shared ReadOnly Property 已适配的产品和版本 As String = "痒痒熊快照 0.99.1"
+    Public Shared ReadOnly Property 已适配的产品和版本 As String = "痒痒熊快照 1.6.1"
 
     ''' <summary>
     ''' 使用 <see cref="JsonSerializer"/> 加载痒痒熊快照。
-    ''' 在 .NET Core 3.0 平台有卓越的性能，但是在 Blazor 上比较慢。
+    ''' 在 .NET Core 3.1 平台有卓越的性能，但是在 Blazor 上比较慢。
     ''' </summary>
     Public Shared Function 加载Json二进制(内容 As Byte()) As 痒痒熊快照
         Return JsonSerializer.Deserialize(Of 痒痒熊快照)(内容)
@@ -33,7 +33,7 @@ Public Class 痒痒熊快照
 
     ''' <summary>
     ''' 使用 <see cref="JsonSerializer"/> 加载痒痒熊快照。
-    ''' 在 .NET Core 3.0 平台有卓越的性能，但是在 Blazor 上比较慢。
+    ''' 在 .NET Core 3.1 平台有卓越的性能，但是在 Blazor 上比较慢。
     ''' </summary>
     Public Shared Function 加载Json文件(文件 As String) As 痒痒熊快照
         Return 加载Json二进制(File.ReadAllBytes(文件))
@@ -41,7 +41,7 @@ Public Class 痒痒熊快照
 
     ''' <summary>
     ''' 使用 <see cref="JsonConvert"/> 加载痒痒熊快照。
-    ''' 在 Blazor 比较快，在 .NET Core 3.0 明显比 <see cref="JsonSerializer"/> 慢。
+    ''' 在 Blazor 比较快，在 .NET Core 3.1 明显比 <see cref="JsonSerializer"/> 慢。
     ''' </summary>
     Public Shared Function 加载Json文件流(文件 As Stream) As 痒痒熊快照
         Using sr As New StreamReader(文件)
@@ -51,7 +51,7 @@ Public Class 痒痒熊快照
 
     ''' <summary>
     ''' 使用 <see cref="JsonConvert"/> 加载痒痒熊快照。针对只能异步读取的文件流设计。
-    ''' 在 Blazor 比较快，在 .NET Core 3.0 明显比 <see cref="JsonSerializer"/> 慢。
+    ''' 在 Blazor 比较快，在 .NET Core 3.1 明显比 <see cref="JsonSerializer"/> 慢。
     ''' </summary>
     Public Shared Async Function 异步加载Json文件流(文件 As Stream) As Task(Of 痒痒熊快照)
         Using sr As New StreamReader(文件)
@@ -61,7 +61,7 @@ Public Class 痒痒熊快照
 
     ''' <summary>
     ''' 使用 <see cref="JsonConvert"/> 加载痒痒熊快照。
-    ''' 在 Blazor 比较快，在 .NET Core 3.0 明显比 <see cref="JsonSerializer"/> 慢。
+    ''' 在 Blazor 比较快，在 .NET Core 3.1 明显比 <see cref="JsonSerializer"/> 慢。
     ''' </summary>
     Public Shared Async Function 异步加载Json文本(文本 As String) As Task(Of 痒痒熊快照)
         Return Await Task.Run(Function() JsonConvert.DeserializeObject(Of 痒痒熊快照)(文本))
@@ -69,7 +69,7 @@ Public Class 痒痒熊快照
 
     ''' <summary>
     ''' 使用 <see cref="JsonConvert"/> 加载痒痒熊快照。
-    ''' 在 Blazor 比较快，在 .NET Core 3.0 明显比 <see cref="JsonSerializer"/> 慢。
+    ''' 在 Blazor 比较快，在 .NET Core 3.1 明显比 <see cref="JsonSerializer"/> 慢。
     ''' </summary>
     Public Shared Function 加载Json文本(文本 As String) As 痒痒熊快照
         Return JsonConvert.DeserializeObject(Of 痒痒熊快照)(文本)

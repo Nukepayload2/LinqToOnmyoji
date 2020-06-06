@@ -53,14 +53,16 @@ Public Class EquipmentControl
                               .Format = type.数字格式
                           }
         Dim props = Enumerable.Repeat(primary, 1).Concat(secondaries)
-        'Dim growthSum = (Aggregate sec In 御魂.随机属性比率 Into Sum(sec.数值))
-        Dim propGrowths = From sec In 御魂.随机属性比率
+        Dim propGrowths As IEnumerable = Nothing
+        If 御魂.随机属性比率 IsNot Nothing Then
+            propGrowths = From sec In 御魂.随机属性比率
                           Let type = sec.属性分类
                           Select New With {
                               .Name = type.ToString,
                               .Value = sec.数值,
                               .Format = sec.数字格式
                           }
+        End If
         With TipMoreInfo
             .Jade = 御魂.星级
             .EquipmentType = 御魂.种类
