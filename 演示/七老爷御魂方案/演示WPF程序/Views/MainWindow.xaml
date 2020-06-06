@@ -5,17 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:演示WPF程序" AllowsTransparency="True" WindowStyle="None"
         MinWidth="250" MinHeight="250"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
         xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
         mc:Ignorable="d" BorderBrush="DodgerBlue" BorderThickness="1"
         Title="御魂清理方案试用" Height="480" Width="640">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Nukepayload2.UI.Win32;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/FluentWPF;component/Styles/Controls.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
+                <Setter Property="Background" Value="#3F7F7F7F"/>
+                <Setter Property="fw:RevealElement.MouseOverBackground" Value="#7FBFBFBF"/>
+                <Setter Property="fw:RevealElement.PressTintBrush" Value="#FFCFCFCF"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
-        <Grid.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="pack://application:,,,/Nukepayload2.UI.Win32;component/Themes/Generic.xaml"/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition/>
@@ -30,7 +37,7 @@
                 <Button x:Name="BtnClose" Style="{StaticResource CloseButtonStyle}" ToolTip="关闭"/>
             </StackPanel>
         </Grid>
-        <Border x:Name="ClientArea" Grid.Row="1" TextElement.FontSize="14" Padding="4">
+        <Border x:Name="ClientArea" fw:PointerTracker.Enabled="True" Grid.Row="1" TextElement.FontSize="14" Padding="4">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
