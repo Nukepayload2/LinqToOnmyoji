@@ -8,16 +8,13 @@ Imports Newtonsoft.Json.Linq
 
 Namespace Global.Example
 
-    Public Class RootData
+    Public Class Progress
 
-        <JsonProperty("data")>
-        Public Property Data As Data
+        <JsonProperty("max_value")>
+        Public Property MaxValue As Integer
 
-        <JsonProperty("timestamp")>
-        Public Property Timestamp As String
-
-        <JsonProperty("version")>
-        Public Property Version As String
+        <JsonProperty("value")>
+        Public Property Value As Integer
     End Class
 
 End Namespace

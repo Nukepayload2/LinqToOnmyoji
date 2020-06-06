@@ -24,6 +24,15 @@ Namespace Global.Example
 
         <JsonProperty("heroes")>
         Public Property Heroes As Hero()
+
+        <JsonProperty("player")>
+        Public Property Player As Player
+
+        <JsonProperty("realm_cards")>
+        Public Property RealmCards As RealmCard()
+
+        <JsonProperty("story_tasks")>
+        Public Property StoryTasks As StoryTask()
     End Class
 
 End Namespace
