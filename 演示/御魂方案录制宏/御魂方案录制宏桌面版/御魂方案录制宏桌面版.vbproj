@@ -5,6 +5,7 @@
     <TargetFrameworks>netcoreapp3.1;net462</TargetFrameworks>
     <RootNamespace>御魂方案录制宏桌面版</RootNamespace>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
 

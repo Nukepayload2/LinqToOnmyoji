@@ -126,7 +126,10 @@ Public Class EquipmentFlyout
 
     Private Shared Sub OnPropertyGrowthChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)
         Dim inst As EquipmentFlyout = d
+        Dim items As IEnumerable = e.NewValue
         inst.ItmPropGrows.ItemsSource = e.NewValue
+        Dim hasNoItems = items Is Nothing OrElse Not items.OfType(Of Object).Any
+        inst.BdrSecondaryProps.Visibility = If(hasNoItems, Visibility.Collapsed, Visibility.Visible)
     End Sub
 
     Private Shared Sub OnLockedChanged(d As DependencyObject, e As DependencyPropertyChangedEventArgs)

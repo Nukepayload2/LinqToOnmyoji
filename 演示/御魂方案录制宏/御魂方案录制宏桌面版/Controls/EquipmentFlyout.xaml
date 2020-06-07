@@ -58,7 +58,7 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Row="3" Margin="0,4,0,0" BorderThickness="0,1,0,0" BorderBrush="Gray">
+        <Border x:Name="BdrSecondaryProps" Grid.Row="3" Margin="0,4,0,0" BorderThickness="0,1,0,0" BorderBrush="Gray">
             <TextBlock Margin="0,4,0,0">副属性收益:</TextBlock>
         </Border>
         <ItemsControl x:Name="ItmPropGrows" Grid.Row="4">
