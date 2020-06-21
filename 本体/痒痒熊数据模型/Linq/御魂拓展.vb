@@ -26,6 +26,11 @@ Public Module 御魂拓展
         Return 种类英文名转御魂属性类型(副属性.种类)
     End Function
 
+    <Extension>
+    Public Function 套装属性分类(条目 As 御魂图鉴条目) As 御魂属性类型
+        Return 种类英文名转御魂属性类型(条目.属性类型)
+    End Function
+
     Friend Function 种类英文名转御魂属性类型(种类英文名 As String) As 御魂属性类型
         Select Case 种类英文名
             Case 御魂属性类型英文名.攻击加成

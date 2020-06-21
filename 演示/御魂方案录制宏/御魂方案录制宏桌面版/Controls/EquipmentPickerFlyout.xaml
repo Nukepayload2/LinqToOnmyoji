@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="EquipmentPickerFlyout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:御魂方案录制宏桌面版"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="LstCandidates" SelectionMode="Multiple">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:EquipmentMediumWideView EquipmentType="{Binding Type, Mode=OneTime}" 
+                                                   EquipmentCount="{Binding Count, Mode=OneTime}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Padding="24,8" HorizontalAlignment="Right" Margin="4,4,12,4">取消</Button>
+            <Button Padding="24,8" HorizontalAlignment="Left" Margin="12,4,4,4" Grid.Column="1">确定</Button>
+        </Grid>
+    </Grid>
+</UserControl>
