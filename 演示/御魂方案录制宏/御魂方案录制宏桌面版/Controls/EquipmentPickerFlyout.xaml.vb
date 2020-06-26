@@ -6,11 +6,14 @@ Imports Nukepayload2.Linq.Onmyoji
 Public Class EquipmentPickerFlyout
 
     Private _candidateListCache As CandidateItem()
+    Private _candidateListCacheIndexByType As Dictionary(Of 御魂种类, CandidateItem)
 
     Private Sub UpdateCandidateList(dataSource As IReadOnlyList(Of 御魂))
         If _candidateListCache Is Nothing Then
             _candidateListCache = Aggregate itm In 御魂图鉴.所有条目
                                   Select New CandidateItem(itm.Id, 0) Into ToArray
+            _candidateListCacheIndexByType = Aggregate cac In _candidateListCache
+                                             Into ToDictionary(cac.Type)
             LstCandidates.ItemsSource = _candidateListCache
         End If
         UpdateEquipmentCount(_candidateListCache, dataSource)
@@ -18,12 +21,18 @@ Public Class EquipmentPickerFlyout
 
     Private Sub UpdateEquipmentCount(candidateListCache As CandidateItem(),
                                      dataSource As IReadOnlyList(Of 御魂))
-
+        For Each cand In candidateListCache
+            cand.Count = 0
+        Next
+        For Each equ In dataSource
+            Dim cand = _candidateListCacheIndexByType(equ.种类)
+            cand.Count += 1
+        Next
     End Sub
 
     Private _status As FlyoutStatus
 
-    Public Async Function ShowAsync(dataSource As IReadOnlyList(Of 御魂)) As Task(Of IReadOnlyList(Of 御魂))
+    Public Async Function ShowAsync(dataSource As IReadOnlyList(Of 御魂)) As Task(Of IReadOnlyList(Of 御魂种类))
         If _status <> FlyoutStatus.Hidden Then
             Throw New InvalidOperationException("检测到重复调用 ShowAsync")
         End If
@@ -32,14 +41,16 @@ Public Class EquipmentPickerFlyout
         Visibility = Visibility.Visible
         Await ShowAnimAsync()
         Await WaitForUserInputAsync()
-        Dim result = RunFilters(dataSource)
+        Dim result = GetFilterInfo()
         Await HideAnimAsync()
         _status = FlyoutStatus.Hidden
         Return result
     End Function
 
-    Private Function RunFilters(dataSource As IReadOnlyList(Of 御魂)) As IReadOnlyList(Of 御魂)
-
+    Private Function GetFilterInfo() As IReadOnlyList(Of 御魂种类)
+        Return Aggregate item In LstCandidates.SelectedItems.OfType(Of CandidateItem)
+               Where item.Count > 0
+               Select item.Type Into ToArray
     End Function
 
     Private Async Function ShowAnimAsync() As Task
