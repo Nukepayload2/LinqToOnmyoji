@@ -54,10 +54,9 @@
                 <Button x:Name="BtnNew" Command="{Binding NewFile}" ToolTip="新建" Style="{StaticResource TitleBarIconButtonStyle}">&#xE160;</Button>
                 <TextBlock Text="{Binding ActiveDocument.信息.名称,FallbackValue=清理方案1}" Padding="8" ToolTip="整理方案文件名" IsHitTestVisible="False"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,88,0">
                 <Button x:Name="BtnViewSource" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,4,0" VerticalAlignment="Top" Padding="18,4">源码</Button>
                 <Button x:Name="BtnAbout" Background="#FF3EA8FF" Foreground="WhiteSmoke" BorderThickness="0" Margin="0,0,8,0" VerticalAlignment="Top" Padding="18,4">关于</Button>
-                <Button Click="BtnClose_Click" Style="{StaticResource CloseButtonStyle}"/>
             </StackPanel>
         </Grid>
         <Border x:Name="ClientArea" Grid.Row="1">
@@ -302,5 +301,12 @@
                 </Grid>
             </Grid>
         </Border>
+        <Grid Grid.RowSpan="2" x:Name="FlyoutHost" Visibility="Collapsed">
+            <Rectangle x:Name="RectFlyoutHostBack" Fill="#3F000000"/>
+        </Grid>
+        <StackPanel x:Name="ControlBox" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="BtnMinimize" ToolTip="最小化" Style="{StaticResource MinimizeButtonStyle}"/>
+            <Button x:Name="BtnClose" ToolTip="关闭" Style="{StaticResource CloseButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </ext:BorderlessWindow>

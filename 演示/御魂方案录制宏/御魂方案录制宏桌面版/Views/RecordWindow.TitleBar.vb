@@ -4,7 +4,7 @@
         ShowAboutCommand.Instance.Execute(Nothing)
     End Sub
 
-    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs)
+    Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs) Handles BtnClose.Click
         Close()
     End Sub
 
@@ -12,4 +12,7 @@
         Process.Start("explorer.exe", "https://github.com/Nukepayload2/LinqToOnmyoji")
     End Sub
 
+    Private Sub BtnMinimize_Click(sender As Object, e As RoutedEventArgs) Handles BtnMinimize.Click
+        WindowState = WindowState.Minimized
+    End Sub
 End Class

@@ -25,7 +25,7 @@ Public Class ImportYyxJsonCommand
             Dim snap = Await Task.Run(Function() 痒痒熊快照.加载Json文件(yyxJsonFile))
             _viewModel.YyxData = snap
             Dim equipments = snap.数据.御魂
-            Dim useBlockedLoad = False
+            Dim useBlockedLoad = False ' 对于 3 万御魂那种号或许应该打开这个
             If useBlockedLoad Then
                 Dim filterResult As New ObservableCollection(Of 御魂)
                 _viewModel.ViewingEquipments = filterResult

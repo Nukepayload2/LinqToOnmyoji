@@ -1,9 +1,9 @@
-﻿Imports System.Collections.Specialized
-Imports System.ComponentModel
+﻿Imports System.ComponentModel
 Imports System.Windows.Media.Animation
 Imports Nukepayload2.Linq.Onmyoji
 
 Public Class EquipmentPickerFlyout
+    Implements IFlyout
 
     Private _candidateListCache As CandidateItem()
     Private _candidateListCacheIndexByType As Dictionary(Of 御魂种类, CandidateItem)
@@ -24,10 +24,12 @@ Public Class EquipmentPickerFlyout
         For Each cand In candidateListCache
             cand.Count = 0
         Next
-        For Each equ In dataSource
-            Dim cand = _candidateListCacheIndexByType(equ.种类)
-            cand.Count += 1
-        Next
+        If dataSource IsNot Nothing Then
+            For Each equ In dataSource
+                Dim cand = _candidateListCacheIndexByType(equ.种类)
+                cand.Count += 1
+            Next
+        End If
     End Sub
 
     Private _status As FlyoutStatus
@@ -38,12 +40,20 @@ Public Class EquipmentPickerFlyout
         End If
         _status = FlyoutStatus.Shown
         UpdateCandidateList(dataSource)
-        Visibility = Visibility.Visible
+        FlyoutService.Show(Me)
         Await ShowAnimAsync()
         Await WaitForUserInputAsync()
-        Dim result = GetFilterInfo()
-        Await HideAnimAsync()
-        _status = FlyoutStatus.Hidden
+        Dim result As IReadOnlyList(Of 御魂种类)
+        If _status = FlyoutStatus.Ok Then
+            result = GetFilterInfo()
+        Else
+            result = Nothing
+        End If
+        If _status <> FlyoutStatus.Hidden Then
+            Await HideAnimAsync()
+            FlyoutService.Dismiss(Me)
+            _status = FlyoutStatus.Hidden
+        End If
         Return result
     End Function
 
@@ -70,6 +80,18 @@ Public Class EquipmentPickerFlyout
             Await Task.Delay(10)
         Loop
     End Function
+
+    Private Sub BtnCancel_Click(sender As Object, e As RoutedEventArgs) Handles BtnCancel.Click
+        _status = FlyoutStatus.Cancel
+    End Sub
+
+    Private Sub BtnOk_Click(sender As Object, e As RoutedEventArgs) Handles BtnOk.Click
+        _status = FlyoutStatus.Ok
+    End Sub
+
+    Public Sub ForceClose() Implements IFlyout.ForceClose
+        _status = FlyoutStatus.Hidden
+    End Sub
 
     Private Enum FlyoutStatus
         Hidden
